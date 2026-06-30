@@ -336,7 +336,43 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .pc-btn-gh{background:rgba(255,255,255,0.08);color:white;border:0.5px solid rgba(255,255,255,0.18);}
 .pc-btn-gh:hover{background:rgba(255,255,255,0.15);}
 
-/* Zoom section */
+/* Compare table */
+.compare-wrap{margin-bottom:3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.cmp-grid{display:grid;grid-template-columns:200px repeat(4,minmax(160px,1fr));background:var(--bark);border-radius:10px 10px 0 0;overflow:hidden;min-width:800px;}
+.cmp-label-col{padding:2rem 1.5rem;font-size:0.78rem;color:rgba(255,255,255,0.4);font-weight:400;letter-spacing:0.04em;display:flex;align-items:flex-end;}
+.cmp-col{padding:2rem 1.2rem;display:flex;flex-direction:column;gap:0.3rem;border-left:0.5px solid rgba(255,255,255,0.08);}
+.cmp-col.cmp-feat{background:rgba(201,168,76,0.12);border-left-color:rgba(201,168,76,0.2);border-right:0.5px solid rgba(201,168,76,0.2);}
+.cmp-popular{font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;}
+.cmp-pkg-name{font-family:var(--font-display);font-size:1.1rem;font-weight:400;color:white;line-height:1.2;}
+.cmp-pkg-tag{font-size:0.75rem;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.4;margin-bottom:0.4rem;}
+.cmp-pkg-price{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:white;line-height:1;margin:0.5rem 0 0.2rem;}
+.cmp-pkg-scope{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1rem;}
+.cmp-btn{padding:0.7rem 1rem;border-radius:4px;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;font-family:var(--font-body);cursor:pointer;border:none;transition:all 0.2s;width:100%;margin-top:auto;min-height:44px;}
+.cmp-btn-dark{background:white;color:var(--bark);}
+.cmp-btn-dark:hover{background:var(--cream);}
+.cmp-btn-light{background:transparent;border:0.5px solid rgba(255,255,255,0.25);color:white;}
+.cmp-btn-light:hover{background:rgba(255,255,255,0.08);}
+.cmp-btn-sage{background:var(--sage-dark);color:white;}
+.cmp-btn-sage:hover{background:var(--moss);}
+.cmp-row{display:grid;grid-template-columns:200px repeat(4,minmax(160px,1fr));border-bottom:0.5px solid var(--linen);min-width:800px;}
+.cmp-row-alt{background:var(--cream);}
+.cmp-row .cmp-label-col{background:transparent;padding:1rem 1.5rem;color:var(--bark-mid);font-size:0.82rem;font-weight:400;letter-spacing:0;align-items:center;}
+.cmp-row .cmp-col{padding:1rem 1.2rem;font-size:0.82rem;color:var(--bark-mid);font-weight:300;border-left:0.5px solid var(--linen);align-items:flex-start;justify-content:center;flex-direction:row;flex-wrap:wrap;gap:0.3rem;}
+.cmp-row .cmp-col.cmp-feat{background:rgba(201,168,76,0.04);border-left:0.5px solid rgba(201,168,76,0.15);border-right:0.5px solid rgba(201,168,76,0.15);}
+.cmp-yes{color:var(--sage-dark);font-weight:500;}
+.cmp-no{color:var(--bark-light);opacity:0.4;}
+.cmp-row-addon .cmp-label-col{color:var(--bark);font-weight:500;}
+.cmp-addon-price{color:var(--gold);font-weight:500;margin-left:0.2rem;}
+.cmp-section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage-dark);padding:1.2rem 1.5rem 0.6rem;background:var(--sage-pale);border-bottom:0.5px solid var(--linen);min-width:800px;}
+.cmp-footer-row{background:var(--cream);border-radius:0 0 10px 10px;overflow:hidden;border-top:0.5px solid var(--linen);}
+.cmp-footer-row .cmp-label-col{background:transparent;}
+.cmp-footer-row .cmp-col{padding:1.5rem 1.2rem;border-left:0.5px solid var(--linen);gap:0.4rem;}
+.cmp-footer-row .cmp-col.cmp-feat{background:rgba(201,168,76,0.06);border-left:0.5px solid rgba(201,168,76,0.2);border-right:0.5px solid rgba(201,168,76,0.2);}
+.cmp-best{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark-mid);}
+.cmp-best-txt{font-size:0.88rem;color:var(--bark);font-weight:400;margin-bottom:0.8rem;}
+.cmp-scroll-hint{display:none;text-align:center;font-size:0.75rem;color:var(--bark-mid);padding:0.5rem 0 1rem;opacity:0.6;}
+
+
 .zoom-section{background:var(--cream);padding:4rem 4rem 5rem;border-top:0.5px solid var(--linen);max-width:1060px;margin:0 auto;}
 .zoom-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:2.5rem;align-items:start;}
 .zoom-feats{display:flex;flex-direction:column;gap:1rem;}
@@ -516,6 +552,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
   .expect-grid{grid-template-columns:1fr;}
   .price-grid{grid-template-columns:1fr;}
   .pc{border-right:none;border-bottom:0.5px solid var(--linen);}
+  .cmp-scroll-hint{display:block;}
   .zoom-section{padding:3rem 1.5rem 4rem;}
   .zoom-grid{grid-template-columns:1fr;gap:2rem;}
   .a-header{padding:3rem 1.5rem;}
@@ -539,6 +576,11 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
   .ideas-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
   .gate-blur{grid-template-columns:1fr 1fr;}
+  .quiz-page{padding:2.5rem 1.2rem;}
+  .q-card{padding:0;}
+  .q-options{gap:0.6rem;}
+  .qr-rec-price{font-size:2.2rem;}
+  .cmp-scroll-hint{display:block;}
 }
 </style>
 </head>
@@ -572,7 +614,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         <span style="font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:500;">The UK's first rental-only interior styling studio</span>
       </div>
       <h1 class="hero-title">Your <em>white box</em><br>rental deserves<br><strong>so much more.</strong></h1>
-      <p class="hero-sub"><strong style="color:rgba(255,255,255,0.88);font-weight:500;">Deposit-safe</strong> transformations using <strong style="color:rgba(255,255,255,0.88);font-weight:500;">sustainable materials</strong>. <strong style="color:rgba(255,255,255,0.88);font-weight:500;">No drilling. No painting.</strong> Just colour, life and personality — added back into your rental. We give you the vision and the shopping list. <strong style="color:rgba(255,255,255,0.88);font-weight:500;">You execute it.</strong></p>
+      <p class="hero-sub"><strong style="color:rgba(255,255,255,0.88);font-weight:500;">Deposit-safe</strong> transformations using <strong style="color:rgba(255,255,255,0.88);font-weight:500;">sustainable materials</strong>. <strong style="color:rgba(255,255,255,0.88);font-weight:500;">No drilling. No painting.</strong> Just colour, life and personality — added back into your rental.<br>We give you the vision and the shopping list. <strong style="color:rgba(255,255,255,0.88);font-weight:500;">You execute it.</strong></p>
       <div style="display:inline-block;border-left:2px solid var(--gold);padding-left:1rem;margin-bottom:2.5rem;position:relative;z-index:2;">
         <p style="font-family:var(--font-display);font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.5;margin:0;">Some things can't be automated.<br>Taste is one of them.</p>
       </div>
@@ -777,7 +819,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
      BUDGET CALCULATOR
      ============================================================ -->
 <div class="page" id="page-calc">
-  <div class="calc-page" style="background:var(--cream);padding:5rem 4rem;min-height:calc(100vh - 68px);">
+  <div class="calc-page" style="background:var(--cream);min-height:calc(100vh - 68px);">
     <div style="max-width:760px;margin:0 auto;">
 
       <!-- Header -->
@@ -813,7 +855,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         <div style="margin-bottom:2rem;">
           <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Package</div>
           <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.8rem;">Which package are you interested in? <span style="color:var(--sage-dark);">*</span></label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;" id="if-packages">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;" id="if-packages">
             <label style="display:flex;align-items:flex-start;gap:0.7rem;padding:1rem;border:0.5px solid var(--linen);border-radius:8px;cursor:pointer;transition:all 0.2s;" class="pkg-opt">
               <input type="radio" name="package" value="single" style="margin-top:3px;accent-color:var(--sage-dark);" onchange="updateDimsLabel()">
               <div><div style="font-size:0.88rem;font-weight:500;color:var(--bark);">The Single Edit</div><div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">1 item · £75</div></div>
@@ -970,202 +1012,175 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
       <p>We give you the vision and the shopping list. You execute it — at your own pace, on your own terms. Every package includes a curated PDF playbook and exact product links. Add a personalised Move-Out Reversal Guide to any package, or get it included free with The Full Edit.</p>
     </div>
     <div class="pricing-body">
-      <div class="addon-banner">Not sure which package is right for you? <strong>Start with The Single Edit</strong> — it's the perfect way to experience the service before going bigger.</div>
-      <div class="eyebrow centered" style="margin-bottom:1rem;"><span>How it works</span></div>
-      <div class="expect-grid">
-        <div class="exp-card"><div class="ec-head"><div class="ec-icon">📝</div><h3>Step 1 — Fill in the Intake Form</h3></div><p>Share photos of your space, item dimensions, your style preferences and shopping budget. Takes 5–10 minutes.</p><div class="ec-det"><strong>Takes:</strong> 5–10 minutes · <strong>Format:</strong> Online form</div></div>
-        <div class="exp-card"><div class="ec-head"><div class="ec-icon">🎁</div><h3>Step 2 — Receive Your Design Playbook</h3></div><p>We send you a beautifully branded PDF with your mood board, Before &amp; After mockups, and a clickable shopping list.</p><div class="ec-det"><strong>Turnaround:</strong> Days, not weeks · <strong>Format:</strong> PDF via email</div></div>
-        <div class="exp-card"><div class="ec-head"><div class="ec-icon">🏠</div><h3>Step 3 — Shop &amp; Transform</h3></div><p>Click your curated product links, order what you love, and transform your space over a weekend.</p><div class="ec-det"><strong>All items:</strong> 100% deposit-safe · <strong>Sustainable sourcing</strong></div></div>
+      <!-- Compare Packages -->
+      <p class="cmp-scroll-hint">← Swipe to compare all packages →</p>
+      <div class="compare-wrap">
+
+        <!-- Header row -->
+        <div class="cmp-grid">
+          <div class="cmp-label-col"></div>
+
+          <div class="cmp-col">
+            <div class="cmp-pkg-name">The Single Edit</div>
+            <div class="cmp-pkg-tag">One thing fixed, perfectly.</div>
+            <div class="cmp-pkg-price">£75</div>
+            <div class="cmp-pkg-scope">1 item</div>
+            <button class="cmp-btn cmp-btn-light" onclick="showPage('register')">Get Started</button>
+          </div>
+
+          <div class="cmp-col cmp-feat">
+            <div class="cmp-popular">Most Popular</div>
+            <div class="cmp-pkg-name">The Trio Edit</div>
+            <div class="cmp-pkg-tag">A whole zone, cohesive.</div>
+            <div class="cmp-pkg-price">£200</div>
+            <div class="cmp-pkg-scope">3 items</div>
+            <button class="cmp-btn cmp-btn-dark" onclick="showPage('register')">Get Started</button>
+          </div>
+
+          <div class="cmp-col">
+            <div class="cmp-pkg-name">The Seven Edit</div>
+            <div class="cmp-pkg-tag">The whole room, done right.</div>
+            <div class="cmp-pkg-price">£399</div>
+            <div class="cmp-pkg-scope">7 items</div>
+            <button class="cmp-btn cmp-btn-light" onclick="showPage('register')">Get Started</button>
+          </div>
+
+          <div class="cmp-col">
+            <div class="cmp-pkg-name">The Full Edit</div>
+            <div class="cmp-pkg-tag">Your brief, your scope.</div>
+            <div class="cmp-pkg-price">Custom</div>
+            <div class="cmp-pkg-scope">You decide</div>
+            <button class="cmp-btn cmp-btn-sage" onclick="showFullEdit()">Get a Quote</button>
+          </div>
+        </div>
+
+        <!-- Compare rows -->
+        <div class="cmp-section-label">What's included</div>
+
+        <div class="cmp-row">
+          <div class="cmp-label-col">Transformation ideas</div>
+          <div class="cmp-col">1</div>
+          <div class="cmp-col cmp-feat">3</div>
+          <div class="cmp-col">7</div>
+          <div class="cmp-col">You specify</div>
+        </div>
+
+        <div class="cmp-row cmp-row-alt">
+          <div class="cmp-label-col">Product options per item</div>
+          <div class="cmp-col">1</div>
+          <div class="cmp-col cmp-feat">1</div>
+          <div class="cmp-col">2 per item</div>
+          <div class="cmp-col">2 per item</div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="cmp-label-col">Shopping list</div>
+          <div class="cmp-col"><span class="cmp-no">—</span></div>
+          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span> Consolidated</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> Phased by priority</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> Master list</div>
+        </div>
+
+        <div class="cmp-row cmp-row-alt">
+          <div class="cmp-label-col">Mood board</div>
+          <div class="cmp-col"><span class="cmp-no">—</span></div>
+          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span> Zone mood board</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> Full room</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> Whole-home</div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="cmp-label-col">Colour palette</div>
+          <div class="cmp-col"><span class="cmp-no">—</span></div>
+          <div class="cmp-col cmp-feat"><span class="cmp-no">—</span></div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
+        </div>
+
+        <div class="cmp-row cmp-row-alt">
+          <div class="cmp-label-col">Before &amp; After mockup</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
+          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span></div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> All items</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> All items</div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="cmp-label-col">PDF step-by-step instructions</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
+          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span> All 3 items</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> All 7 items</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> All items</div>
+        </div>
+
+        <div class="cmp-row cmp-row-alt">
+          <div class="cmp-label-col">Revision rounds</div>
+          <div class="cmp-col"><span class="cmp-no">—</span></div>
+          <div class="cmp-col cmp-feat"><span class="cmp-no">—</span></div>
+          <div class="cmp-col">1 round</div>
+          <div class="cmp-col">2 rounds</div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="cmp-label-col">Sustainable sourcing</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
+          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span></div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> Priority</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> Priority</div>
+        </div>
+
+        <div class="cmp-row cmp-row-alt">
+          <div class="cmp-label-col">100% deposit-safe guarantee</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
+          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span></div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="cmp-label-col">Turnaround</div>
+          <div class="cmp-col">5 working days</div>
+          <div class="cmp-col cmp-feat">7 working days</div>
+          <div class="cmp-col">10 working days</div>
+          <div class="cmp-col">Agreed with you</div>
+        </div>
+
+        <div class="cmp-row cmp-row-alt cmp-row-addon">
+          <div class="cmp-label-col">🗝️ Move-Out Reversal Guide</div>
+          <div class="cmp-col">Add-on <span class="cmp-addon-price">+£25</span></div>
+          <div class="cmp-col cmp-feat">Add-on <span class="cmp-addon-price">+£25</span></div>
+          <div class="cmp-col">Add-on <span class="cmp-addon-price">+£25</span></div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> <strong>Included free</strong></div>
+        </div>
+
+        <!-- Footer row -->
+        <div class="cmp-grid cmp-footer-row">
+          <div class="cmp-label-col"></div>
+          <div class="cmp-col">
+            <div class="cmp-best">Best for</div>
+            <div class="cmp-best-txt">One specific fix</div>
+            <button class="cmp-btn cmp-btn-light" onclick="showPage('register')">Get Started</button>
+          </div>
+          <div class="cmp-col cmp-feat">
+            <div class="cmp-best">Best for</div>
+            <div class="cmp-best-txt">A corner or zone</div>
+            <button class="cmp-btn cmp-btn-dark" onclick="showPage('register')">Get Started</button>
+          </div>
+          <div class="cmp-col">
+            <div class="cmp-best">Best for</div>
+            <div class="cmp-best-txt">A full room</div>
+            <button class="cmp-btn cmp-btn-light" onclick="showPage('register')">Get Started</button>
+          </div>
+          <div class="cmp-col">
+            <div class="cmp-best">Best for</div>
+            <div class="cmp-best-txt">Larger or unusual briefs</div>
+            <button class="cmp-btn cmp-btn-sage" onclick="showFullEdit()">Get a Quote</button>
+          </div>
+        </div>
+
       </div>
-      <div class="price-grid" style="grid-template-columns:repeat(4,1fr);">
-        <div class="pc">
-          <div class="pc-topbar sage"></div>
-          <div class="pc-name">The Single Edit</div>
-          <div class="pc-tag">For when one thing is driving you mad.</div>
-          <div class="pc-price">£75</div>
-          <div class="pc-scope">1 furniture piece · 1 idea · 1 product link</div>
-          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">PDF playbook included</div><div class="cb-s">exact sourcing · step-by-step instructions</div></div></div>
-          <div class="pc-div"></div>
-          <div class="pc-lbl">Includes</div>
-          <ul class="pc-list">
-            <li><div class="li-d"></div>1 targeted transformation idea</div></li>
-            <li><div class="li-d"></div>1 curated product link with exact sourcing</li>
-            <li><div class="li-d"></div>Before &amp; After mockup</li>
-            <li><div class="li-d"></div>PDF instructions — no guesswork</li>
-            <li><div class="li-d"></div>Deposit-safe guarantee</li>
-            <li class="off"><div class="li-d off"></div>Multiple items</li>
-            <li class="off"><div class="li-d off"></div>Shopping list</li>
-          </ul>
-          <div class="items-box"><div class="ib-lbl">Best for</div><div class="ib-count">One specific fix</div><div class="ib-sub">less than a dinner out — and it changes your morning</div></div>
-          <div class="pc-addon" style="background:rgba(201,168,76,0.08);border:0.5px solid rgba(201,168,76,0.25);border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:1rem;font-size:0.8rem;color:var(--bark-mid);">🗝️ <strong style="color:var(--bark);">Add Move-Out Reversal Guide</strong> — personalised undoing checklist for every product. <span style="color:var(--gold);font-weight:500;">+£25</span><br><span style="font-size:0.72rem;opacity:0.7;">Included free in The Full Edit ↓</span></div>
-          <button class="pc-btn pc-btn-ol" onclick="showPage('register')">Get Started</button>
-        </div>
-        <div class="pc feat">
-          <div class="pc-topbar gold"></div>
-          <div class="pc-badge">Most Popular</div>
-          <div class="pc-name">The Trio Edit</div>
-          <div class="pc-tag">For when a whole corner feels off.</div>
-          <div class="pc-price">£200</div>
-          <div class="pc-scope">3 items · 1 idea each · coordinated shopping list</div>
-          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">PDF playbook included</div><div class="cb-s">cohesive zone plan · all items work together</div></div></div>
-          <div class="pc-div"></div>
-          <div class="pc-lbl">Includes</div>
-          <ul class="pc-list">
-            <li><div class="li-d"></div>3 targeted transformation ideas</li>
-            <li><div class="li-d"></div>3 curated product links that work as a zone</li>
-            <li><div class="li-d"></div>1 consolidated shopping list</li>
-            <li><div class="li-d"></div>Before &amp; After mockup</li>
-            <li><div class="li-d"></div>PDF instructions for all 3 items</li>
-            <li><div class="li-d"></div>Deposit-safe guarantee</li>
-            <li class="gold"><div class="li-d gold"></div>Mood board for the zone ✦</li>
-          </ul>
-          <div class="items-box"><div class="ib-lbl">Best for</div><div class="ib-count">A whole corner or zone</div><div class="ib-sub">less than one IKEA trip where you buy the wrong things</div></div>
-          <div class="pc-addon" style="background:rgba(201,168,76,0.1);border:0.5px solid rgba(201,168,76,0.3);border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:1rem;font-size:0.8rem;color:rgba(255,255,255,0.65);">🗝️ <strong style="color:white;">Add Move-Out Reversal Guide</strong> — personalised undoing checklist for every product. <span style="color:var(--gold-light);font-weight:500;">+£25</span><br><span style="font-size:0.72rem;opacity:0.7;">Included free in The Full Edit ↓</span></div>
-          <button class="pc-btn pc-btn-gh" onclick="showPage('register')">Get Started</button>
-        </div>
-        <div class="pc">
-          <div class="pc-topbar gold"></div>
-          <div class="pc-name">The Seven Edit</div>
-          <div class="pc-tag">For when you want the whole room to finally make sense.</div>
-          <div class="pc-price">£399</div>
-          <div class="pc-scope">7 items · 2 options each · full room playbook</div>
-          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">PDF playbook included</div><div class="cb-s">room-level plan · real choice per item</div></div></div>
-          <div class="pc-div"></div>
-          <div class="pc-lbl">Includes</div>
-          <ul class="pc-list">
-            <li><div class="li-d"></div>7 targeted transformation ideas</li>
-            <li><div class="li-d"></div>2 curated options per item — you choose</li>
-            <li><div class="li-d"></div>Full shopping list</li>
-            <li><div class="li-d"></div>Room-level mood board</li>
-            <li><div class="li-d"></div>Before &amp; After mockups</li>
-            <li><div class="li-d"></div>PDF instructions for all items</li>
-            <li><div class="li-d"></div>Deposit-safe guarantee</li>
-            <li class="gold"><div class="li-d gold"></div>Sustainable sourcing ✦</li>
-          </ul>
-          <div class="items-box"><div class="ib-lbl">Best for</div><div class="ib-count">A full room transformation</div><div class="ib-sub">less than a sofa you'll leave behind when you move</div></div>
-          <div class="pc-addon" style="background:rgba(201,168,76,0.08);border:0.5px solid rgba(201,168,76,0.25);border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:1rem;font-size:0.8rem;color:var(--bark-mid);">🗝️ <strong style="color:var(--bark);">Add Move-Out Reversal Guide</strong> — personalised undoing checklist for every product. <span style="color:var(--gold);font-weight:500;">+£25</span><br><span style="font-size:0.72rem;opacity:0.7;">Included free in The Full Edit ↓</span></div>
-          <button class="pc-btn pc-btn-ol" onclick="showPage('register')">Get Started</button>
-        </div>
-        <div class="pc">
-          <div class="pc-topbar sage"></div>
-          <div class="pc-name">The Full Edit</div>
-          <div class="pc-tag">For briefs that don't fit a box.</div>
-          <div class="pc-price">Custom</div>
-          <div class="pc-scope">your items · 2 options each · fully tailored</div>
-          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">Quoted within 24 hours</div><div class="cb-s">tell us exactly what you need</div></div></div>
-          <div class="pc-div"></div>
-          <div class="pc-lbl">Includes</div>
-          <ul class="pc-list">
-            <li><div class="li-d"></div>You specify the number of items</li>
-            <li><div class="li-d"></div>2 curated options per item</li>
-            <li><div class="li-d"></div>Full shopping list</li>
-            <li><div class="li-d"></div>Fully tailored PDF playbook</li>
-            <li><div class="li-d"></div>Deposit-safe guarantee</li>
-            <li class="gold"><div class="li-d gold"></div>Bespoke scope &amp; timeline ✦</li>
-            <li class="gold"><div class="li-d gold"></div>Sustainable sourcing ✦</li>
-            <li class="gold"><div class="li-d gold"></div>🗝️ Move-Out Reversal Guide — included ✦</li>
-          </ul>
-          <div class="items-box"><div class="ib-lbl">Best for</div><div class="ib-count">Unusual or larger briefs</div><div class="ib-sub">you tell us the priorities — we quote within 24 hrs</div></div>
-          <div class="pc-addon" style="background:rgba(122,158,126,0.12);border:0.5px solid rgba(122,158,126,0.3);border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:1rem;font-size:0.8rem;color:var(--bark-mid);">✦ <strong style="color:var(--bark);">Move-Out Reversal Guide included free</strong> — a personalised step-by-step checklist for undoing every change before you hand back the keys.</div>
-          <button class="pc-btn pc-btn-ol" onclick="showFullEdit()">Get a Quote</button>
-        </div>
-      </div>
+      <!-- End Compare Packages -->
 
-      <!-- Package Details Breakdown -->
-      <div style="padding:4rem 0 0;">
-        <div class="eyebrow centered"><span>Package Details</span></div>
-        <h2 class="section-title" style="font-size:clamp(1.8rem,2.5vw,2.6rem);text-align:center;margin-bottom:0.5rem;">What's inside <em>each package</em></h2>
-        <p style="text-align:center;font-size:0.9rem;color:var(--bark-mid);font-weight:300;max-width:480px;margin:0 auto 3rem;line-height:1.75;">Every package delivers a curated PDF Design Playbook — here's exactly what you get at each level.</p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
-
-          <!-- Single Edit -->
-          <div style="background:var(--cream);border:0.5px solid var(--linen);border-radius:12px;padding:2rem;position:relative;">
-            <div style="display:inline-block;background:var(--sage-pale);color:var(--sage-dark);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.75rem;border-radius:100px;margin-bottom:1.2rem;">£75</div>
-            <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--bark);margin-bottom:0.3rem;">The Single Edit</h3>
-            <p style="font-size:0.82rem;color:var(--bark-mid);font-weight:300;margin-bottom:1.5rem;line-height:1.6;">For when one specific thing is driving you mad — a drawer unit that needs updating, a corner that needs a focal point, a wall that needs something.</p>
-            <div style="border-top:0.5px solid var(--linen);padding-top:1.2rem;">
-              <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark-mid);font-weight:500;margin-bottom:0.8rem;">What you receive</div>
-              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.55rem;">
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> 1 targeted transformation idea for your chosen item</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> 1 curated product recommendation with direct link</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Before &amp; After visual mockup</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Step-by-step PDF instructions — exactly what to do and in what order</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> 100% deposit-safe sourcing</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark-mid);font-weight:300;"><span style="color:var(--linen);flex-shrink:0;margin-top:1px;">✓</span> Delivered within 5 working days</li>
-              </ul>
-              <div style="margin-top:1.2rem;padding:0.75rem;background:rgba(201,168,76,0.08);border-radius:6px;font-size:0.78rem;color:var(--bark-mid);">🗝️ Move-Out Reversal Guide available as add-on <strong style="color:var(--bark);">+£25</strong></div>
-            </div>
-          </div>
-
-          <!-- Trio Edit -->
-          <div style="background:var(--bark);border:1.5px solid var(--gold);border-radius:12px;padding:2rem;position:relative;">
-            <div style="display:inline-block;background:var(--gold);color:var(--bark);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.75rem;border-radius:100px;margin-bottom:1.2rem;">£200 · Most Popular</div>
-            <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:white;margin-bottom:0.3rem;">The Trio Edit</h3>
-            <p style="font-size:0.82rem;color:rgba(255,255,255,0.55);font-weight:300;margin-bottom:1.5rem;line-height:1.6;">For when a whole corner or zone feels off. Three pieces that work together as a cohesive scheme — not just three random fixes.</p>
-            <div style="border-top:0.5px solid rgba(255,255,255,0.12);padding-top:1.2rem;">
-              <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);font-weight:500;margin-bottom:0.8rem;">What you receive</div>
-              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.55rem;">
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:300;"><span style="color:var(--sage-light);flex-shrink:0;margin-top:1px;">✓</span> 3 targeted transformation ideas</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:300;"><span style="color:var(--sage-light);flex-shrink:0;margin-top:1px;">✓</span> 3 curated product links — sourced to work together</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:300;"><span style="color:var(--sage-light);flex-shrink:0;margin-top:1px;">✓</span> Zone mood board — a cohesive visual direction</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:300;"><span style="color:var(--sage-light);flex-shrink:0;margin-top:1px;">✓</span> 1 consolidated shopping list (no overlap, budget-conscious)</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:300;"><span style="color:var(--sage-light);flex-shrink:0;margin-top:1px;">✓</span> Before &amp; After mockup</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:300;"><span style="color:var(--sage-light);flex-shrink:0;margin-top:1px;">✓</span> PDF instructions covering all 3 items</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:300;"><span style="color:var(--sage-light);flex-shrink:0;margin-top:1px;">✓</span> 100% deposit-safe sourcing</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:rgba(255,255,255,0.65);font-weight:300;"><span style="color:var(--sage-light);flex-shrink:0;margin-top:1px;">✓</span> Delivered within 7 working days</li>
-              </ul>
-              <div style="margin-top:1.2rem;padding:0.75rem;background:rgba(201,168,76,0.12);border-radius:6px;font-size:0.78rem;color:rgba(255,255,255,0.6);">🗝️ Move-Out Reversal Guide available as add-on <strong style="color:var(--gold-light);">+£25</strong></div>
-            </div>
-          </div>
-
-          <!-- Seven Edit -->
-          <div style="background:var(--cream);border:0.5px solid var(--linen);border-radius:12px;padding:2rem;position:relative;">
-            <div style="display:inline-block;background:var(--sage-pale);color:var(--sage-dark);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.75rem;border-radius:100px;margin-bottom:1.2rem;">£399</div>
-            <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--bark);margin-bottom:0.3rem;">The Seven Edit</h3>
-            <p style="font-size:0.82rem;color:var(--bark-mid);font-weight:300;margin-bottom:1.5rem;line-height:1.6;">For when you want the whole room to finally make sense. Seven pieces across a full room, each with two options so you keep control of the final look.</p>
-            <div style="border-top:0.5px solid var(--linen);padding-top:1.2rem;">
-              <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark-mid);font-weight:500;margin-bottom:0.8rem;">What you receive</div>
-              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.55rem;">
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> 7 targeted transformation ideas</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> 2 curated product options per item — you pick your favourite</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Full room mood board &amp; colour palette</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Phased shopping list — what to buy first for maximum impact</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Before &amp; After mockups</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> PDF instructions for all 7 items</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> 1 revision round included</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Priority sustainable sourcing</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark-mid);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Delivered within 10 working days</li>
-              </ul>
-              <div style="margin-top:1.2rem;padding:0.75rem;background:rgba(201,168,76,0.08);border-radius:6px;font-size:0.78rem;color:var(--bark-mid);">🗝️ Move-Out Reversal Guide available as add-on <strong style="color:var(--bark);">+£25</strong></div>
-            </div>
-          </div>
-
-          <!-- Full Edit -->
-          <div style="background:var(--cream);border:0.5px solid var(--linen);border-radius:12px;padding:2rem;position:relative;">
-            <div style="display:inline-block;background:rgba(122,158,126,0.2);color:var(--sage-dark);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.75rem;border-radius:100px;margin-bottom:1.2rem;">Custom · Quote in 24hrs</div>
-            <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--bark);margin-bottom:0.3rem;">The Full Edit</h3>
-            <p style="font-size:0.82rem;color:var(--bark-mid);font-weight:300;margin-bottom:1.5rem;line-height:1.6;">For briefs that don't fit a standard tier — multiple rooms, unusual spaces, or a specific vision that needs bespoke treatment. Tell us what you need and we'll quote within 24 hours.</p>
-            <div style="border-top:0.5px solid var(--linen);padding-top:1.2rem;">
-              <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark-mid);font-weight:500;margin-bottom:0.8rem;">What you receive</div>
-              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.55rem;">
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> You specify the items and scope — no cap</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> 2 curated options per item — you choose</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Full whole-home mood board &amp; material palette</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Phased master shopping list</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Before &amp; After mockups for all items</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Fully tailored PDF Design Playbook</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> 2 revision rounds</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--sage-dark);flex-shrink:0;margin-top:1px;">✓</span> Bespoke timeline agreed with you</li>
-                <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--bark);font-weight:300;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">✓</span> <strong>Move-Out Reversal Guide — included free</strong></li>
-              </ul>
-              <div style="margin-top:1.2rem;padding:0.75rem;background:rgba(122,158,126,0.1);border:0.5px solid rgba(122,158,126,0.3);border-radius:6px;font-size:0.78rem;color:var(--bark-mid);">No payment taken until you've approved the quote. We'll email within 24 hours.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <!-- End Package Details -->
 
       <div class="zoom-section" style="padding:3rem 0 0;">
         <div class="eyebrow centered"><span>Your Deliverable</span></div>
@@ -1663,138 +1678,6 @@ function unlockAnalyser() {
    ============================================================ */
 let calcRooms = 1;
 
-function initCalc() {
-  // Room counter buttons
-  document.getElementById('rcMinus').addEventListener('click', function() {
-    if (calcRooms > 1) { calcRooms--; updateCalc(); }
-  });
-  document.getElementById('rcPlus').addEventListener('click', function() {
-    if (calcRooms < 6) { calcRooms++; updateCalc(); }
-  });
-
-  // Slider
-  document.getElementById('budgetRange').addEventListener('input', function() {
-    document.getElementById('sliderVal').textContent = '£' + this.value;
-    updateCalc();
-  });
-
-  // Priority chips
-  document.querySelectorAll('#priorityChips .c-chip').forEach(function(chip) {
-    chip.addEventListener('click', function() {
-      document.querySelectorAll('#priorityChips .c-chip').forEach(function(c) { c.classList.remove('on'); });
-      chip.classList.add('on');
-      updateCalc();
-    });
-  });
-
-  // Add-on chips
-  document.querySelectorAll('#addonChips .c-chip').forEach(function(chip) {
-    chip.addEventListener('click', function() {
-      document.querySelectorAll('#addonChips .c-chip').forEach(function(c) { c.classList.remove('on'); });
-      chip.classList.add('on');
-      updateCalc();
-    });
-  });
-
-  updateCalc();
-}
-
-function updateCalc() {
-  // Update room display
-  document.getElementById('rcNum').textContent = calcRooms;
-  document.getElementById('rcLbl').textContent = calcRooms === 1 ? 'room' : 'rooms';
-
-  var budget = parseInt(document.getElementById('budgetRange').value) || 200;
-  document.getElementById('sliderVal').textContent = '£' + budget;
-
-  var wantsAddon = false;
-  var addonEl = document.querySelector('#addonChips .c-chip.on');
-  if (addonEl && addonEl.getAttribute('data-v') === 'yes') { wantsAddon = true; }
-
-  var priorityEl = document.querySelector('#priorityChips .c-chip.on');
-  var priority = priorityEl ? priorityEl.getAttribute('data-v') : 'quick';
-  var pkg, fee, scope, items, note;
-  var contactUs = false;
-
-  if (calcRooms === 1) {
-    pkg = 'The Single Edit'; fee = 75;
-    scope = '1 item · 1 idea · PDF playbook';
-    items = '1 curated product link · Before & After mockup';
-    note = 'Perfect for fixing the one thing that\'s been bothering you. One targeted idea, one product link, delivered as a PDF.';
-  } else if (calcRooms === 2) {
-    pkg = 'The Trio Edit'; fee = 200;
-    scope = '3 items · 1 idea each · PDF playbook';
-    items = '3 curated product links · shopping list · mood board';
-    note = 'Three coordinated fixes that work together as a cohesive zone — not random changes, but a considered plan.';
-  } else if (calcRooms === 3) {
-    pkg = 'The Seven Edit'; fee = 399;
-    scope = '7 items · 2 options each · PDF playbook';
-    items = '14 curated product options · full shopping list · mood board';
-    note = 'A full room rethought — 7 items, 2 options each so you have real choice, everything working together.';
-  } else {
-    pkg = 'The Full Edit'; fee = 0; contactUs = true;
-    scope = 'Custom brief · quoted within 24 hours';
-    items = 'Tailored to your scope and timeline';
-    note = 'With ' + calcRooms + ' areas, your project deserves a fully tailored brief. Tell us what you need and we\'ll quote within 24 hours.';
-  }
-
-  var addonCost = wantsAddon ? calcRooms * 150 : 0;
-  var total = fee + budget + addonCost;
-
-  document.getElementById('crPkg').textContent = pkg;
-  document.getElementById('crPrice').textContent = '£' + fee;
-  document.getElementById('crScope').textContent = scope;
-  document.getElementById('crFee').textContent = '£' + fee;
-  document.getElementById('crBudget').textContent = '£' + budget;
-  document.getElementById('crItems').textContent = items;
-  document.getElementById('crTotal').textContent = '£' + total.toLocaleString();
-  document.getElementById('crNote').textContent = note;
-
-  // Show/hide recommended badge
-  var recBadge = document.getElementById('recBadge');
-  if (recBadge) { recBadge.style.display = pkg === 'Signature' ? 'inline-block' : 'none'; }
-
-  // Smart nudge: if they pick 1 room + quick, suggest Signature
-  var nudgeEl = document.getElementById('sigNudge');
-  var nudgeTxt = document.getElementById('sigNudgeText');
-  var roomNudge = document.getElementById('roomNudge');
-
-  if (nudgeEl && nudgeTxt) {
-    if (calcRooms === 1 && pkg === 'The Single Edit') {
-      nudgeEl.style.display = 'block';
-      nudgeTxt.textContent = 'For just £125 more, The Trio Edit covers 3 items that work together as a cohesive zone — most clients find that extra coherence makes all the difference.';
-    } else if (calcRooms === 3 && pkg === 'The Seven Edit') {
-      nudgeEl.style.display = 'block';
-      nudgeTxt.textContent = 'The Seven Edit works out at just £57 per item — and you get 2 options to choose from per piece. Outstanding value for a full room transformation.';
-    } else {
-      nudgeEl.style.display = 'none';
-    }
-  }
-
-  // Room nudge messages
-  if (roomNudge) {
-    if (calcRooms === 1) {
-      roomNudge.style.display = 'block';
-      roomNudge.style.background = '#FDF5E0';
-      roomNudge.style.color = '#8A6A1A';
-      roomNudge.style.borderLeft = '2px solid #C9A84C';
-      roomNudge.style.borderRadius = '4px';
-      roomNudge.style.padding = '0.7rem 1rem';
-      roomNudge.textContent = '💡 Adding a second area costs just £250 more and doubles your options from 20 to 45 — most clients say their living area + bedroom combination has the biggest impact.';
-    } else {
-      roomNudge.style.display = 'none';
-    }
-  }
-
-  var addonBox = document.getElementById('crAddon');
-  if (wantsAddon) {
-    addonBox.style.display = 'block';
-    addonBox.textContent = 'Second options list add-on: £150 × ' + calcRooms + ' room' + (calcRooms > 1 ? 's' : '') + ' = £' + addonCost + ' included in total.';
-  } else {
-    addonBox.style.display = 'none';
-  }
-}
-
 /* ============================================================
    HUBSPOT INTEGRATION
    Replace PORTAL_ID and FORM_ID with your HubSpot values
@@ -2037,7 +1920,7 @@ function renderQuiz() {
       };
       document.addEventListener('click', window._multiHandler);
 
-    } else if (q.slider) {    } else if (q.slider) {
+    } else if (q.slider) {
       // Minimalist / Maximalist slider
       optionsHtml =
         '<div style="margin-bottom:2rem;">' +
@@ -2390,21 +2273,23 @@ function restartQuiz() {
    ============================================================ */
 var roomImageBase64 = null;
 
-// Budget chips
-document.querySelectorAll('#budgetChips .chip').forEach(function(chip) {
-  chip.addEventListener('click', function() {
-    document.querySelectorAll('#budgetChips .chip').forEach(function(c) { c.classList.remove('on'); });
-    chip.classList.add('on');
+function initAnalyserChips() {
+  // Budget chips
+  document.querySelectorAll('#budgetChips .chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      document.querySelectorAll('#budgetChips .chip').forEach(function(c) { c.classList.remove('on'); });
+      chip.classList.add('on');
+    });
   });
-});
 
-// Style chips
-document.querySelectorAll('#styleChips .chip').forEach(function(chip) {
-  chip.addEventListener('click', function() {
-    chip.classList.toggle('on');
-    if (!document.querySelectorAll('#styleChips .chip.on').length) chip.classList.add('on');
+  // Style chips
+  document.querySelectorAll('#styleChips .chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chip.classList.toggle('on');
+      if (!document.querySelectorAll('#styleChips .chip.on').length) chip.classList.add('on');
+    });
   });
-});
+}
 
 function handleDrop(e) {
   e.preventDefault();
@@ -2620,9 +2505,9 @@ function showFullEdit() {
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', function() {
-  initCalc();
   renderQuiz();
   initRoomTiles();
+  initAnalyserChips();
 });
 </script>
 </body>
