@@ -552,7 +552,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <li><a onclick="showPage('how')" role="button" tabindex="0">How it Works</a></li>
     <li><a onclick="showPage('about')" role="button" tabindex="0">About</a></li>
     <li><a onclick="showPage('quiz')" role="button" tabindex="0">Find My Style</a></li>
-    <li><a onclick="showPage('calc')" role="button" tabindex="0">Budget Tool</a></li>
+    <li><a onclick="showPage('calc')" role="button" tabindex="0">Start Your Edit</a></li>
     <li><a onclick="showPage('pricing')" role="button" tabindex="0">Packages</a></li>
     <li><a class="nav-cta" onclick="showPage('register')" role="button" tabindex="0">Get Started</a></li>
   </ul>
@@ -572,15 +572,18 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         <span style="font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:500;">The UK's first rental-only interior styling studio</span>
       </div>
       <h1 class="hero-title">Your <em>white box</em><br>rental deserves<br><strong>so much more.</strong></h1>
-      <p class="hero-sub">Deposit-safe transformations using sustainable materials. No drilling. No painting. Just colour, life and personality — added back into your rental.</p>
+      <p class="hero-sub">Deposit-safe transformations using sustainable materials. No drilling. No painting. Just colour, life and personality — added back into your rental. We give you the vision and the shopping list. You execute it.</p>
+      <div style="display:inline-block;border-left:2px solid var(--gold);padding-left:1rem;margin-bottom:2.5rem;position:relative;z-index:2;">
+        <p style="font-family:var(--font-display);font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.5;margin:0;">Some things can't be automated.<br>Taste is one of them.</p>
+      </div>
       <div class="hero-btns">
         <button class="btn btn-dark" onclick="showPage('quiz')">Find My Renter Style ✦</button>
-        <button class="btn btn-outline" onclick="showPage('register')">Book a Complimentary Consultation</button>
+        <button class="btn btn-outline" onclick="showFullEdit()">Get a Custom Quote</button>
       </div>
       <div class="hero-stats">
         <div><div class="stat-num">🔑 100%</div><div class="stat-lbl">Deposit Safe</div></div>
-        <div><div class="stat-num" style="font-size:1rem;line-height:1.3;">📍 Local &amp;<br>Independent</div><div class="stat-lbl">Canary Wharf Based</div></div>
-        <div><div class="stat-num">💬 Free</div><div class="stat-lbl">Complimentary Consultation</div></div>
+        <div><div class="stat-num" style="font-size:1rem;line-height:1.3;">📍 Canary Wharf<br>🌍 Worldwide</div><div class="stat-lbl">Based in London · 100% Remote</div></div>
+        <div><div class="stat-num">📋 PDF</div><div class="stat-lbl">Design Playbook Delivered</div></div>
       </div>
     </div>
     <div class="hero-right" style="background:var(--sage-pale);overflow:hidden;position:relative;">
@@ -594,11 +597,11 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters across London.</p></div>
+      <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
       <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('how')">How it Works</a><a onclick="showPage('about')">About</a><a onclick="showPage('pricing')">Packages</a></div>
-      <div class="f-col"><h4>Tools</h4><a onclick="showPage('quiz')">Find My Style Quiz</a><a onclick="showPage('calc')">Budget Calculator</a><a onclick="showPage('analyser')">Room Analyser</a></div>
+      <div class="f-col"><h4>Tools</h4><a onclick="showPage('quiz')">Find My Style Quiz</a><a onclick="showPage('calc')">Start Your Edit</a><a onclick="showPage('analyser')">Room Analyser</a></div>
     </div>
-    <div class="f-bottom"><p>© 2025 The Renter's Edit. All rights reserved.</p><p>Designed for renters across London</p></div>
+    <div class="f-bottom"><p>© 2025 The Renter's Edit. All rights reserved.</p><p>Serving renters worldwide</p></div>
   </footer>
 </div>
 
@@ -614,7 +617,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
       <div style="position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.06);bottom:-60px;left:-40px;"></div>
       <div class="eyebrow centered" style="position:relative;z-index:2;"><span style="color:var(--gold-light);">The Process</span></div>
       <h2 class="section-title" style="font-size:clamp(2rem,3vw,3.2rem);color:white;margin-bottom:0.8rem;position:relative;z-index:2;">Four steps to your <em style="color:var(--gold-light);">dream rental</em></h2>
-      <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);font-weight:300;max-width:420px;margin:0 auto;line-height:1.75;position:relative;z-index:2;">From blank box to beautiful — all done remotely, all deposit-safe.</p>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);font-weight:300;max-width:420px;margin:0 auto;line-height:1.75;position:relative;z-index:2;">From blank box to beautiful — all done remotely, all deposit-safe, delivered to your inbox.</p>
     </div>
 
     <!-- 4 horizontal steps on light background -->
@@ -626,28 +629,28 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
       <!-- Step 1 — Pale sage green -->
       <div style="position:relative;z-index:1;">
         <div style="width:88px;height:88px;border-radius:50%;background:var(--sage-pale);border:2px solid var(--sage);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;position:relative;">
-          <span style="font-size:2rem;" aria-hidden="true">📞</span>
+          <span style="font-size:2rem;" aria-hidden="true">📝</span>
           <div style="position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;background:var(--sage-dark);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);">1</div>
         </div>
         <div style="background:var(--sage-pale);border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid var(--moss);border-top:3px solid var(--sage-dark);text-align:center;">
           <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage-dark);font-weight:600;margin-bottom:0.4rem;font-family:var(--font-body);">Step 1</div>
-          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Complimentary Consultation</h3>
-          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">A relaxed Zoom conversation about your space and style. No commitment, no pressure.</p>
-          <div style="display:inline-block;background:var(--sage-dark);color:white;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:400;">Complimentary</div>
+          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Fill in the Intake Form</h3>
+          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">Share photos of your space, dimensions, your budget, and a link to your Pinterest board. Takes 5–10 minutes.</p>
+          <div style="display:inline-block;background:var(--sage-dark);color:white;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:400;">5–10 minutes</div>
         </div>
       </div>
 
       <!-- Step 2 — Warm gold/yellow -->
       <div style="position:relative;z-index:1;">
         <div style="width:88px;height:88px;border-radius:50%;background:#FDF5E0;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;position:relative;">
-          <span style="font-size:2rem;" aria-hidden="true">🎥</span>
+          <span style="font-size:2rem;" aria-hidden="true">🎨</span>
           <div style="position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#1C1000;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);">2</div>
         </div>
         <div style="background:#FFFBF0;border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid var(--gold-light);border-top:3px solid var(--gold);text-align:center;">
           <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#8A6A1A;font-weight:600;margin-bottom:0.4rem;font-family:var(--font-body);">Step 2</div>
-          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Zoom Consultation</h3>
-          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">Walk us through your flat live. We ask the right questions. 30 or 60 minutes, fully recorded.</p>
-          <div style="display:inline-block;background:var(--gold);color:#1C1000;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:500;">Recorded via Zoom</div>
+          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Choose Your Package</h3>
+          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">From a single furniture fix to a full room transformation — pick the package that matches your scope and budget.</p>
+          <div style="display:inline-block;background:var(--gold);color:#1C1000;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:500;">4 tiers available</div>
         </div>
       </div>
 
@@ -659,8 +662,8 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         </div>
         <div style="background:white;border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid var(--linen);border-top:3px solid var(--sage);text-align:center;box-shadow:0 4px 20px rgba(42,36,32,0.06);">
           <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage-dark);font-weight:600;margin-bottom:0.4rem;font-family:var(--font-body);">Step 3</div>
-          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Your Options List</h3>
-          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">Results in days, not weeks — a curated options list tailored to your areas. You choose what you love.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Receive Your Design Playbook</h3>
+          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">A beautifully branded PDF lands in your inbox — mood board, Before &amp; After mockups, and a clickable shopping list. Days, not weeks.</p>
           <div style="display:inline-block;background:var(--sage-pale);color:var(--sage-dark);font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:500;">Days, not weeks</div>
         </div>
       </div>
@@ -673,9 +676,9 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         </div>
         <div style="background:#FFF8E8;border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid #F0C060;border-top:3px solid #E8A020;text-align:center;">
           <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#A05010;font-weight:600;margin-bottom:0.4rem;font-family:var(--font-body);">Step 4</div>
-          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Shop & Transform</h3>
-          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">Click your links from UK retailers, style your space and feel at home — perhaps for the first time.</p>
-          <div style="display:inline-block;background:#E8A020;color:white;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:500;">UK retailers only</div>
+          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Shop &amp; Transform</h3>
+          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">Click your curated product links, order what you love, and transform your space over a weekend — all deposit-safe.</p>
+          <div style="display:inline-block;background:#E8A020;color:white;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:500;">100% deposit-safe</div>
         </div>
       </div>
 
@@ -684,8 +687,8 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <!-- Bottom strip with social proof -->
     <div style="background:var(--warm-white);border-radius:12px;padding:2rem 2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1100px;margin:0 auto 3rem;border:0.5px solid var(--linen);">
       <div style="text-align:center;border-right:0.5px solid var(--linen);">
-        <div style="font-family:var(--font-display);font-size:1.9rem;color:var(--sage-dark);font-weight:300;line-height:1;margin-bottom:4px;">Free</div>
-        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark-mid);font-weight:400;">Complimentary consultation</div>
+        <div style="font-family:var(--font-display);font-size:1.9rem;color:var(--sage-dark);font-weight:300;line-height:1;margin-bottom:4px;">£75</div>
+        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark-mid);font-weight:400;">Start from</div>
       </div>
       <div style="text-align:center;border-right:0.5px solid var(--linen);">
         <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--sage-dark);font-weight:300;line-height:1.3;margin-bottom:4px;">Results in Days</div>
@@ -701,11 +704,11 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
       </div>
     </div>
 
-    <div style="text-align:center;"><button class="btn btn-dark" style="margin:0 auto;" onclick="showPage('register')">Start With a Complimentary Consultation</button></div>
+    <div style="text-align:center;"><button class="btn btn-dark" style="margin:0 auto;" onclick="showFullEdit()">Start With The Full Edit</button></div>
   </div>
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters across London.</p></div>
+      <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
       <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('register')">Get Started</a></div>
       <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Disclaimer</a></div>
     </div>
@@ -729,19 +732,23 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         <h2 class="section-title" style="font-size:clamp(2rem,2.8vw,3rem);margin-bottom:1.2rem;">Hi, I'm the designer<br>behind <em>The Renter's Edit</em></h2>
         <p>I know exactly what it feels like to live in a rental that belongs to someone else. White walls, beige carpets, landlord furniture — it's uninspiring, and it affects how you feel coming home every single day.</p>
         <p>That's why I started The Renter's Edit — to give renters the same quality of design thinking that homeowners get, built entirely around the constraints of renting. No damage. No lost deposits. Just a space that finally feels like yours.</p>
-        <p>Based in London and working entirely remotely, I specialise in sustainable, budget-conscious transformations for renters across Canary Wharf and beyond.</p>
+        <p>Based in London and working entirely remotely, I work with renters worldwide.</p>
+        <div style="border-left:2px solid var(--gold);padding:1rem 1.2rem;margin:1.5rem 0;background:var(--sage-pale);border-radius:0 6px 6px 0;">
+          <p style="font-family:var(--font-display);font-size:1.2rem;font-style:italic;color:var(--bark);font-weight:300;line-height:1.5;margin:0 0 0.6rem;">Some things can't be automated. Taste is one of them.</p>
+          <p style="font-size:0.88rem;color:var(--bark-mid);font-weight:300;line-height:1.75;margin:0;">Anyone can run a room photo through an algorithm and get a list of products. What you get from us is different — a considered point of view on <em>your</em> space, from someone who has spent years thinking about what makes a rented room feel like home despite everything working against it. The curation is human. The sourcing is verified. And the guarantee that your deposit stays intact is one we'd never leave to a machine.</p>
+        </div>
         <div class="about-vals">
           <div class="av"><div class="av-dot"></div><div class="av-txt"><strong>Sustainability first</strong> — every options list prioritises natural materials, second-hand finds and UK-made products.</div></div>
           <div class="av"><div class="av-dot"></div><div class="av-txt"><strong>Real budgets</strong> — I work within what you actually have, not what a magazine says you should spend.</div></div>
           <div class="av"><div class="av-dot"></div><div class="av-txt"><strong>Renter-first always</strong> — deposit safety isn't an afterthought, it's the foundation of every recommendation I make.</div></div>
         </div>
-        <button class="btn btn-dark" onclick="showPage('register')">Book a Complimentary Consultation</button>
+        <button class="btn btn-dark" onclick="showFullEdit()">Get a Custom Quote</button>
       </div>
     </div>
   </div>
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters across London.</p></div>
+      <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
       <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('register')">Get Started</a></div>
       <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a></div>
     </div>
@@ -771,105 +778,172 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
      ============================================================ -->
 <div class="page" id="page-calc">
   <div class="calc-page" style="background:var(--cream);padding:5rem 4rem;min-height:calc(100vh - 68px);">
-    <div class="calc-inner">
-      <div style="text-align:center;">
-        <div class="eyebrow centered"><span>Budget Calculator</span></div>
-        <h2 class="section-title" style="font-size:clamp(2rem,3vw,3.2rem);color:var(--bark);margin-bottom:0.8rem;">Work out your <em>total investment</em></h2>
-        <p style="font-size:0.9rem;color:var(--bark-mid);font-weight:300;max-width:500px;margin:0 auto;line-height:1.75;">Our design fee plus your shopping budget — get a clear picture of the full cost before you commit to anything.</p>
+    <div style="max-width:760px;margin:0 auto;">
+
+      <!-- Header -->
+      <div style="text-align:center;margin-bottom:3rem;">
+        <div class="eyebrow centered"><span>Start Your Edit</span></div>
+        <h2 class="section-title" style="font-size:clamp(2rem,3vw,3.2rem);color:var(--bark);margin-bottom:0.8rem;">Tell us about <em>your space</em></h2>
+        <p style="font-size:0.9rem;color:var(--bark-mid);font-weight:300;max-width:480px;margin:0 auto;line-height:1.75;">Fill in the form below — photos, dimensions, your style preferences, and anything specific you want transformed. We'll take it from there and have your Design Playbook with you in days, not weeks.</p>
       </div>
 
-      <!-- Value comparison strip -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:860px;margin:2.5rem auto 0;border:0.5px solid var(--linen);border-radius:10px;overflow:hidden;">
-        <div style="background:var(--warm-white);padding:1.4rem;text-align:center;border-right:0.5px solid var(--linen);">
-          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--bark-mid);line-height:1;margin-bottom:4px;">£500</div>
-          <div style="font-size:0.78rem;color:var(--bark-mid);font-weight:300;">Edit · 15 options · 45 min</div>
-        </div>
-        <div style="background:var(--bark);padding:1.4rem;text-align:center;position:relative;border-right:0.5px solid #3D3530;">
-          <div style="position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--gold);"></div>
-          <div style="position:absolute;top:8px;right:8px;background:var(--gold);color:#1C1000;font-size:0.6rem;font-weight:500;letter-spacing:0.12em;padding:0.2rem 0.6rem;border-radius:100px;text-transform:uppercase;">Best value</div>
-          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:white;line-height:1;margin-bottom:4px;">£750</div>
-          <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;">Signature · 30 options · 60 min</div>
-        </div>
-        <div style="background:var(--warm-white);padding:1.4rem;text-align:center;">
-          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--bark-mid);line-height:1;margin-bottom:4px;">£1,000</div>
-          <div style="font-size:0.78rem;color:var(--bark-mid);font-weight:300;">Bespoke · 50 options · 90 min</div>
-        </div>
-      </div>
+      <!-- Form card -->
+      <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:2.5rem;box-shadow:0 4px 24px rgba(42,36,32,0.06);">
 
-      <div class="calc-grid" style="margin-top:2.5rem;">
-
-        <div class="calc-panel" style="background:white;border:0.5px solid var(--linen);border-radius:10px;padding:2.5rem;">
-          <h3 style="color:var(--bark);">About your space</h3>
-          <div class="cp-sub" style="color:var(--bark-mid);">Answer a few questions and we'll calculate your total investment — design fee plus your shopping budget.</div>
-
-          <div class="cf">
-            <label style="color:var(--bark-mid);">How many rooms need styling?</label>
-            <div class="room-ctr">
-              <button class="rc-btn" id="rcMinus" type="button" aria-label="Decrease rooms" style="background:var(--sage-pale);border-color:var(--moss);color:var(--sage-dark);">−</button>
-              <div class="rc-num" id="rcNum" style="color:var(--bark);">1</div>
-              <button class="rc-btn" id="rcPlus" type="button" aria-label="Increase rooms" style="background:var(--sage-pale);border-color:var(--moss);color:var(--sage-dark);">+</button>
-              <span class="rc-lbl" id="rcLbl" style="color:var(--bark-mid);">room</span>
+        <!-- Section: You -->
+        <div style="margin-bottom:2rem;">
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">About You</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Full Name <span style="color:var(--sage-dark);">*</span></label>
+              <input type="text" id="if-name" placeholder="Your name" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
             </div>
-            <!-- Steering nudge -->
-            <div id="roomNudge" style="margin-top:0.8rem;padding:0.7rem 1rem;border-radius:6px;font-size:0.82rem;font-weight:300;line-height:1.55;display:none;"></div>
-          </div>
-
-          <div class="cf">
-            <label style="color:var(--bark-mid);">Your product shopping budget</label>
-            <div class="slider-val" id="sliderVal" style="color:var(--sage-dark);">£200</div>
-            <input type="range" class="cf-range" id="budgetRange" min="50" max="1000" step="25" value="200" aria-label="Product budget" style="accent-color:var(--sage-dark);">
-            <div class="cf-note" style="color:var(--bark-mid);">This covers your actual shopping — furniture, plants, prints, accessories etc. Separate from the design fee.</div>
-          </div>
-
-          <div class="cf">
-            <label style="color:var(--bark-mid);">Your priority</label>
-            <div class="chip-row" id="priorityChips">
-              <button type="button" class="c-chip on" data-v="quick" style="color:var(--bark-mid);border-color:var(--linen);background:white;">Quick refresh</button>
-              <button type="button" class="c-chip" data-v="full" style="color:var(--bark-mid);border-color:var(--linen);background:white;">Full transformation</button>
-              <button type="button" class="c-chip" data-v="sustainable" style="color:var(--bark-mid);border-color:var(--linen);background:white;">Sustainable focus</button>
-              <button type="button" class="c-chip" data-v="second" style="color:var(--bark-mid);border-color:var(--linen);background:white;">Second-hand led</button>
+            <div>
+              <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Email Address <span style="color:var(--sage-dark);">*</span></label>
+              <input type="email" id="if-email" placeholder="your@email.com" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
             </div>
           </div>
-
-          <div class="cf">
-            <label style="color:var(--bark-mid);">Might you need a second options list?</label>
-            <div class="chip-row" id="addonChips">
-              <button type="button" class="c-chip on" data-v="no" style="color:var(--bark-mid);border-color:var(--linen);background:white;">No, one list is fine</button>
-              <button type="button" class="c-chip" data-v="yes" style="color:var(--bark-mid);border-color:var(--linen);background:white;">Yes, possibly</button>
-            </div>
+          <div>
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Phone Number</label>
+            <input type="tel" id="if-phone" placeholder="+44 or international" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
           </div>
         </div>
 
-        <div>
-          <div class="calc-result" style="background:var(--bark);">
-            <!-- Recommended package indicator -->
-            <div id="recBadge" style="display:inline-block;background:var(--gold);color:#1C1000;font-size:0.68rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:0.25rem 0.8rem;border-radius:100px;margin-bottom:0.8rem;font-family:var(--font-body);">Recommended for you</div>
-            <div class="cr-lbl" style="color:rgba(255,255,255,0.5);">Selected package</div>
-            <div class="cr-pkg" id="crPkg" style="color:white;">Signature</div>
-            <div class="cr-price" id="crPrice" style="color:var(--sage-light);">£750</div>
-            <div class="cr-scope" id="crScope" style="color:rgba(255,255,255,0.4);">2 rooms · 1-hour Zoom consultation</div>
-            <div class="cr-div" style="background:rgba(255,255,255,0.08);"></div>
-            <div class="cr-rows">
-              <div class="cr-row"><span class="cr-row-lbl" style="color:rgba(255,255,255,0.55);">Design service fee</span><span class="cr-row-val" id="crFee" style="color:white;">£550</span></div>
-              <div class="cr-row"><span class="cr-row-lbl" style="color:rgba(255,255,255,0.55);">Your shopping budget</span><span class="cr-row-val" id="crBudget" style="color:white;">£200</span></div>
-              <div class="cr-row"><span class="cr-row-lbl" style="color:rgba(255,255,255,0.55);">Options list size</span><span class="cr-row-val g" id="crItems">~50 items</span></div>
-              <div class="cr-total-row" style="border-top-color:rgba(255,255,255,0.08);">
-                <span class="cr-total-lbl" style="color:white;">Total investment</span>
-                <span class="cr-total-val" id="crTotal" style="color:white;">£750</span>
-              </div>
-            </div>
-            <div class="cr-addon" id="crAddon" style="display:none;background:rgba(201,168,76,0.1);color:var(--gold-light);border-left-color:var(--gold);" aria-live="polite"></div>
-
-            <!-- Why Signature is better nudge -->
-            <div id="sigNudge" style="background:rgba(79,113,83,0.2);border-radius:6px;padding:0.9rem 1rem;margin-bottom:1.3rem;border-left:2px solid var(--sage);display:none;">
-              <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage-light);font-weight:500;margin-bottom:0.4rem;">💡 Worth considering</div>
-              <div id="sigNudgeText" style="font-size:0.82rem;color:rgba(255,255,255,0.65);font-weight:300;line-height:1.55;"></div>
-            </div>
-
-            <div class="cr-note" id="crNote" style="color:rgba(255,255,255,0.45);">A full two-room transformation — our most popular package for Canary Wharf flats.</div>
-            <button class="btn btn-dark" style="width:100%;background:var(--sage-dark);" onclick="showPage('register')">Book My Complimentary Consultation</button>
-            <p style="text-align:center;font-size:0.8rem;color:rgba(255,255,255,0.3);font-weight:300;margin-top:0.8rem;">Complimentary consultation · No payment needed to book</p>
+        <!-- Section: Package -->
+        <div style="margin-bottom:2rem;">
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Package</div>
+          <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.8rem;">Which package are you interested in? <span style="color:var(--sage-dark);">*</span></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;" id="if-packages">
+            <label style="display:flex;align-items:flex-start;gap:0.7rem;padding:1rem;border:0.5px solid var(--linen);border-radius:8px;cursor:pointer;transition:all 0.2s;" class="pkg-opt">
+              <input type="radio" name="package" value="single" style="margin-top:3px;accent-color:var(--sage-dark);" onchange="updateDimsLabel()">
+              <div><div style="font-size:0.88rem;font-weight:500;color:var(--bark);">The Single Edit</div><div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">1 item · £75</div></div>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:0.7rem;padding:1rem;border:0.5px solid var(--linen);border-radius:8px;cursor:pointer;transition:all 0.2s;" class="pkg-opt">
+              <input type="radio" name="package" value="trio" style="margin-top:3px;accent-color:var(--sage-dark);" onchange="updateDimsLabel()">
+              <div><div style="font-size:0.88rem;font-weight:500;color:var(--bark);">The Trio Edit</div><div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">3 items · £200</div></div>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:0.7rem;padding:1rem;border:0.5px solid var(--linen);border-radius:8px;cursor:pointer;transition:all 0.2s;" class="pkg-opt">
+              <input type="radio" name="package" value="seven" style="margin-top:3px;accent-color:var(--sage-dark);" onchange="updateDimsLabel()">
+              <div><div style="font-size:0.88rem;font-weight:500;color:var(--bark);">The Seven Edit</div><div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">7 items · £399</div></div>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:0.7rem;padding:1rem;border:0.5px solid var(--linen);border-radius:8px;cursor:pointer;transition:all 0.2s;" class="pkg-opt">
+              <input type="radio" name="package" value="full" style="margin-top:3px;accent-color:var(--sage-dark);" onchange="updateDimsLabel()">
+              <div><div style="font-size:0.88rem;font-weight:500;color:var(--bark);">The Full Edit</div><div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">Custom · quoted in 24hrs</div></div>
+            </label>
           </div>
+          <!-- Move-Out add-on -->
+          <label id="if-reversal-label" style="display:flex;align-items:flex-start;gap:0.7rem;padding:1rem;border:0.5px solid rgba(201,168,76,0.3);border-radius:8px;cursor:pointer;background:rgba(201,168,76,0.04);margin-top:0.6rem;transition:all 0.2s;">
+            <input type="checkbox" id="if-reversal" style="margin-top:3px;accent-color:var(--gold);">
+            <div><div id="if-reversal-title" style="font-size:0.88rem;font-weight:500;color:var(--bark);">🗝️ Add Move-Out Reversal Guide <span style="color:var(--gold);font-weight:500;">+£25</span></div><div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">Personalised checklist for undoing every change before you hand back the keys. Included free with The Full Edit.</div></div>
+          </label>
+        </div>
+
+        <!-- Section: Your Space -->
+        <div style="margin-bottom:2rem;">
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Space</div>
+
+          <!-- Dynamic dimensions field -->
+          <div style="margin-bottom:1rem;">
+            <label id="if-dims-label" style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Item dimensions <span style="color:var(--sage-dark);">*</span> <span id="if-dims-hint" style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(width × height × depth for each item)</span></label>
+            <textarea id="if-dims" rows="3" placeholder="e.g. Chest of drawers: 80cm wide × 75cm tall × 45cm deep" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;resize:vertical;transition:border-color 0.2s;line-height:1.65;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'"></textarea>
+          </div>
+
+          <div style="margin-bottom:1rem;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Approximate shopping budget</label>
+            <input type="text" id="if-budget" placeholder="e.g. £150–£300" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
+          </div>
+
+          <!-- Photo upload -->
+          <div style="margin-bottom:1rem;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Upload photos <span style="color:var(--sage-dark);">*</span> <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(of the items + the room — multiple angles welcome)</span></label>
+            <div id="if-upload-zone" onclick="document.getElementById('if-photos').click()" style="border:1px dashed var(--linen);border-radius:8px;padding:2rem;text-align:center;cursor:pointer;background:var(--sage-pale);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--sage-dark)'" onmouseout="this.style.borderColor='var(--linen)'">
+              <div style="font-size:2rem;margin-bottom:0.5rem;">📷</div>
+              <div style="font-size:0.85rem;font-weight:500;color:var(--bark);margin-bottom:0.2rem;">Click to upload photos</div>
+              <div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">JPG or PNG · Items + room context · The more the better</div>
+              <input type="file" id="if-photos" accept="image/*" multiple style="display:none" onchange="handleIntakePhotos(this.files)">
+            </div>
+            <div id="if-photo-list" style="margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+          </div>
+        </div>
+
+        <!-- Section: Your Style -->
+        <div style="margin-bottom:2rem;">
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Style</div>
+
+          <!-- Colour palette -->
+          <div style="margin-bottom:1.4rem;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.7rem;">Colour preference <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(pick all that apply)</span></label>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="if-colours">
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;"><span style="width:12px;height:12px;border-radius:50%;background:#EDE8E0;border:1px solid #ccc;flex-shrink:0;"></span>Neutrals & cream</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;"><span style="width:12px;height:12px;border-radius:50%;background:#8B6F4E;flex-shrink:0;"></span>Earthy & warm</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;"><span style="width:12px;height:12px;border-radius:50%;background:#7A9E7E;flex-shrink:0;"></span>Greens & sage</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;"><span style="width:12px;height:12px;border-radius:50%;background:#6B8CAE;flex-shrink:0;"></span>Blues & slate</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;"><span style="width:12px;height:12px;border-radius:50%;background:#2A2420;flex-shrink:0;"></span>Dark & moody</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;"><span style="width:12px;height:12px;border-radius:50%;background:#E8B4C8;flex-shrink:0;"></span>Soft & blush</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;"><span style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#e8b4c8,#7A9E7E,#6B8CAE);flex-shrink:0;"></span>Bold & eclectic</button>
+            </div>
+          </div>
+
+          <!-- Pattern / design -->
+          <div style="margin-bottom:1.4rem;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.7rem;">Pattern & design preference <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(pick all that apply)</span></label>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="if-patterns">
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">No pattern — keep it plain</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Geometric</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Floral</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Abstract</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Stripe or linear</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Textured / tactile</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Botanical / nature</button>
+            </div>
+          </div>
+
+          <!-- Material feel -->
+          <div style="margin-bottom:1.4rem;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.7rem;">Material feel</label>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="if-materials">
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Natural — wood, rattan, linen, cotton</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Sleek — metal, glass, ceramic</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Soft — velvet, boucle, sheepskin</button>
+              <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Mixed — I like contrast</button>
+            </div>
+          </div>
+
+          <!-- Vibe -->
+          <div style="margin-bottom:1.4rem;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.7rem;">Overall vibe <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(pick one)</span></label>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="if-vibe">
+              <button type="button" class="style-chip vibe-chip" onclick="selectVibe(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">🕯️ Cosy & warm</button>
+              <button type="button" class="style-chip vibe-chip" onclick="selectVibe(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">🌿 Clean & airy</button>
+              <button type="button" class="style-chip vibe-chip" onclick="selectVibe(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">🌑 Dramatic & rich</button>
+              <button type="button" class="style-chip vibe-chip" onclick="selectVibe(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">🎨 Playful & eclectic</button>
+              <button type="button" class="style-chip vibe-chip" onclick="selectVibe(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">🏛️ Minimal & refined</button>
+            </div>
+          </div>
+
+          <!-- Things to avoid -->
+          <div>
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Things to avoid <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(colours, styles, materials you dislike)</span></label>
+            <input type="text" id="if-avoid" placeholder="e.g. no gold hardware, nothing too boho, avoid orange tones" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
+          </div>
+        </div>
+
+        <!-- Section: Notes -->
+        <div style="margin-bottom:2rem;">
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Anything Else?</div>
+          <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Specific items, problem areas, or anything else we should know</label>
+          <textarea id="if-notes" rows="4" placeholder="e.g. I have an IKEA Malm chest of drawers I hate, my kitchen backsplash is really dated, I rent so the landlord has restricted painting..." style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;resize:vertical;transition:border-color 0.2s;line-height:1.65;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'"></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button type="button" onclick="submitIntakeForm()" style="width:100%;padding:1rem;background:var(--sage-dark);color:white;border:none;border-radius:6px;font-family:var(--font-body);font-size:0.85rem;font-weight:500;letter-spacing:0.07em;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--bark)'" onmouseout="this.style.background='var(--sage-dark)'">Send My Intake Form →</button>
+        <p style="text-align:center;font-size:0.78rem;color:var(--bark-mid);font-weight:300;margin-top:0.8rem;line-height:1.6;">We'll confirm receipt within 24 hours. Your Design Playbook will follow in days, not weeks.</p>
+
+        <!-- Success state -->
+        <div id="if-success" style="display:none;text-align:center;padding:2rem;background:var(--sage-pale);border-radius:8px;border:0.5px solid var(--moss);margin-top:1rem;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">✦</div>
+          <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:300;color:var(--bark);margin-bottom:0.4rem;">Form received — thank you.</h3>
+          <p style="font-size:0.88rem;color:var(--bark-mid);font-weight:300;line-height:1.7;">We'll confirm receipt within 24 hours and get started on your Design Playbook. Keep an eye on your inbox.</p>
         </div>
 
       </div>
@@ -877,7 +951,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
   </div>
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters across London.</p></div>
+      <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
       <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('register')">Get Started</a></div>
       <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a></div>
     </div>
@@ -893,112 +967,136 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <div class="pricing-hero">
       <div class="eyebrow centered" style="position:relative;z-index:2;"><span>Investment</span></div>
       <h1>Design worth <em>investing in</em></h1>
-      <p>Every package begins with a complimentary consultation. Options lists delivered in days, not weeks. Second list available as a £150 add-on per area.</p>
+      <p>We give you the vision and the shopping list. You execute it — at your own pace, on your own terms. Every package includes a curated PDF playbook and exact product links. Add a personalised Move-Out Reversal Guide to any package, or get it included free with The Full Edit.</p>
     </div>
     <div class="pricing-body">
-      <div class="addon-banner">Not happy with your options list? Request a second one for <strong>£150 per room</strong> — available on any package.</div>
-      <div class="eyebrow centered" style="margin-bottom:1rem;"><span>What to expect</span></div>
+      <div class="addon-banner">Not sure which package is right for you? <strong>Start with The Single Edit</strong> — it's the perfect way to experience the service before going bigger.</div>
+      <div class="eyebrow centered" style="margin-bottom:1rem;"><span>How it works</span></div>
       <div class="expect-grid">
-        <div class="exp-card"><div class="ec-head"><div class="ec-icon">📞</div><h3>Step 1 — Complimentary Consultation</h3></div><p>A relaxed Zoom conversation to understand your space and style before you commit to anything.</p><div class="ec-det"><strong>Cost:</strong> Complimentary · <strong>Platform:</strong> Zoom</div></div>
-        <div class="exp-card"><div class="ec-head"><div class="ec-icon">🎥</div><h3>Step 2 — Full Consultation</h3></div><p>A recorded Zoom call where you walk us through your space. We ask about your taste and lifestyle.</p><div class="ec-det"><strong>Duration:</strong> 30 or 60 min · <strong>Recorded · Consent required at booking</strong></div></div>
-        <div class="exp-card"><div class="ec-head"><div class="ec-icon">📋</div><h3>Step 3 — Your Options List</h3></div><p>Delivered in days, not weeks. You choose what you love. Second list £150/area add-on.</p><div class="ec-det"><strong>Turnaround:</strong> Days, not weeks · <strong>Add-on:</strong> £150 per area</div></div>
+        <div class="exp-card"><div class="ec-head"><div class="ec-icon">📝</div><h3>Step 1 — Fill in the Intake Form</h3></div><p>Share photos of your space, item dimensions, your style preferences and shopping budget. Takes 5–10 minutes.</p><div class="ec-det"><strong>Takes:</strong> 5–10 minutes · <strong>Format:</strong> Online form</div></div>
+        <div class="exp-card"><div class="ec-head"><div class="ec-icon">🎁</div><h3>Step 2 — Receive Your Design Playbook</h3></div><p>We send you a beautifully branded PDF with your mood board, Before &amp; After mockups, and a clickable shopping list.</p><div class="ec-det"><strong>Turnaround:</strong> Days, not weeks · <strong>Format:</strong> PDF via email</div></div>
+        <div class="exp-card"><div class="ec-head"><div class="ec-icon">🏠</div><h3>Step 3 — Shop &amp; Transform</h3></div><p>Click your curated product links, order what you love, and transform your space over a weekend.</p><div class="ec-det"><strong>All items:</strong> 100% deposit-safe · <strong>Sustainable sourcing</strong></div></div>
       </div>
-      <div class="price-grid">
+      <div class="price-grid" style="grid-template-columns:repeat(4,1fr);">
         <div class="pc">
           <div class="pc-topbar sage"></div>
-          <div class="pc-name">Edit</div>
-          <div class="pc-tag">One area, beautifully curated.</div>
-          <div class="pc-price">£500</div>
-          <div class="pc-scope">one-off · 15 options · 1 area</div>
-          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">45-min Zoom consultation</div><div class="cb-s">recorded · 7 working days</div></div></div>
+          <div class="pc-name">The Single Edit</div>
+          <div class="pc-tag">For when one thing is driving you mad.</div>
+          <div class="pc-price">£75</div>
+          <div class="pc-scope">1 furniture piece · 1 idea · 1 product link</div>
+          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">PDF playbook included</div><div class="cb-s">exact sourcing · step-by-step instructions</div></div></div>
           <div class="pc-div"></div>
           <div class="pc-lbl">Includes</div>
           <ul class="pc-list">
-            <li><div class="li-d"></div>Complimentary consultation</li>
-            <li><div class="li-d"></div>1 room bespoke mood board</li>
-            <li><div class="li-d"></div>Up to 20 curated options to choose from</li>
-            <li><div class="li-d"></div>Sustainable & UK product sourcing</li>
+            <li><div class="li-d"></div>1 targeted transformation idea</div></li>
+            <li><div class="li-d"></div>1 curated product link with exact sourcing</li>
+            <li><div class="li-d"></div>Before &amp; After mockup</li>
+            <li><div class="li-d"></div>PDF instructions — no guesswork</li>
             <li><div class="li-d"></div>Deposit-safe guarantee</li>
-            <li class="off"><div class="li-d off"></div>Follow-up call</li>
-            <li class="off"><div class="li-d off"></div>Multi-room planning</li>
+            <li class="off"><div class="li-d off"></div>Multiple items</li>
+            <li class="off"><div class="li-d off"></div>Shopping list</li>
           </ul>
-          <div class="items-box"><div class="ib-lbl">Options list</div><div class="ib-count">Up to 20 options</div><div class="ib-sub">across 1–2 areas of your choice</div></div>
-          <div class="pc-addon">Need a fresh list? Add on for £150 per room.</div>
-          <button class="pc-btn pc-btn-ol" onclick="showPage('register')">Book a Call</button>
+          <div class="items-box"><div class="ib-lbl">Best for</div><div class="ib-count">One specific fix</div><div class="ib-sub">less than a dinner out — and it changes your morning</div></div>
+          <div class="pc-addon" style="background:rgba(201,168,76,0.08);border:0.5px solid rgba(201,168,76,0.25);border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:1rem;font-size:0.8rem;color:var(--bark-mid);">🗝️ <strong style="color:var(--bark);">Add Move-Out Reversal Guide</strong> — personalised undoing checklist for every product. <span style="color:var(--gold);font-weight:500;">+£25</span><br><span style="font-size:0.72rem;opacity:0.7;">Included free in The Full Edit ↓</span></div>
+          <button class="pc-btn pc-btn-ol" onclick="showPage('register')">Get Started</button>
         </div>
         <div class="pc feat">
           <div class="pc-topbar gold"></div>
           <div class="pc-badge">Most Popular</div>
-          <div class="pc-name">Signature</div>
-          <div class="pc-tag">Up to 45 curated options across 2–3 areas.</div>
-          <div class="pc-price">£750</div>
-          <div class="pc-scope">one-off · 30 options · 2 areas</div>
-          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">60-min Zoom consultation</div><div class="cb-s">recorded · 10 working days</div></div></div>
+          <div class="pc-name">The Trio Edit</div>
+          <div class="pc-tag">For when a whole corner feels off.</div>
+          <div class="pc-price">£200</div>
+          <div class="pc-scope">3 items · 1 idea each · coordinated shopping list</div>
+          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">PDF playbook included</div><div class="cb-s">cohesive zone plan · all items work together</div></div></div>
           <div class="pc-div"></div>
           <div class="pc-lbl">Includes</div>
           <ul class="pc-list">
-            <li><div class="li-d"></div>Complimentary consultation</li>
-            <li><div class="li-d"></div>Up to 2 room mood boards</li>
-            <li><div class="li-d"></div>Up to 45 curated options across your areas</li>
-            <li><div class="li-d"></div>Sustainable & second-hand sourcing</li>
-            <li><div class="li-d"></div>1 follow-up check-in call</li>
+            <li><div class="li-d"></div>3 targeted transformation ideas</li>
+            <li><div class="li-d"></div>3 curated product links that work as a zone</li>
+            <li><div class="li-d"></div>1 consolidated shopping list</li>
+            <li><div class="li-d"></div>Before &amp; After mockup</li>
+            <li><div class="li-d"></div>PDF instructions for all 3 items</li>
             <li><div class="li-d"></div>Deposit-safe guarantee</li>
-            <li class="gold"><div class="li-d gold"></div>Seasonal refresh guide ✦</li>
+            <li class="gold"><div class="li-d gold"></div>Mood board for the zone ✦</li>
           </ul>
-          <div class="items-box"><div class="ib-lbl">Options list</div><div class="ib-count">Up to 45 options</div><div class="ib-sub">across 2–3 areas · most popular</div></div>
-          <div class="pc-addon">Need a fresh list for any room? £150 per room add-on.</div>
-          <button class="pc-btn pc-btn-gh" onclick="showPage('register')">Book a Call</button>
+          <div class="items-box"><div class="ib-lbl">Best for</div><div class="ib-count">A whole corner or zone</div><div class="ib-sub">less than one IKEA trip where you buy the wrong things</div></div>
+          <div class="pc-addon" style="background:rgba(201,168,76,0.1);border:0.5px solid rgba(201,168,76,0.3);border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:1rem;font-size:0.8rem;color:rgba(255,255,255,0.65);">🗝️ <strong style="color:white;">Add Move-Out Reversal Guide</strong> — personalised undoing checklist for every product. <span style="color:var(--gold-light);font-weight:500;">+£25</span><br><span style="font-size:0.72rem;opacity:0.7;">Included free in The Full Edit ↓</span></div>
+          <button class="pc-btn pc-btn-gh" onclick="showPage('register')">Get Started</button>
         </div>
         <div class="pc">
           <div class="pc-topbar gold"></div>
-          <div class="pc-name">Bespoke</div>
-          <div class="pc-tag">Up to 75 curated options. Full home, every detail.</div>
-          <div class="pc-price">£1,000</div>
-          <div class="pc-scope">one-off · 50 options · 3+ areas</div>
-          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">90-min Zoom consultation</div><div class="cb-s">recorded · 12 working days</div></div></div>
+          <div class="pc-name">The Seven Edit</div>
+          <div class="pc-tag">For when you want the whole room to finally make sense.</div>
+          <div class="pc-price">£399</div>
+          <div class="pc-scope">7 items · 2 options each · full room playbook</div>
+          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">PDF playbook included</div><div class="cb-s">room-level plan · real choice per item</div></div></div>
           <div class="pc-div"></div>
           <div class="pc-lbl">Includes</div>
           <ul class="pc-list">
-            <li><div class="li-d"></div>Complimentary consultation</li>
-            <li><div class="li-d"></div>Up to 3 room mood boards</li>
-            <li><div class="li-d"></div>Up to 75 curated options across all areas</li>
-            <li><div class="li-d"></div>Deep UK retailer sourcing</li>
-            <li><div class="li-d"></div>2 follow-up check-in calls</li>
+            <li><div class="li-d"></div>7 targeted transformation ideas</li>
+            <li><div class="li-d"></div>2 curated options per item — you choose</li>
+            <li><div class="li-d"></div>Full shopping list</li>
+            <li><div class="li-d"></div>Room-level mood board</li>
+            <li><div class="li-d"></div>Before &amp; After mockups</li>
+            <li><div class="li-d"></div>PDF instructions for all items</li>
             <li><div class="li-d"></div>Deposit-safe guarantee</li>
-            <li class="gold"><div class="li-d gold"></div>Seasonal refresh guide ✦</li>
-            <li class="gold"><div class="li-d gold"></div>1-year style support ✦</li>
+            <li class="gold"><div class="li-d gold"></div>Sustainable sourcing ✦</li>
           </ul>
-          <div class="items-box"><div class="ib-lbl">Options list</div><div class="ib-count">Up to 75 options</div><div class="ib-sub">full home · all areas covered</div></div>
-          <div class="pc-addon">Need a fresh list for any room? £150 per room add-on.</div>
-          <button class="pc-btn pc-btn-ol" onclick="showPage('register')">Book a Call</button>
+          <div class="items-box"><div class="ib-lbl">Best for</div><div class="ib-count">A full room transformation</div><div class="ib-sub">less than a sofa you'll leave behind when you move</div></div>
+          <div class="pc-addon" style="background:rgba(201,168,76,0.08);border:0.5px solid rgba(201,168,76,0.25);border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:1rem;font-size:0.8rem;color:var(--bark-mid);">🗝️ <strong style="color:var(--bark);">Add Move-Out Reversal Guide</strong> — personalised undoing checklist for every product. <span style="color:var(--gold);font-weight:500;">+£25</span><br><span style="font-size:0.72rem;opacity:0.7;">Included free in The Full Edit ↓</span></div>
+          <button class="pc-btn pc-btn-ol" onclick="showPage('register')">Get Started</button>
+        </div>
+        <div class="pc">
+          <div class="pc-topbar sage"></div>
+          <div class="pc-name">The Full Edit</div>
+          <div class="pc-tag">For briefs that don't fit a box.</div>
+          <div class="pc-price">Custom</div>
+          <div class="pc-scope">your items · 2 options each · fully tailored</div>
+          <div class="consult-box"><div class="cb-dot"></div><div><div class="cb-t">Quoted within 24 hours</div><div class="cb-s">tell us exactly what you need</div></div></div>
+          <div class="pc-div"></div>
+          <div class="pc-lbl">Includes</div>
+          <ul class="pc-list">
+            <li><div class="li-d"></div>You specify the number of items</li>
+            <li><div class="li-d"></div>2 curated options per item</li>
+            <li><div class="li-d"></div>Full shopping list</li>
+            <li><div class="li-d"></div>Fully tailored PDF playbook</li>
+            <li><div class="li-d"></div>Deposit-safe guarantee</li>
+            <li class="gold"><div class="li-d gold"></div>Bespoke scope &amp; timeline ✦</li>
+            <li class="gold"><div class="li-d gold"></div>Sustainable sourcing ✦</li>
+            <li class="gold"><div class="li-d gold"></div>🗝️ Move-Out Reversal Guide — included ✦</li>
+          </ul>
+          <div class="items-box"><div class="ib-lbl">Best for</div><div class="ib-count">Unusual or larger briefs</div><div class="ib-sub">you tell us the priorities — we quote within 24 hrs</div></div>
+          <div class="pc-addon" style="background:rgba(122,158,126,0.12);border:0.5px solid rgba(122,158,126,0.3);border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:1rem;font-size:0.8rem;color:var(--bark-mid);">✦ <strong style="color:var(--bark);">Move-Out Reversal Guide included free</strong> — a personalised step-by-step checklist for undoing every change before you hand back the keys.</div>
+          <button class="pc-btn pc-btn-ol" onclick="showFullEdit()">Get a Quote</button>
         </div>
       </div>
 
       <div class="zoom-section" style="padding:3rem 0 0;">
-        <div class="eyebrow centered"><span>Your Consultation</span></div>
-        <h2 class="section-title" style="font-size:clamp(1.8rem,2.5vw,2.6rem);text-align:center;margin-bottom:0.6rem;">All consultations via <em>Zoom</em></h2>
-        <p style="text-align:center;font-size:0.9rem;color:var(--bark-mid);font-weight:300;margin-bottom:0;max-width:440px;margin:0 auto;line-height:1.75;">Every call is recorded so you have a full reference — and so do we.</p>
+        <div class="eyebrow centered"><span>Your Deliverable</span></div>
+        <h2 class="section-title" style="font-size:clamp(1.8rem,2.5vw,2.6rem);text-align:center;margin-bottom:0.6rem;">Your <em>Design Playbook</em> — delivered to your inbox</h2>
+        <p style="text-align:center;font-size:0.9rem;color:var(--bark-mid);font-weight:300;margin-bottom:0;max-width:440px;margin:0 auto;line-height:1.75;">A beautifully branded PDF with everything you need to transform your space — no calls, no waiting rooms, no guesswork.</p>
         <div class="zoom-grid">
           <div>
-            <p style="font-size:0.9rem;color:var(--bark-mid);line-height:1.8;font-weight:300;margin-bottom:1.8rem;">Zoom gives us the ability to record your call, share screens to show you inspiration, and auto-transcribe everything that was discussed — so nothing gets lost or forgotten.</p>
+            <p style="font-size:0.9rem;color:var(--bark-mid);line-height:1.8;font-weight:300;margin-bottom:1.8rem;">Your Design Playbook is a branded PDF that arrives in your inbox within days. It contains everything you need to shop, style, and transform your space at your own pace — no calls required.</p>
             <div class="zoom-feats">
-              <div class="zf"><div class="zf-ic">🎥</div><div><h4>Recorded for your reference</h4><p>You'll receive a copy to rewatch while shopping.</p></div></div>
-              <div class="zf"><div class="zf-ic">🖥️</div><div><h4>Screen sharing</h4><p>We show you live inspiration and mood board ideas during the call.</p></div></div>
-              <div class="zf"><div class="zf-ic">📝</div><div><h4>Auto-transcribed</h4><p>A written record of every recommendation made.</p></div></div>
-              <div class="zf"><div class="zf-ic">📱</div><div><h4>Any device</h4><p>Join from phone, tablet or laptop — no tech knowledge needed.</p></div></div>
+              <div class="zf"><div class="zf-ic">🎨</div><div><h4>Mood board</h4><p>A curated visual direction for your space and style.</p></div></div>
+              <div class="zf"><div class="zf-ic">🖼️</div><div><h4>Before &amp; After mockups</h4><p>See exactly how your space will look before you buy a thing.</p></div></div>
+              <div class="zf"><div class="zf-ic">🛒</div><div><h4>Clickable shopping list</h4><p>Every product linked directly — no searching, no second-guessing.</p></div></div>
+              <div class="zf"><div class="zf-ic">📋</div><div><h4>Step-by-step instructions</h4><p>Exactly what to do with each item, in plain language.</p></div></div>
+              <div class="zf"><div class="zf-ic">🗝️</div><div><h4>Move-Out Reversal Guide <span style="font-size:0.72rem;background:var(--sage-pale);color:var(--sage-dark);padding:0.1rem 0.4rem;border-radius:100px;font-weight:500;">Full Edit · free</span></h4><p>A personalised checklist for undoing every single change before you hand back the keys. Also available as a £25 add-on on any package.</p></div></div>
             </div>
           </div>
           <div class="zoom-steps-box">
-            <div class="zsb-title">How your Zoom call works</div>
-            <div class="zsb-sub">From booking to options list in days, not weeks</div>
+            <div class="zsb-title">What happens after you order</div>
+            <div class="zsb-sub">From intake form to transformed space</div>
             <div class="zsteps">
-              <div class="zstep"><div class="zs-num">1</div><div class="zs-txt">Book via our <strong>Calendly link</strong> — automatic Zoom invite sent to your email.</div></div>
-              <div class="zstep"><div class="zs-num">2</div><div class="zs-txt">Join the call. <strong>Recording starts</strong> with your consent.</div></div>
-              <div class="zstep"><div class="zs-num">3</div><div class="zs-txt">Walk us through your space. We ask about your <strong>style and lifestyle.</strong></div></div>
-              <div class="zstep"><div class="zs-num">4</div><div class="zs-txt">Within <strong>Days, not weeks</strong> you receive your curated options list by email.</div></div>
-              <div class="zstep"><div class="zs-num">5</div><div class="zs-txt">You choose what you love. Need a second list? <strong>£150 per room add-on.</strong></div></div>
+              <div class="zstep"><div class="zs-num">1</div><div class="zs-txt">Fill in the <strong>intake form</strong> — photos, dimensions, budget, Pinterest board.</div></div>
+              <div class="zstep"><div class="zs-num">2</div><div class="zs-txt">Choose your package and <strong>complete payment.</strong></div></div>
+              <div class="zstep"><div class="zs-num">3</div><div class="zs-txt">We curate your ideas and build your <strong>Design Playbook PDF.</strong></div></div>
+              <div class="zstep"><div class="zs-num">4</div><div class="zs-txt">Your Playbook arrives in your inbox within <strong>days, not weeks.</strong></div></div>
+              <div class="zstep"><div class="zs-num">5</div><div class="zs-txt">Shop your links, follow the instructions, and <strong>transform your space.</strong></div></div>
             </div>
-            <div class="consent-box">📋 <strong style="color:var(--gold-light);font-weight:400;">Recording consent:</strong> By booking you agree your call will be recorded. You will receive a copy.</div>
+            <div class="consent-box">📋 <strong style="color:var(--gold-light);font-weight:400;">The Full Edit:</strong> For custom briefs we'll email you a quote within 24 hours before any payment is taken.</div>
           </div>
         </div>
       </div>
@@ -1007,14 +1105,14 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <div class="trust-strip">
       <div class="ts-item"><div class="ts-num" style="font-size:1rem;line-height:1.4;">Days,</div><div class="ts-lbl">Not weeks</div></div>
       <div class="ts-item"><div class="ts-num">100%</div><div class="ts-lbl">Deposit safe</div></div>
-      <div class="ts-item"><div class="ts-num">Free</div><div class="ts-lbl">Complimentary consultation</div></div>
-      <div class="ts-item"><div class="ts-num">£150</div><div class="ts-lbl">Add-on/room</div></div>
+      <div class="ts-item"><div class="ts-num">£75</div><div class="ts-lbl">Start from</div></div>
+      <div class="ts-item"><div class="ts-num">PDF</div><div class="ts-lbl">Design Playbook</div></div>
     </div>
     <div class="disclaimer"><strong>Disclaimer</strong> — The Renter's Edit provides design suggestions only. We are not responsible for any damage to rental properties. Always test products on a small area first and check your tenancy agreement before making changes.</div>
 
     <footer>
       <div class="footer-grid">
-        <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters across London.</p></div>
+        <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
         <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('how')">How it Works</a><a onclick="showPage('register')">Get Started</a></div>
         <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Disclaimer</a></div>
       </div>
@@ -1036,7 +1134,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
       <div class="gb-card"><div class="gb-line"></div><div class="gb-line2"></div></div>
       <div class="gb-card"><div class="gb-line"></div><div class="gb-line2"></div></div>
     </div>
-    <div class="gate-lock">🔒 Create a free account to book your complimentary consultation</div>
+    <div class="gate-lock">🔒 Create a free account to access the AI Room Analyser</div>
     <button class="btn btn-dark" style="margin:0 auto;position:relative;z-index:2;" onclick="showPage('register')">Create Free Account</button>
     <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);margin-top:1rem;font-weight:300;position:relative;z-index:2;">Already have an account? <span style="color:var(--sage-light);cursor:pointer;" onclick="unlockAnalyser()">Sign in here</span></p>
   </div>
@@ -1087,7 +1185,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         <div class="res-sub">100% deposit-safe · renter-friendly · tailored to your space</div>
         <div class="ideas-grid" id="ideasGrid"></div>
         <div class="mood-card"><h3>Your Mood Board</h3><div class="mb-desc" id="mbDesc"></div><div class="swatches" id="mbSwatches"></div><div class="keywords" id="mbKeywords"></div></div>
-        <div style="text-align:center;margin-top:2rem;"><button class="btn btn-dark" style="margin:0 auto;" onclick="showPage('register')">Book a Full Consultation</button></div>
+        <div style="text-align:center;margin-top:2rem;"><button class="btn btn-dark" style="margin:0 auto;" onclick="showFullEdit()">Turn This Into a Full Edit</button></div>
       </div>
     </div>
     <footer>
@@ -1114,14 +1212,14 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
       </div>
       <div class="al-inner" style="position:relative;z-index:2;">
         <h2>Join The<br><em>Renter's Edit</em></h2>
-        <p>Create your free account to unlock your quiz result, see your style palette and book your complimentary consultation.</p>
+        <p>Create your free account to unlock your quiz result, see your style palette and get started with your Design Playbook.</p>
         <ul class="perks">
           <li><span class="perk-line"></span>See your full Renter Personality result</li>
-          <li><span class="perk-line"></span>Complimentary consultation included</li>
+          <li><span class="perk-line"></span>Browse all 4 packages and get started</li>
           
-          <li><span class="perk-line"></span>Save your mood boards & options lists</li>
+          <li><span class="perk-line"></span>Save your mood boards & style notes</li>
           <li><span class="perk-line"></span>100% deposit-safe recommendations</li>
-          <li><span class="perk-line"></span>All consultations via recorded Zoom</li>
+          <li><span class="perk-line"></span>PDF Design Playbook delivered to your inbox</li>
         </ul>
         <!-- Package nudge based on rooms selected -->
         <div id="regPkgNudge" style="display:none;margin-top:2rem;background:rgba(201,168,76,0.15);border:0.5px solid rgba(201,168,76,0.3);border-radius:8px;padding:1rem 1.2rem;">
@@ -1404,7 +1502,7 @@ function doRegister() {
 
   // Validate phone
   if (!ph.trim()) {
-    showErr('ph-err', 'Phone number is required — we use this to confirm your complimentary consultation');
+    showErr('ph-err', 'Phone number is required — we use this to keep you updated on your order');
     ok = false;
   } else if (!isValidPhone(ph)) {
     showErr('ph-err', 'Please enter a valid UK or international phone number (e.g. +44 7700 123456)');
@@ -1437,7 +1535,7 @@ function doRegister() {
     renderQuiz();
   }
 
-  alert('🎉 Welcome to The Renter\'s Edit! Your account is created. Check your email for a confirmation — your complimentary consultation booking link is included.');
+  alert('🎉 Welcome to The Renter\'s Edit! Your account is created. Check your email for a confirmation — your Design Playbook will be delivered here once your order is confirmed.');
 }
 
 function doLogin() {
@@ -1520,25 +1618,25 @@ function updateCalc() {
   var contactUs = false;
 
   if (calcRooms === 1) {
-    pkg = 'Edit'; fee = 500;
-    scope = '1 area · 45-min consultation';
-    items = '15 curated options · 1 mood board';
-    note = 'A beautifully focused edit of your most important area. 15 curated options and a dedicated mood board.';
+    pkg = 'The Single Edit'; fee = 75;
+    scope = '1 item · 1 idea · PDF playbook';
+    items = '1 curated product link · Before & After mockup';
+    note = 'Perfect for fixing the one thing that\'s been bothering you. One targeted idea, one product link, delivered as a PDF.';
   } else if (calcRooms === 2) {
-    pkg = 'Signature'; fee = 750;
-    scope = '2 areas · 60-min consultation';
-    items = '30 curated options · 1 mood board';
-    note = 'Our most popular package. 30 options across 2 areas with a cohesive mood board and full 60-minute consultation.';
+    pkg = 'The Trio Edit'; fee = 200;
+    scope = '3 items · 1 idea each · PDF playbook';
+    items = '3 curated product links · shopping list · mood board';
+    note = 'Three coordinated fixes that work together as a cohesive zone — not random changes, but a considered plan.';
   } else if (calcRooms === 3) {
-    pkg = 'Bespoke'; fee = 1000;
-    scope = '3+ areas · 90-min consultation';
-    items = '50 curated options · 2 mood boards';
-    note = 'The complete experience. 50 options, two mood boards to choose from and a 90-minute deep-dive consultation.';
+    pkg = 'The Seven Edit'; fee = 399;
+    scope = '7 items · 2 options each · PDF playbook';
+    items = '14 curated product options · full shopping list · mood board';
+    note = 'A full room rethought — 7 items, 2 options each so you have real choice, everything working together.';
   } else {
-    pkg = 'Contact us'; fee = 0; contactUs = true;
-    scope = 'Custom proposal for your home';
-    items = 'Tailored to your space';
-    note = 'With ' + calcRooms + ' areas selected your project deserves a bespoke proposal. Get in touch and we will create a custom package for you.';
+    pkg = 'The Full Edit'; fee = 0; contactUs = true;
+    scope = 'Custom brief · quoted within 24 hours';
+    items = 'Tailored to your scope and timeline';
+    note = 'With ' + calcRooms + ' areas, your project deserves a fully tailored brief. Tell us what you need and we\'ll quote within 24 hours.';
   }
 
   var addonCost = wantsAddon ? calcRooms * 150 : 0;
@@ -1563,12 +1661,12 @@ function updateCalc() {
   var roomNudge = document.getElementById('roomNudge');
 
   if (nudgeEl && nudgeTxt) {
-    if (calcRooms === 1 && pkg === 'Starter') {
+    if (calcRooms === 1 && pkg === 'The Single Edit') {
       nudgeEl.style.display = 'block';
-      nudgeTxt.textContent = 'For just £250 more, Signature gives you 45 options (vs 20) and a full 1-hour consultation — most clients find that extra depth makes all the difference.';
-    } else if (calcRooms === 3 && pkg === 'Bespoke') {
+      nudgeTxt.textContent = 'For just £125 more, The Trio Edit covers 3 items that work together as a cohesive zone — most clients find that extra coherence makes all the difference.';
+    } else if (calcRooms === 3 && pkg === 'The Seven Edit') {
       nudgeEl.style.display = 'block';
-      nudgeTxt.textContent = 'The Bespoke package works out at just £11.33 per curated option — and includes UK retailer sourcing plus 2 follow-up calls. Outstanding value for a full home.';
+      nudgeTxt.textContent = 'The Seven Edit works out at just £57 per item — and you get 2 options to choose from per piece. Outstanding value for a full room transformation.';
     } else {
       nudgeEl.style.display = 'none';
     }
@@ -1706,37 +1804,37 @@ var personas = {
     name: 'The Minimalist Nomad',
     desc: 'You crave clean lines, open space and a sense of calm. Your ideal room has everything it needs and nothing it doesn\'t — warm neutrals, quality materials and intentional pieces only.',
     traits: ['Quiet luxury', 'Warm minimalism', 'Bouclé & linen', 'Quality over quantity'],
-    pkg: 'Edit', price: '£300', why: 'One perfectly curated room that nails the calm, intentional aesthetic you\'re going for — starting where it matters most.'
+    pkg: 'The Single Edit', price: '£75', why: 'One perfectly curated piece that nails the calm, intentional aesthetic — starting exactly where it\'ll have the most impact.'
   },
   cosy: {
     name: 'The Cosy Cocooner',
     desc: 'Your home is your sanctuary. You want layers, warmth and textures that make you want to curl up and never leave. Mocha tones, warm lighting, dark wood and rattan are your love language.',
     traits: ['Warm textures', 'Layered lighting', 'Earthy tones', 'Biophilic warmth'],
-    pkg: 'Signature', price: '£750', why: 'Multiple rooms need the cosy treatment — the Signature package gets your whole home feeling like a warm, lived-in hug.'
+    pkg: 'The Seven Edit', price: '£399', why: 'Seven pieces transformed, all working together — the warmth and layering you\'re after takes a whole room to get right.'
   },
   maximalist: {
     name: 'The Aesthetic Maximalist',
     desc: 'More is more — but make it intentional. You want colour, pattern, personality and pieces that spark joy. Your rental should look like it belongs in a design magazine, curated not chaotic.',
     traits: ['Dopamine décor', 'Bold colour', 'Statement pieces', 'Curated personality'],
-    pkg: 'Bespoke', price: '£1,000', why: 'The Bespoke package gives you the depth of sourcing and the full-home vision to pull off maximalism beautifully across all three rooms.'
+    pkg: 'The Full Edit', price: 'Custom', why: 'Your vision needs bespoke sourcing across multiple pieces — tell us your brief and we\'ll quote within 24 hours.'
   },
   plants: {
     name: 'The Plant Parent',
     desc: 'You believe every room is better with something living in it. You want a biophilic space — rattan, jute, trailing pothos, natural stone and organic textures. Nature, indoors.',
     traits: ['Biophilic design', 'Natural materials', 'Sustainable sourcing', 'Green everywhere'],
-    pkg: 'Edit', price: '£300', why: 'We\'ll build your options list around propagated plants, rattan, jute and natural textures — starting with the room that needs it most.'
+    pkg: 'The Trio Edit', price: '£200', why: 'Three pieces — a plant corner, a natural texture and a rattan accent — working together to bring the outside in.'
   },
   corporate: {
     name: 'The Corporate Renter',
     desc: 'You\'re busy, you work hard and your home should switch off the work brain the moment you walk in. Clean, curated and effortlessly polished — quiet luxury with real personality.',
     traits: ['Quiet luxury', 'Work-life balance', 'Smart storage', 'Effortless polish'],
-    pkg: 'Signature', price: '£750', why: 'The Signature package transforms your main living spaces into a proper retreat — so you can actually decompress when you\'re home.'
+    pkg: 'The Trio Edit', price: '£200', why: 'Three targeted changes to your main space — enough to make the room feel like a proper retreat without overwhelming a busy life.'
   },
   jewel: {
     name: 'The Jewel & Spice Stylist',
-    desc: 'You\'re drawn to richness — deep emeralds, ruby reds, burnished gold, embroidered cushions and dark wood. Your style is inspired by Indian, Qatari or Art Deco heritage, reimagined for a modern London rental.',
+    desc: 'You\'re drawn to richness — deep emeralds, ruby reds, burnished gold, embroidered cushions and dark wood. Your style is inspired by Indian, Qatari or Art Deco heritage, reimagined for a modern rental.',
     traits: ['Jewel tones', 'Rich textures', 'Gold accents', 'Heritage-inspired'],
-    pkg: 'Signature', price: '£750', why: 'The Signature package gives us the time and depth to source the right jewel-toned pieces, velvet accents and warm metallic finishes that make this look sing.'
+    pkg: 'The Seven Edit', price: '£399', why: 'Seven pieces with two options each — the depth of sourcing needed to find the right jewel-toned, velvet and metallic finishes that make this look sing.'
   }
 };
 
@@ -2032,7 +2130,7 @@ function renderQuiz() {
       '<div class="q-card">' +
       '<span class="q-emoji">🔓</span>' +
       '<h2 class="q-title">Your result is <em>ready</em></h2>' +
-      '<p class="q-sub">Create your free account to unlock your Renter Personality, see your style palette and book your complimentary consultation.</p>' +
+      '<p class="q-sub">Create your free account to unlock your Renter Personality, see your style palette and get started with your Design Playbook.</p>' +
       '<div style="background:rgba(122,158,126,0.15);border:0.5px solid rgba(122,158,126,0.3);border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;">' +
       '<span style="font-size:2rem;">🎯</span>' +
       '<div style="text-align:left;"><div style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:0.2rem;">Your result includes</div>' +
@@ -2071,7 +2169,7 @@ function renderQuiz() {
       '<div class="qr-rec-why">' + persona.why + '</div>' +
       '</div>' +
       '<div style="display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;">' +
-      '<button type="button" class="btn btn-dark" onclick="showPage(\'register\')">Book My Complimentary Consultation</button>' +
+      '<button type="button" class="btn btn-dark" onclick="showPage(\'calc\')">Start Your Edit →</button>' +
       '<button type="button" class="btn btn-outline" onclick="showPage(\'pricing\')">See All Packages</button>' +
       '</div>' +
       '<p style="font-size:0.82rem;color:rgba(255,255,255,0.3);margin-top:1.5rem;font-weight:300;cursor:pointer;" onclick="restartQuiz()">Retake the quiz</p>' +
@@ -2282,6 +2380,112 @@ function renderResults(data) {
   document.getElementById('resultsArea').classList.add('show');
   document.getElementById('resultsArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
   document.getElementById('genBtn').disabled = false;
+}
+
+/* ============================================================
+   INTAKE FORM
+   ============================================================ */
+function toggleStyleChip(btn) {
+  var isOn = btn.style.background === 'var(--sage-dark)' || btn.classList.contains('on');
+  if (isOn) {
+    btn.style.background = 'white';
+    btn.style.color = 'var(--bark)';
+    btn.style.borderColor = 'var(--linen)';
+    btn.classList.remove('on');
+  } else {
+    btn.style.background = 'var(--sage-dark)';
+    btn.style.color = 'white';
+    btn.style.borderColor = 'var(--sage-dark)';
+    btn.classList.add('on');
+  }
+}
+
+function selectVibe(btn) {
+  document.querySelectorAll('.vibe-chip').forEach(function(b) {
+    b.style.background = 'white';
+    b.style.color = 'var(--bark)';
+    b.style.borderColor = 'var(--linen)';
+    b.classList.remove('on');
+  });
+  btn.style.background = 'var(--sage-dark)';
+  btn.style.color = 'white';
+  btn.style.borderColor = 'var(--sage-dark)';
+  btn.classList.add('on');
+}
+
+function updateDimsLabel() {
+  var pkg = document.querySelector('input[name="package"]:checked');
+  if (!pkg) return;
+  var label = document.getElementById('if-dims-label');
+  var hint = document.getElementById('if-dims-hint');
+  var field = document.getElementById('if-dims');
+  var reversalLabel = document.getElementById('if-reversal-label');
+  var reversalTitle = document.getElementById('if-reversal-title');
+  var reversal = document.getElementById('if-reversal');
+
+  if (pkg.value === 'full') {
+    if (label) label.childNodes[0].textContent = 'Room dimensions ';
+    if (hint) hint.textContent = '(width × length for each room)';
+    if (field) field.placeholder = 'e.g. Living room: 4m × 3.5m, Bedroom: 3m × 3m';
+    // Full Edit — reversal included free
+    if (reversalLabel) { reversalLabel.style.opacity = '0.55'; reversalLabel.style.pointerEvents = 'none'; }
+    if (reversalTitle) reversalTitle.innerHTML = '🗝️ Move-Out Reversal Guide — included free with The Full Edit';
+    if (reversal) reversal.checked = false;
+  } else {
+    if (label) label.childNodes[0].textContent = 'Item dimensions ';
+    if (hint) hint.textContent = '(width × height × depth for each item)';
+    if (field) field.placeholder = 'e.g. Chest of drawers: 80cm wide × 75cm tall × 45cm deep';
+    if (reversalLabel) { reversalLabel.style.opacity = '1'; reversalLabel.style.pointerEvents = 'auto'; }
+    if (reversalTitle) reversalTitle.innerHTML = '🗝️ Add Move-Out Reversal Guide <span style="color:var(--gold);font-weight:500;">+£25</span>';
+  }
+
+  // Highlight selected package card
+  document.querySelectorAll('.pkg-opt').forEach(function(l) {
+    l.style.borderColor = 'var(--linen)';
+    l.style.background = 'white';
+  });
+  var chosen = pkg.closest('.pkg-opt');
+  if (chosen) { chosen.style.borderColor = 'var(--sage-dark)'; chosen.style.background = 'var(--sage-pale)'; }
+}
+
+function handleIntakePhotos(files) {
+  var list = document.getElementById('if-photo-list');
+  if (!list) return;
+  list.innerHTML = '';
+  Array.from(files).forEach(function(f) {
+    var tag = document.createElement('span');
+    tag.style.cssText = 'display:inline-flex;align-items:center;gap:0.3rem;background:var(--sage-pale);border:0.5px solid var(--moss);border-radius:100px;padding:0.2rem 0.6rem;font-size:0.75rem;color:var(--sage-dark);';
+    tag.textContent = '📷 ' + f.name;
+    list.appendChild(tag);
+  });
+}
+
+function submitIntakeForm() {
+  var name = (document.getElementById('if-name') || {}).value || '';
+  var email = (document.getElementById('if-email') || {}).value || '';
+  var pkg = document.querySelector('input[name="package"]:checked');
+  var dims = (document.getElementById('if-dims') || {}).value || '';
+
+  if (!name.trim() || !email.trim() || !pkg || !dims.trim()) {
+    alert('Please fill in your name, email, package choice and dimensions before submitting.');
+    return;
+  }
+
+  var success = document.getElementById('if-success');
+  if (success) { success.style.display = 'block'; success.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+}
+
+/* ============================================================
+   FULL EDIT REDIRECT
+   ============================================================ */
+function showFullEdit() {
+  showPage('register');
+  // Pre-select Full Edit and show explanatory message
+  var nudge = document.getElementById('regPkgNudge');
+  if (nudge) {
+    nudge.style.display = 'block';
+    nudge.innerHTML = '<div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);font-weight:500;margin-bottom:0.4rem;">✦ You\'re enquiring about The Full Edit</div><div style="font-size:0.85rem;color:rgba(255,255,255,0.7);font-weight:300;line-height:1.6;">The Full Edit is our custom-priced package for briefs that don\'t fit a standard tier. Create your account and we\'ll be in touch with a tailored quote within 24 hours.</div>';
+  }
 }
 
 /* ============================================================
