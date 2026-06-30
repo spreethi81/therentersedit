@@ -342,7 +342,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .cmp-label-col{padding:2rem 1.5rem;font-size:0.78rem;color:rgba(255,255,255,0.4);font-weight:400;letter-spacing:0.04em;display:flex;align-items:flex-end;}
 .cmp-col{padding:2rem 1.2rem;display:flex;flex-direction:column;gap:0.3rem;border-left:0.5px solid rgba(255,255,255,0.08);}
 .cmp-col.cmp-feat{background:rgba(201,168,76,0.12);border-left-color:rgba(201,168,76,0.2);border-right:0.5px solid rgba(201,168,76,0.2);}
-.cmp-popular{font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;}
+.cmp-popular{font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;min-height:0.95rem;}
 .cmp-pkg-name{font-family:var(--font-display);font-size:1.1rem;font-weight:400;color:white;line-height:1.2;}
 .cmp-pkg-tag{font-size:0.75rem;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.4;margin-bottom:0.4rem;}
 .cmp-pkg-price{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:white;line-height:1;margin:0.5rem 0 0.2rem;}
@@ -354,6 +354,8 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .cmp-btn-light:hover{background:rgba(255,255,255,0.08);}
 .cmp-btn-sage{background:var(--sage-dark);color:white;}
 .cmp-btn-sage:hover{background:var(--moss);}
+.cmp-footer-row .cmp-btn-light{background:transparent;border:1px solid var(--bark);color:var(--bark);}
+.cmp-footer-row .cmp-btn-light:hover{background:var(--bark);color:white;}
 .cmp-row{display:grid;grid-template-columns:200px repeat(4,minmax(160px,1fr));border-bottom:0.5px solid var(--linen);min-width:800px;}
 .cmp-row-alt{background:var(--cream);}
 .cmp-row .cmp-label-col{background:transparent;padding:1rem 1.5rem;color:var(--bark-mid);font-size:0.82rem;font-weight:400;letter-spacing:0;align-items:center;}
@@ -592,11 +594,12 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
   <ul class="nav-links" id="navLinks" role="list">
     <li><a onclick="showPage('home')" role="button" tabindex="0">Home</a></li>
     <li><a onclick="showPage('how')" role="button" tabindex="0">How it Works</a></li>
-    <li><a onclick="showPage('about')" role="button" tabindex="0">About</a></li>
-    <li><a onclick="showPage('quiz')" role="button" tabindex="0">Find My Style</a></li>
-    <li><a onclick="showPage('calc')" role="button" tabindex="0">Start Your Edit</a></li>
     <li><a onclick="showPage('pricing')" role="button" tabindex="0">Packages</a></li>
-    <li><a class="nav-cta" onclick="showPage('register')" role="button" tabindex="0">Get Started</a></li>
+    <li><a onclick="showPage('quiz')" role="button" tabindex="0">Find My Style</a></li>
+    <li><a onclick="showPage('about')" role="button" tabindex="0">About</a></li>
+    <li id="nav-signin"><a onclick="showPage('register')" role="button" tabindex="0">Sign In</a></li>
+    <li id="nav-account" style="display:none;"><a onclick="showPage('account')" role="button" tabindex="0">My Edits</a></li>
+    <li><a class="nav-cta" onclick="showPage('calc')" role="button" tabindex="0">Book Your Edit</a></li>
   </ul>
   <button class="nav-hamburger" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -641,7 +644,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <div class="footer-grid">
       <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
       <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('how')">How it Works</a><a onclick="showPage('about')">About</a><a onclick="showPage('pricing')">Packages</a></div>
-      <div class="f-col"><h4>Tools</h4><a onclick="showPage('quiz')">Find My Style Quiz</a><a onclick="showPage('calc')">Start Your Edit</a><a onclick="showPage('analyser')">Room Analyser</a></div>
+      <div class="f-col"><h4>Tools</h4><a onclick="showPage('quiz')">Find My Style Quiz</a><a onclick="showPage('calc')">Book Your Edit</a></div>
     </div>
     <div class="f-bottom"><p>© 2025 The Renter's Edit. All rights reserved.</p><p>Serving renters worldwide</p></div>
   </footer>
@@ -751,7 +754,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
   <footer>
     <div class="footer-grid">
       <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
-      <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('register')">Get Started</a></div>
+      <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('calc')">Book Your Edit</a></div>
       <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Disclaimer</a></div>
     </div>
     <div class="f-bottom"><p>© 2025 The Renter's Edit.</p></div>
@@ -791,7 +794,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
   <footer>
     <div class="footer-grid">
       <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
-      <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('register')">Get Started</a></div>
+      <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('calc')">Book Your Edit</a></div>
       <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a></div>
     </div>
     <div class="f-bottom"><p>© 2025 The Renter's Edit.</p></div>
@@ -824,7 +827,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 
       <!-- Header -->
       <div style="text-align:center;margin-bottom:3rem;">
-        <div class="eyebrow centered"><span>Start Your Edit</span></div>
+        <div class="eyebrow centered"><span>Book Your Edit</span></div>
         <h2 class="section-title" style="font-size:clamp(2rem,3vw,3.2rem);color:var(--bark);margin-bottom:0.8rem;">Tell us about <em>your space</em></h2>
         <p style="font-size:0.9rem;color:var(--bark-mid);font-weight:300;max-width:480px;margin:0 auto;line-height:1.75;">Fill in the form below — photos, dimensions, your style preferences, and anything specific you want transformed. We'll take it from there and have your Design Playbook with you in days, not weeks.</p>
       </div>
@@ -994,7 +997,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
   <footer>
     <div class="footer-grid">
       <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
-      <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('register')">Get Started</a></div>
+      <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('calc')">Book Your Edit</a></div>
       <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a></div>
     </div>
     <div class="f-bottom"><p>© 2025 The Renter's Edit.</p></div>
@@ -1021,11 +1024,12 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           <div class="cmp-label-col"></div>
 
           <div class="cmp-col">
+            <div class="cmp-popular"></div>
             <div class="cmp-pkg-name">The Single Edit</div>
             <div class="cmp-pkg-tag">One thing fixed, perfectly.</div>
             <div class="cmp-pkg-price">£75</div>
             <div class="cmp-pkg-scope">1 item</div>
-            <button class="cmp-btn cmp-btn-light" onclick="showPage('register')">Get Started</button>
+            <button class="cmp-btn cmp-btn-light" onclick="showPage('calc')">Get Started</button>
           </div>
 
           <div class="cmp-col cmp-feat">
@@ -1034,18 +1038,20 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
             <div class="cmp-pkg-tag">A whole zone, cohesive.</div>
             <div class="cmp-pkg-price">£200</div>
             <div class="cmp-pkg-scope">3 items</div>
-            <button class="cmp-btn cmp-btn-dark" onclick="showPage('register')">Get Started</button>
+            <button class="cmp-btn cmp-btn-dark" onclick="showPage('calc')">Get Started</button>
           </div>
 
           <div class="cmp-col">
+            <div class="cmp-popular"></div>
             <div class="cmp-pkg-name">The Seven Edit</div>
             <div class="cmp-pkg-tag">The whole room, done right.</div>
             <div class="cmp-pkg-price">£399</div>
             <div class="cmp-pkg-scope">7 items</div>
-            <button class="cmp-btn cmp-btn-light" onclick="showPage('register')">Get Started</button>
+            <button class="cmp-btn cmp-btn-light" onclick="showPage('calc')">Get Started</button>
           </div>
 
           <div class="cmp-col">
+            <div class="cmp-popular"></div>
             <div class="cmp-pkg-name">The Full Edit</div>
             <div class="cmp-pkg-tag">Your brief, your scope.</div>
             <div class="cmp-pkg-price">Custom</div>
@@ -1159,17 +1165,17 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           <div class="cmp-col">
             <div class="cmp-best">Best for</div>
             <div class="cmp-best-txt">One specific fix</div>
-            <button class="cmp-btn cmp-btn-light" onclick="showPage('register')">Get Started</button>
+            <button class="cmp-btn cmp-btn-light" onclick="showPage('calc')">Get Started</button>
           </div>
           <div class="cmp-col cmp-feat">
             <div class="cmp-best">Best for</div>
             <div class="cmp-best-txt">A corner or zone</div>
-            <button class="cmp-btn cmp-btn-dark" onclick="showPage('register')">Get Started</button>
+            <button class="cmp-btn cmp-btn-dark" onclick="showPage('calc')">Get Started</button>
           </div>
           <div class="cmp-col">
             <div class="cmp-best">Best for</div>
             <div class="cmp-best-txt">A full room</div>
-            <button class="cmp-btn cmp-btn-light" onclick="showPage('register')">Get Started</button>
+            <button class="cmp-btn cmp-btn-light" onclick="showPage('calc')">Get Started</button>
           </div>
           <div class="cmp-col">
             <div class="cmp-best">Best for</div>
@@ -1224,7 +1230,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <footer>
       <div class="footer-grid">
         <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters worldwide.</p></div>
-        <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('how')">How it Works</a><a onclick="showPage('register')">Get Started</a></div>
+        <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('how')">How it Works</a><a onclick="showPage('calc')">Book Your Edit</a></div>
         <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Disclaimer</a></div>
       </div>
       <div class="f-bottom"><p>© 2025 The Renter's Edit.</p></div>
@@ -1235,79 +1241,45 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 <!-- ============================================================
      ANALYSER (GATED)
      ============================================================ -->
-<div class="page" id="page-analyser">
-  <div id="analyserGate" class="analyser-gate-page">
-    <div class="eyebrow centered" style="position:relative;z-index:2;"><span>AI Room Analyser</span></div>
-    <h1>Your room,<br><em>transformed</em></h1>
-    <p>Upload a photo and get personalised, deposit-safe design ideas powered by AI. Register free to access.</p>
-    <div class="gate-blur">
-      <div class="gb-card"><div class="gb-line"></div><div class="gb-line2"></div></div>
-      <div class="gb-card"><div class="gb-line"></div><div class="gb-line2"></div></div>
-      <div class="gb-card"><div class="gb-line"></div><div class="gb-line2"></div></div>
-    </div>
-    <div class="gate-lock">🔒 Create a free account to access the AI Room Analyser</div>
-    <button class="btn btn-dark" style="margin:0 auto;position:relative;z-index:2;" onclick="showPage('register')">Create Free Account</button>
-    <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);margin-top:1rem;font-weight:300;position:relative;z-index:2;">Already have an account? <span style="color:var(--sage-light);cursor:pointer;" onclick="unlockAnalyser()">Sign in here</span></p>
-  </div>
-  <div id="analyserTool" class="analyser-tool" style="display:none;">
-    <div class="a-header">
-      <div class="eyebrow left"><span>AI Room Analyser</span></div>
-      <h1>Upload your room,<br><em>get instant ideas</em></h1>
-      <p>Our AI studies your space and generates personalised, deposit-safe design ideas tailored to your budget and style.</p>
-    </div>
-    <div class="a-body">
-      <div class="upload-zone" id="uploadZone" role="button" tabindex="0" aria-label="Upload room photo" onclick="document.getElementById('roomFile').click()" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="handleDrop(event)">
-        <span style="font-size:2.8rem;display:block;margin-bottom:1rem;" aria-hidden="true">📷</span>
-        <h3>Drop your room photo here</h3>
-        <p>Or click to browse · JPG or PNG · Any angle works</p>
-        <button class="up-btn" type="button" onclick="event.stopPropagation();document.getElementById('roomFile').click()">Choose Photo</button>
-        <input type="file" id="roomFile" accept="image/*" style="display:none" onchange="handleFile(this.files[0])">
-      </div>
-      <div class="opts-row" id="optsRow">
-        <div class="opt-box">
-          <label>Your budget</label>
-          <div class="chip-g" id="budgetChips">
-            <button type="button" class="chip on" data-v="Under £100">Under £100</button>
-            <button type="button" class="chip" data-v="£100–£300">£100–£300</button>
-            <button type="button" class="chip" data-v="£300–£600">£300–£600</button>
-            <button type="button" class="chip" data-v="£600+">£600+</button>
-          </div>
+<div class="page" id="page-account">
+  <div style="background:var(--cream);min-height:calc(100vh - 68px);padding:3.5rem 1.2rem;">
+    <div style="max-width:920px;margin:0 auto;">
+
+      <!-- Header -->
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:2.5rem;">
+        <div>
+          <div class="eyebrow left"><span>Your Account</span></div>
+          <h2 class="section-title" style="font-size:clamp(1.8rem,2.6vw,2.6rem);color:var(--bark);margin:0.4rem 0 0.3rem;">My Edits</h2>
+          <p id="acct-greeting" style="font-size:0.9rem;color:var(--bark-mid);font-weight:300;margin:0;">Every brief you've sent and where it's up to.</p>
         </div>
-        <div class="opt-box">
-          <label>Your style</label>
-          <div class="chip-g" id="styleChips">
-            <button type="button" class="chip on" data-v="Scandi minimal">Scandi Minimal</button>
-            <button type="button" class="chip" data-v="Warm boho">Warm Boho</button>
-            <button type="button" class="chip" data-v="Maximalist">Maximalist</button>
-            <button type="button" class="chip" data-v="Industrial">Industrial</button>
-            <button type="button" class="chip" data-v="Cottagecore">Cottagecore</button>
-            <button type="button" class="chip" data-v="Japandi">Japandi</button>
-          </div>
+        <div style="display:flex;gap:0.6rem;align-items:center;">
+          <button class="btn btn-dark" style="padding:0.7rem 1.3rem;font-size:0.75rem;" onclick="showPage('calc')">+ Start a new edit</button>
+          <button onclick="signOut()" style="background:transparent;border:0.5px solid var(--linen);color:var(--bark-mid);padding:0.7rem 1.1rem;border-radius:4px;font-family:var(--font-body);font-size:0.75rem;letter-spacing:0.06em;cursor:pointer;">Sign out</button>
         </div>
       </div>
-      <div class="prev-gen" id="prevGen">
-        <div><p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;font-weight:500;">Your Room</p><div class="prev-img"><img id="prevImg" src="" alt="Your uploaded room photo"></div></div>
-        <div class="gen-box"><h3>Ready to analyse</h3><p>We'll review your room and suggest specific, renter-friendly changes tailored to your budget and style.</p><button class="gen-btn" id="genBtn" type="button" onclick="generateIdeas()">✦ Generate My Design Ideas</button></div>
+
+      <!-- Edits list -->
+      <div id="edits-loading" style="display:none;text-align:center;padding:3rem;color:var(--bark-mid);font-weight:300;">Loading your edits…</div>
+
+      <div id="edits-empty" style="display:none;background:white;border:0.5px solid var(--linen);border-radius:12px;padding:3rem 2rem;text-align:center;box-shadow:0 4px 24px rgba(42,36,32,0.05);">
+        <div style="font-size:2.4rem;margin-bottom:0.8rem;">🗂️</div>
+        <h3 style="font-family:var(--font-display);font-weight:400;font-size:1.3rem;color:var(--bark);margin:0 0 0.5rem;">No edits yet</h3>
+        <p style="font-size:0.9rem;color:var(--bark-mid);font-weight:300;max-width:380px;margin:0 auto 1.4rem;line-height:1.7;">When you send us a brief through Book Your Edit, it'll appear here so you can track its progress.</p>
+        <button class="btn btn-dark" style="margin:0 auto;" onclick="showPage('calc')">Book Your First Edit</button>
       </div>
-      <div class="loading" id="loadingState"><div class="spinner"></div><h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--bark);margin-bottom:0.4rem;">Analysing your space...</h3><p style="font-size:0.88rem;color:var(--bark-mid);font-weight:300;">Our AI is reviewing your room and crafting personalised ideas</p></div>
-      <div class="results" id="resultsArea">
-        <div class="res-sum" id="resSummary"></div>
-        <div class="res-title">Your personalised design plan</div>
-        <div class="res-sub">100% deposit-safe · renter-friendly · tailored to your space</div>
-        <div class="ideas-grid" id="ideasGrid"></div>
-        <div class="mood-card"><h3>Your Mood Board</h3><div class="mb-desc" id="mbDesc"></div><div class="swatches" id="mbSwatches"></div><div class="keywords" id="mbKeywords"></div></div>
-        <div style="text-align:center;margin-top:2rem;"><button class="btn btn-dark" style="margin:0 auto;" onclick="showFullEdit()">Turn This Into a Full Edit</button></div>
-      </div>
+
+      <div id="edits-list" style="display:flex;flex-direction:column;gap:1rem;"></div>
+
     </div>
-    <footer>
-      <div class="footer-grid">
-        <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters.</p></div>
-        <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a></div>
-        <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a></div>
-      </div>
-      <div class="f-bottom"><p>© 2025 The Renter's Edit.</p></div>
-    </footer>
   </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand"><div class="f-logo">The Renter's <em>Edit</em></div><p>Deposit-safe, sustainable interior design for renters.</p></div>
+      <div class="f-col"><h4>Navigate</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('pricing')">Packages</a><a onclick="showPage('calc')">Book Your Edit</a></div>
+      <div class="f-col"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a></div>
+    </div>
+    <div class="f-bottom"><p>&copy; 2026 The Renter's Edit.</p></div>
+  </footer>
 </div>
 
 <!-- ============================================================
@@ -1639,8 +1611,7 @@ function doRegister() {
   if (!ok) return;
 
   // All valid — unlock and proceed
-  unlockAnalyser();
-  showPage('analyser');
+  showPage('account');
 
   // Show quiz result if they came from quiz
   if (Object.keys(quizAnswers).length > 0) {
@@ -1658,8 +1629,7 @@ function doLogin() {
     showErr('lem-err', 'Please enter a valid email address');
     return;
   }
-  unlockAnalyser();
-  showPage('analyser');
+  showPage('account');
 }
 
 function goToRegisterFromQuiz() {
@@ -2151,7 +2121,7 @@ function renderQuiz() {
       '<div class="qr-rec-why">' + persona.why + '</div>' +
       '</div>' +
       '<div style="display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;">' +
-      '<button type="button" class="btn btn-dark" onclick="showPage(\'calc\')">Start Your Edit →</button>' +
+      '<button type="button" class="btn btn-dark" onclick="showPage(\'calc\')">Book Your Edit →</button>' +
       '<button type="button" class="btn btn-outline" onclick="showPage(\'pricing\')">See All Packages</button>' +
       '</div>' +
       '<p style="font-size:0.82rem;color:rgba(255,255,255,0.3);margin-top:1.5rem;font-weight:300;cursor:pointer;" onclick="restartQuiz()">Retake the quiz</p>' +
@@ -2509,6 +2479,173 @@ document.addEventListener('DOMContentLoaded', function() {
   initRoomTiles();
   initAnalyserChips();
 });
+</script>
+
+<!-- ============================================================
+     SUPABASE  (paste your project URL + anon key below)
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  // 1) PASTE YOUR VALUES  (Supabase dashboard -> Project Settings -> API)
+  var SUPABASE_URL = 'https://YOUR-PROJECT.supabase.co';
+  var SUPABASE_ANON_KEY = 'YOUR-PUBLIC-ANON-KEY';
+
+  var CONFIGURED = SUPABASE_URL.indexOf('YOUR-PROJECT') === -1 &&
+                   SUPABASE_ANON_KEY.indexOf('YOUR-') === -1;
+  var sb = null;
+  if (CONFIGURED && window.supabase) {
+    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+  window.__sb = sb;
+
+  function val(id){ var e=document.getElementById(id); return e ? (e.value||'').trim() : ''; }
+
+  // ---- Auth UI state -------------------------------------------------
+  async function refreshAuthUI() {
+    var signin = document.getElementById('nav-signin');
+    var account = document.getElementById('nav-account');
+    var greet = document.getElementById('acct-greeting');
+    var user = null;
+    if (sb) { try { var r = await sb.auth.getUser(); user = r && r.data ? r.data.user : null; } catch(e){} }
+    var loggedIn = !!user;
+    if (signin) signin.style.display = loggedIn ? 'none' : '';
+    if (account) account.style.display = loggedIn ? '' : 'none';
+    if (greet && loggedIn) {
+      var nm = (user.user_metadata && user.user_metadata.first_name) || (user.email||'').split('@')[0];
+      greet.textContent = 'Welcome back, ' + nm + ' — every brief you\'ve sent and where it\'s up to.';
+    }
+  }
+  window.refreshAuthUI = refreshAuthUI;
+
+  // ---- Register ------------------------------------------------------
+  window.doRegister = async function () {
+    var fn = val('fn'), ln = val('ln'), em = val('em'), ph = val('ph'), pw = val('pw'), pc = val('pc');
+    if (!fn || !em || !pw) { alert('Please fill in your name, email and a password.'); return; }
+    if (pw.length < 8) { alert('Password must be at least 8 characters.'); return; }
+    if (!sb) { alert('Account created! (Connect Supabase to make this live.)'); showPage('account'); refreshAuthUI(); return; }
+    var res = await sb.auth.signUp({
+      email: em, password: pw,
+      options: { data: { first_name: fn, last_name: ln, phone: ph, postcode: pc } }
+    });
+    if (res.error) { alert(res.error.message); return; }
+    if (res.data && res.data.session) {
+      await refreshAuthUI(); showPage('account'); loadEdits();
+    } else {
+      alert('Almost there — check your inbox to confirm your email, then sign in.');
+    }
+  };
+
+  // ---- Login ---------------------------------------------------------
+  window.doLogin = async function () {
+    var em = val('lem'), pw = val('lpw');
+    if (!em || !pw) { showErrSafe('lem-err','Please enter your email and password'); return; }
+    if (!sb) { alert('Signed in! (Connect Supabase to make this live.)'); showPage('account'); refreshAuthUI(); return; }
+    var res = await sb.auth.signInWithPassword({ email: em, password: pw });
+    if (res.error) { showErrSafe('lem-err', res.error.message); return; }
+    await refreshAuthUI(); showPage('account'); loadEdits();
+  };
+
+  // ---- Sign out ------------------------------------------------------
+  window.signOut = async function () {
+    if (sb) { try { await sb.auth.signOut(); } catch(e){} }
+    await refreshAuthUI(); showPage('home');
+  };
+
+  function showErrSafe(id, msg){ var e=document.getElementById(id); if(e){ e.textContent=msg; e.style.display='block'; } else { alert(msg); } }
+
+  // ---- Submit a brief (Book Your Edit) ------------------------------
+  window.submitIntakeForm = async function () {
+    var name = val('if-name'), email = val('if-email'), dims = val('if-dims');
+    var pkgEl = document.querySelector('input[name="package"]:checked');
+    if (!name) { alert('Please enter your name.'); return; }
+    if (!email) { alert('Please enter your email address.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+    if (!pkgEl) { alert('Please select a package before submitting.'); return; }
+    if (!dims) { alert('Please enter the dimensions of your space or item.'); return; }
+
+    var row = {
+      package: pkgEl.value, full_name: name, email: email, phone: val('if-phone'),
+      budget: val('if-budget'), dimensions: dims, vibe: val('if-vibe'),
+      colours: val('if-colours'), materials: val('if-materials'),
+      patterns: val('if-patterns'), avoid: val('if-avoid'), notes: val('if-notes'),
+      reversal_addon: !!(document.getElementById('if-reversal') && document.getElementById('if-reversal').checked),
+      status: 'submitted'
+    };
+
+    if (!sb) {
+      var ok = document.getElementById('if-success');
+      if (ok) { ok.style.display='block'; ok.scrollIntoView({behavior:'smooth',block:'center'}); }
+      return;
+    }
+    var u = await sb.auth.getUser();
+    var user = u && u.data ? u.data.user : null;
+    if (!user) {
+      alert('Please create an account or sign in so we can save your brief to your dashboard.');
+      showPage('register'); return;
+    }
+    row.user_id = user.id;
+    var res = await sb.from('edits').insert(row);
+    if (res.error) { alert('Could not save your brief: ' + res.error.message); return; }
+    var ok2 = document.getElementById('if-success');
+    if (ok2) { ok2.style.display='block'; ok2.scrollIntoView({behavior:'smooth',block:'center'}); }
+  };
+
+  // ---- Load + render edits on the dashboard --------------------------
+  window.loadEdits = async function () {
+    var loading = document.getElementById('edits-loading');
+    var empty = document.getElementById('edits-empty');
+    var list = document.getElementById('edits-list');
+    if (!list) return;
+    list.innerHTML = ''; if (empty) empty.style.display='none';
+    if (!sb) {
+      if (loading) loading.style.display='none';
+      if (empty) { empty.style.display='block';
+        empty.querySelector('p').textContent='Connect Supabase (paste your URL + anon key in the code) to start saving and showing your edits here.'; }
+      return;
+    }
+    if (loading) loading.style.display='block';
+    var u = await sb.auth.getUser();
+    var user = u && u.data ? u.data.user : null;
+    if (!user) { if (loading) loading.style.display='none'; if (empty) empty.style.display='block'; return; }
+    var res = await sb.from('edits').select('*').order('created_at', { ascending: false });
+    if (loading) loading.style.display='none';
+    var rows = (res && res.data) || [];
+    if (!rows.length) { if (empty) empty.style.display='block'; return; }
+
+    var statusColor = { submitted:'var(--gold)', in_progress:'var(--sage-dark)', delivered:'var(--moss)' };
+    rows.forEach(function (r) {
+      var d = r.created_at ? new Date(r.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : '';
+      var sc = statusColor[r.status] || 'var(--gold)';
+      var card = document.createElement('div');
+      card.style.cssText = 'background:white;border:0.5px solid var(--linen);border-radius:12px;padding:1.4rem 1.6rem;box-shadow:0 4px 24px rgba(42,36,32,0.05);';
+      card.innerHTML =
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;">' +
+          '<div>' +
+            '<div style="font-family:var(--font-display);font-size:1.15rem;color:var(--bark);">' + (r.package||'Edit') + '</div>' +
+            '<div style="font-size:0.78rem;color:var(--bark-mid);font-weight:300;margin-top:0.2rem;">Submitted ' + d + '</div>' +
+          '</div>' +
+          '<span style="font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:' + sc + ';border:1px solid ' + sc + ';padding:0.25rem 0.6rem;border-radius:100px;">' + ((r.status||'submitted').replace('_',' ')) + '</span>' +
+        '</div>' +
+        (r.dimensions ? '<div style="font-size:0.82rem;color:var(--bark-mid);font-weight:300;margin-top:0.8rem;">Space: ' + r.dimensions + (r.budget ? ' &middot; Budget: ' + r.budget : '') + '</div>' : '') +
+        (r.notes ? '<div style="font-size:0.82rem;color:var(--bark-mid);font-weight:300;margin-top:0.4rem;">&ldquo;' + r.notes + '&rdquo;</div>' : '');
+      list.appendChild(card);
+    });
+  };
+
+  // ---- Wire page load + auth changes + showPage hook ----------------
+  document.addEventListener('DOMContentLoaded', function () {
+    refreshAuthUI();
+    if (sb && sb.auth.onAuthStateChange) {
+      sb.auth.onAuthStateChange(function(){ refreshAuthUI(); });
+    }
+    // load edits whenever the account page is opened
+    if (typeof window.showPage === 'function') {
+      var _orig = window.showPage;
+      window.showPage = function (name) { _orig(name); if (name === 'account') loadEdits(); };
+    }
+  });
+})();
 </script>
 </body>
 </html>
