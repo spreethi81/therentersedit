@@ -19,6 +19,7 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--bark);over
 /* PAGE SYSTEM — each page is a full viewport unit */
 .page{display:none;min-height:100vh;}
 .page.active{display:block;}
+#page-home.active{min-height:0;}
 
 /* NAV */
 nav{display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:68px;background:rgba(253,252,250,0.96);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--linen);position:sticky;top:0;z-index:200;}
@@ -59,14 +60,14 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
    HOME PAGE
    ============================================================ */
 .hero{display:grid;grid-template-columns:52% 48%;min-height:calc(100vh - 68px);}
-.hero-left{background:var(--bark);display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 6rem;position:relative;overflow:hidden;}
+.hero-left{background:var(--bark);display:flex;flex-direction:column;justify-content:center;padding:1.5rem 4rem 1.5rem 6rem;position:relative;overflow:hidden;}
 .hero-left::before{content:'';position:absolute;width:380px;height:380px;border-radius:50%;border:0.5px solid rgba(201,168,76,0.1);top:-100px;right:-80px;}
-.hero-title{font-family:var(--font-display);font-size:clamp(3rem,4.5vw,5.2rem);line-height:1.02;color:white;margin-bottom:1.8rem;font-weight:300;position:relative;z-index:2;}
+.hero-title{font-family:var(--font-display);font-size:clamp(3rem,4.5vw,5.2rem);line-height:1.02;color:white;margin-bottom:0.9rem;font-weight:300;position:relative;z-index:2;}
 .hero-title em{font-style:italic;color:var(--sage-light);}
 .hero-title strong{font-weight:600;}
-.hero-sub{font-size:0.92rem;line-height:1.85;color:rgba(255,255,255,0.65);max-width:520px;margin-bottom:2.5rem;font-weight:300;position:relative;z-index:2;}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;position:relative;z-index:2;}
-.hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:0.5px solid rgba(255,255,255,0.08);position:relative;z-index:2;}
+.hero-sub{font-size:0.92rem;line-height:1.7;color:rgba(255,255,255,0.65);max-width:520px;margin-bottom:1rem;font-weight:300;position:relative;z-index:2;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem;position:relative;z-index:2;}
+.hero-stats{display:flex;gap:2.5rem;padding-top:1rem;border-top:0.5px solid rgba(255,255,255,0.08);position:relative;z-index:2;}
 .stat-num{font-family:var(--font-display);font-size:2rem;color:var(--sage-light);font-weight:300;line-height:1;margin-bottom:3px;}
 .stat-lbl{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
 .hero-right{background:var(--sage-pale);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
@@ -529,6 +530,9 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 .rt-icon{font-size:1.3rem;margin-bottom:0.3rem;}
 .rt-name{font-size:0.85rem;font-weight:500;color:var(--bark);}
 .rt-desc{font-size:0.75rem;color:var(--bark-mid);font-weight:300;}
+.if-room-tile{display:block;cursor:pointer;border-radius:8px;border:0.5px solid var(--linen);background:white;transition:all 0.15s;user-select:none;}
+.if-room-tile:hover{border-color:var(--sage);background:var(--sage-pale);}
+.if-room-tile.selected{border-color:var(--sage-dark);background:var(--sage-pale);box-shadow:inset 0 0 0 1.5px var(--sage-dark);}
 /* Error field highlight */
 .fg input.err{border-color:#C4622D !important;}
 :focus-visible{outline:3px solid #4F7153;outline-offset:3px;}
@@ -597,9 +601,9 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <li><a onclick="showPage('pricing')" role="button" tabindex="0">Packages</a></li>
     <li><a onclick="showPage('quiz')" role="button" tabindex="0">Find My Style</a></li>
     <li><a onclick="showPage('about')" role="button" tabindex="0">About</a></li>
+    <li><a class="nav-cta" onclick="showPage('calc')" role="button" tabindex="0">Book Your Edit</a></li>
     <li id="nav-signin"><a onclick="showPage('register')" role="button" tabindex="0">Sign In</a></li>
     <li id="nav-account" style="display:none;"><a onclick="showPage('account')" role="button" tabindex="0">My Edits</a></li>
-    <li><a class="nav-cta" onclick="showPage('calc')" role="button" tabindex="0">Book Your Edit</a></li>
   </ul>
   <button class="nav-hamburger" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -612,23 +616,27 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 <div class="page active" id="page-home" role="main" id="main">
   <section class="hero">
     <div class="hero-left">
-      <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(201,168,76,0.15);border:0.5px solid rgba(201,168,76,0.3);border-radius:100px;padding:0.35rem 1rem;margin-bottom:1.8rem;width:fit-content;position:relative;z-index:2;">
+      <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(201,168,76,0.15);border:0.5px solid rgba(201,168,76,0.3);border-radius:100px;padding:0.35rem 1rem;margin-bottom:1rem;width:fit-content;position:relative;z-index:2;">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;flex-shrink:0;"></span>
         <span style="font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:500;">The UK's first rental-only interior styling studio</span>
       </div>
       <h1 class="hero-title">Your <em>white box</em><br>rental deserves<br><strong>so much more.</strong></h1>
       <p class="hero-sub"><strong style="color:rgba(255,255,255,0.88);font-weight:500;">Deposit-safe</strong> transformations using <strong style="color:rgba(255,255,255,0.88);font-weight:500;">sustainable materials</strong>. <strong style="color:rgba(255,255,255,0.88);font-weight:500;">No drilling. No painting.</strong> Just colour, life and personality — added back into your rental.<br>We give you the vision and the shopping list. <strong style="color:rgba(255,255,255,0.88);font-weight:500;">You execute it.</strong></p>
-      <div style="display:inline-block;border-left:2px solid var(--gold);padding-left:1rem;margin-bottom:2.5rem;position:relative;z-index:2;">
-        <p style="font-family:var(--font-display);font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.5;margin:0;">Some things can't be automated.<br>Taste is one of them.</p>
+      <div style="height:1.1rem;" aria-hidden="true"></div>
+      <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;position:relative;z-index:2;">
+        <div style="border-left:2px solid var(--gold);padding-left:1rem;">
+          <p style="font-family:var(--font-display);font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.5;margin:0;">Some things can't be automated.<br>Taste is one of them.</p>
+        </div>
+        <div class="hero-btns" style="margin:0;">
+          <button class="btn btn-dark" onclick="showPage('quiz')">Find My Renter Style ✦</button>
+        </div>
       </div>
-      <div class="hero-btns">
-        <button class="btn btn-dark" onclick="showPage('quiz')">Find My Renter Style ✦</button>
-        <button class="btn btn-outline" onclick="showFullEdit()">Get a Custom Quote</button>
-      </div>
+      <div style="height:1.1rem;" aria-hidden="true"></div>
+      <div style="height:1.1rem;" aria-hidden="true"></div>
       <div class="hero-stats">
         <div><div class="stat-num">🔑 100%</div><div class="stat-lbl">Deposit Safe</div></div>
-        <div><div class="stat-num" style="font-size:1rem;line-height:1.3;">📍 Canary Wharf<br>🌍 Worldwide</div><div class="stat-lbl">Based in London · 100% Remote</div></div>
-        <div><div class="stat-num">📋 PDF</div><div class="stat-lbl">Design Playbook Delivered</div></div>
+        <div><div class="stat-num" style="font-size:1rem;line-height:1.3;">📍 Canary Wharf, London based</div><div class="stat-lbl">Worldwide remote e-design services</div></div>
+        <div><div class="stat-num" style="font-size:2.4rem;">📋 PDF</div><div class="stat-lbl">Design Playbook Delivered</div></div>
       </div>
     </div>
     <div class="hero-right" style="background:var(--sage-pale);overflow:hidden;position:relative;">
@@ -677,10 +685,10 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           <span style="font-size:2rem;" aria-hidden="true">📝</span>
           <div style="position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;background:var(--sage-dark);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);">1</div>
         </div>
-        <div style="background:var(--sage-pale);border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid var(--moss);border-top:3px solid var(--sage-dark);text-align:center;">
+        <div onclick="showPage('calc')" title="Open the intake form" style="background:var(--sage-pale);border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid var(--moss);border-top:3px solid var(--sage-dark);text-align:center;cursor:pointer;">
           <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage-dark);font-weight:600;margin-bottom:0.4rem;font-family:var(--font-body);">Step 1</div>
           <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Fill in the Intake Form</h3>
-          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">Share photos of your space, dimensions, your budget, and a link to your Pinterest board. Takes 5–10 minutes.</p>
+          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">Share photos of your space, its dimensions, your budget, and your style preferences — exactly what the intake form asks for. Takes about 5–10 minutes.</p>
           <div style="display:inline-block;background:var(--sage-dark);color:white;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:400;">5–10 minutes</div>
         </div>
       </div>
@@ -749,7 +757,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
       </div>
     </div>
 
-    <div style="text-align:center;"><button class="btn btn-dark" style="margin:0 auto;" onclick="showFullEdit()">Start With The Full Edit</button></div>
+    <div style="text-align:center;"><button class="btn btn-dark" style="margin:0 auto;" onclick="showPage('calc')">Book Your Edit</button></div>
   </div>
   <footer>
     <div class="footer-grid">
@@ -833,29 +841,44 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
       </div>
 
       <!-- Form card -->
-      <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:2.5rem;box-shadow:0 4px 24px rgba(42,36,32,0.06);">
+      <div style="display:flex;flex-direction:column;gap:1.2rem;">
 
         <!-- Section: You -->
-        <div style="margin-bottom:2rem;">
+        <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
           <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">About You</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
             <div>
-              <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Full Name <span style="color:var(--sage-dark);">*</span></label>
-              <input type="text" id="if-name" placeholder="Your name" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
+              <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">First Name <span style="color:var(--sage-dark);">*</span></label>
+              <input type="text" id="if-first" placeholder="Your first name" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
             </div>
             <div>
-              <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Email Address <span style="color:var(--sage-dark);">*</span></label>
-              <input type="email" id="if-email" placeholder="your@email.com" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
+              <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Last Name <span style="color:var(--sage-dark);">*</span></label>
+              <input type="text" id="if-last" placeholder="Your last name" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
             </div>
           </div>
-          <div>
-            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Phone Number</label>
-            <input type="tel" id="if-phone" placeholder="+44 or international" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
+          <div style="margin-bottom:1rem;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Email Address <span style="color:var(--sage-dark);">*</span></label>
+            <input type="email" id="if-email" placeholder="your@email.com" oninput="validateEmailLive()" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
+            <div id="if-email-err" style="display:none;font-size:0.72rem;color:#c0392b;margin-top:0.35rem;">Please enter a valid email address.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Phone Number <span style="color:var(--sage-dark);">*</span></label>
+              <input type="tel" id="if-phone" placeholder="+44 or international" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
+            </div>
+            <div>
+              <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Postcode <span style="color:var(--sage-dark);">*</span> <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(so we can tailor to what ships to you)</span></label>
+              <input type="text" id="if-postcode" placeholder="e.g. E14 5AB" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
+            </div>
+          </div>
+          <div style="margin-top:1rem;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Create a password <span style="color:var(--sage-dark);">*</span> <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(submitting sets up your free account so you can track this edit)</span></label>
+            <input type="password" id="if-password" placeholder="At least 6 characters" autocomplete="new-password" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
           </div>
         </div>
 
         <!-- Section: Package -->
-        <div style="margin-bottom:2rem;">
+        <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
           <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Package</div>
           <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.8rem;">Which package are you interested in? <span style="color:var(--sage-dark);">*</span></label>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;" id="if-packages">
@@ -884,18 +907,56 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         </div>
 
         <!-- Section: Your Space -->
-        <div style="margin-bottom:2rem;">
+        <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
           <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Space</div>
 
-          <!-- Dynamic dimensions field -->
-          <div style="margin-bottom:1rem;">
-            <label id="if-dims-label" style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Item dimensions <span style="color:var(--sage-dark);">*</span> <span id="if-dims-hint" style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(width × height × depth for each item)</span></label>
-            <textarea id="if-dims" rows="3" placeholder="e.g. Chest of drawers: 80cm wide × 75cm tall × 45cm deep" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;resize:vertical;transition:border-color 0.2s;line-height:1.65;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'"></textarea>
+          <!-- Dynamic dimensions field (Single / Trio / Seven) -->
+          <div id="if-dims-wrap" style="margin-bottom:1rem;">
+            <label id="if-dims-label" style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.6rem;">Item dimensions <span style="color:var(--sage-dark);">*</span> <span id="if-dims-hint" style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(width × height × depth for each item)</span></label>
+            <div id="if-items"></div>
+            <button type="button" id="if-add-item" onclick="addItemBox()" style="display:none;margin-top:0.2rem;padding:0.5rem 0.9rem;background:var(--sage-pale);border:0.5px dashed var(--sage);border-radius:6px;font-family:var(--font-body);font-size:0.8rem;color:var(--sage-dark);cursor:pointer;transition:all 0.15s;">+ Add another item</button>
+          </div>
+
+          <!-- Full Edit: rooms to enhance -->
+          <div id="if-rooms-wrap" style="margin-bottom:1rem;display:none;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Which rooms would you like to enhance? <span style="color:var(--sage-dark);">*</span></label>
+            <p style="font-size:0.78rem;color:var(--bark-mid);font-weight:300;margin-bottom:0.8rem;line-height:1.5;">Select all that apply — this helps us scope your custom Full Edit.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;" id="if-room-grid">
+              <div class="if-room-tile" data-room="main-living" onclick="toggleIfRoom(this)">
+                <div class="rt-inner"><span class="rt-icon">🏡</span><span class="rt-name">Main living area</span><span class="rt-desc">Sofa, dining & open kitchen zone</span></div>
+              </div>
+              <div class="if-room-tile" data-room="master-bedroom" onclick="toggleIfRoom(this)">
+                <div class="rt-inner"><span class="rt-icon">🛏️</span><span class="rt-name">Master bedroom</span><span class="rt-desc">Your main sleeping sanctuary</span></div>
+              </div>
+              <div class="if-room-tile" data-room="second-bedroom" onclick="toggleIfRoom(this)">
+                <div class="rt-inner"><span class="rt-icon">🛏️</span><span class="rt-name">Second bedroom</span><span class="rt-desc">Guest room or spare space</span></div>
+              </div>
+              <div class="if-room-tile" data-room="kids-room" onclick="toggleIfRoom(this)">
+                <div class="rt-inner"><span class="rt-icon">🧸</span><span class="rt-name">Kids room / play area</span><span class="rt-desc">Fun, safe & deposit-friendly</span></div>
+              </div>
+              <div class="if-room-tile" data-room="bathroom" onclick="toggleIfRoom(this)">
+                <div class="rt-inner"><span class="rt-icon">🚿</span><span class="rt-name">Bathroom</span><span class="rt-desc">Mirrors, tiles & accessories</span></div>
+              </div>
+              <div class="if-room-tile" data-room="entrance" onclick="toggleIfRoom(this)">
+                <div class="rt-inner"><span class="rt-icon">🚪</span><span class="rt-name">Entrance & hallway</span><span class="rt-desc">The first impression</span></div>
+              </div>
+              <div class="if-room-tile" data-room="home-office" onclick="toggleIfRoom(this)">
+                <div class="rt-inner"><span class="rt-icon">💻</span><span class="rt-name">Dedicated home office</span><span class="rt-desc">Separate room or study corner</span></div>
+              </div>
+              <div class="if-room-tile" data-room="balcony" onclick="toggleIfRoom(this)">
+                <div class="rt-inner"><span class="rt-icon">🌿</span><span class="rt-name">Balcony or terrace</span><span class="rt-desc">Outdoor styling</span></div>
+              </div>
+            </div>
           </div>
 
           <div style="margin-bottom:1rem;">
             <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Approximate shopping budget</label>
             <input type="text" id="if-budget" placeholder="e.g. £150–£300" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
+          </div>
+
+          <div style="margin-bottom:1rem;">
+            <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Rental restrictions <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(what your tenancy won't allow — so every idea stays deposit-safe)</span></label>
+            <textarea id="if-restrictions" rows="2" placeholder="e.g. no drilling or wall anchors, no painting, no removing fitted fixtures, landlord must approve changes..." style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;resize:vertical;transition:border-color 0.2s;line-height:1.65;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'"></textarea>
           </div>
 
           <!-- Photo upload -->
@@ -904,19 +965,20 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
             <div id="if-upload-zone" onclick="document.getElementById('if-photos').click()" style="border:1px dashed var(--linen);border-radius:8px;padding:2rem;text-align:center;cursor:pointer;background:var(--sage-pale);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--sage-dark)'" onmouseout="this.style.borderColor='var(--linen)'">
               <div style="font-size:2rem;margin-bottom:0.5rem;">📷</div>
               <div style="font-size:0.85rem;font-weight:500;color:var(--bark);margin-bottom:0.2rem;">Click to upload photos</div>
-              <div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">JPG or PNG · Items + room context · The more the better</div>
-              <input type="file" id="if-photos" accept="image/*" multiple style="display:none" onchange="handleIntakePhotos(this.files)">
+              <div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">JPG, PNG, WebP or HEIC · Up to 8 photos · Max 5 MB each</div>
+              <input type="file" id="if-photos" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple style="display:none" onchange="handleIntakePhotos(this.files)">
             </div>
             <div id="if-photo-list" style="margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+            <div id="if-photo-note" style="display:none;font-size:0.72rem;color:#c0392b;margin-top:0.4rem;line-height:1.5;"></div>
           </div>
         </div>
 
         <!-- Section: Your Style -->
-        <div style="margin-bottom:2rem;">
+        <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
           <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Style</div>
 
           <!-- Colour palette -->
-          <div style="margin-bottom:1.4rem;">
+          <div style="background:var(--warm-white);border:0.5px solid var(--linen);border-radius:10px;padding:1.1rem 1.2rem 1.2rem;margin-bottom:0.9rem;">
             <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.7rem;">Colour preference <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(pick all that apply)</span></label>
             <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="if-colours">
               <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;"><span style="width:12px;height:12px;border-radius:50%;background:#EDE8E0;border:1px solid #ccc;flex-shrink:0;"></span>Neutrals & cream</button>
@@ -930,7 +992,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           </div>
 
           <!-- Pattern / design -->
-          <div style="margin-bottom:1.4rem;">
+          <div style="background:var(--warm-white);border:0.5px solid var(--linen);border-radius:10px;padding:1.1rem 1.2rem 1.2rem;margin-bottom:0.9rem;">
             <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.7rem;">Pattern & design preference <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(pick all that apply)</span></label>
             <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="if-patterns">
               <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">No pattern — keep it plain</button>
@@ -944,7 +1006,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           </div>
 
           <!-- Material feel -->
-          <div style="margin-bottom:1.4rem;">
+          <div style="background:var(--warm-white);border:0.5px solid var(--linen);border-radius:10px;padding:1.1rem 1.2rem 1.2rem;margin-bottom:0.9rem;">
             <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.7rem;">Material feel</label>
             <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="if-materials">
               <button type="button" class="style-chip" onclick="toggleStyleChip(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">Natural — wood, rattan, linen, cotton</button>
@@ -955,7 +1017,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           </div>
 
           <!-- Vibe -->
-          <div style="margin-bottom:1.4rem;">
+          <div style="background:var(--warm-white);border:0.5px solid var(--linen);border-radius:10px;padding:1.1rem 1.2rem 1.2rem;margin-bottom:0.9rem;">
             <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.7rem;">Overall vibe <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(pick one)</span></label>
             <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="if-vibe">
               <button type="button" class="style-chip vibe-chip" onclick="selectVibe(this)" style="padding:0.4rem 0.8rem;border:0.5px solid var(--linen);border-radius:100px;font-size:0.8rem;font-family:var(--font-body);cursor:pointer;background:white;color:var(--bark);transition:all 0.15s;">🕯️ Cosy & warm</button>
@@ -967,17 +1029,26 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           </div>
 
           <!-- Things to avoid -->
-          <div>
+          <div style="background:var(--warm-white);border:0.5px solid var(--linen);border-radius:10px;padding:1.1rem 1.2rem 1.2rem;margin-bottom:0;">
             <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Things to avoid <span style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(colours, styles, materials you dislike)</span></label>
             <input type="text" id="if-avoid" placeholder="e.g. no gold hardware, nothing too boho, avoid orange tones" style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'">
           </div>
         </div>
 
         <!-- Section: Notes -->
-        <div style="margin-bottom:2rem;">
+        <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
           <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Anything Else?</div>
           <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Specific items, problem areas, or anything else we should know</label>
           <textarea id="if-notes" rows="4" placeholder="e.g. I have an IKEA Malm chest of drawers I hate, my kitchen backsplash is really dated, I rent so the landlord has restricted painting..." style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;resize:vertical;transition:border-color 0.2s;line-height:1.65;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'"></textarea>
+        </div>
+
+        <!-- Account + marketing -->
+        <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
+          <label id="if-marketing-label" style="display:flex;align-items:flex-start;gap:0.7rem;padding:1rem;border:0.5px solid var(--linen);border-radius:8px;cursor:pointer;background:var(--cream);transition:all 0.2s;">
+            <input type="checkbox" id="if-marketing" style="margin-top:3px;accent-color:var(--sage-dark);">
+            <div><div style="font-size:0.88rem;font-weight:500;color:var(--bark);">Keep me in the loop</div><div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">Yes, send me occasional styling tips, new packages and offers by email. No spam — unsubscribe anytime.</div></div>
+          </label>
+          <p style="text-align:center;font-size:0.8rem;color:var(--bark-mid);font-weight:300;margin-top:1rem;line-height:1.6;">Submitting creates your free account with the email and password above, so you can sign back in any time to track this edit and view your Design Playbook. Already have an account? <a onclick="showPage('register')" style="color:var(--sage-dark);font-weight:500;cursor:pointer;text-decoration:underline;">Sign in instead</a>.</p>
         </div>
 
         <!-- Submit -->
@@ -1258,6 +1329,9 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         </div>
       </div>
 
+      <!-- Style profile (from quiz) -->
+      <div id="style-profile"></div>
+
       <!-- Edits list -->
       <div id="edits-loading" style="display:none;text-align:center;padding:3rem;color:var(--bark-mid);font-weight:300;">Loading your edits…</div>
 
@@ -1325,11 +1399,13 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         <div class="form-row">
           <div class="fg">
             <label for="fn">First Name <span style="color:#C4622D;">*</span></label>
-            <input type="text" id="fn" placeholder="Your first name" autocomplete="given-name" required>
+            <input type="text" id="fn" placeholder="Your first name" autocomplete="given-name" required oninput="clearErr('fn-err')">
+            <div id="fn-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
           </div>
           <div class="fg">
             <label for="ln">Last Name <span style="color:#C4622D;">*</span></label>
-            <input type="text" id="ln" placeholder="Your last name" autocomplete="family-name" required>
+            <input type="text" id="ln" placeholder="Your last name" autocomplete="family-name" required oninput="clearErr('ln-err')">
+            <div id="ln-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
           </div>
         </div>
 
@@ -1352,83 +1428,9 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         </div>
 
         <div class="fg">
-          <label for="pc">Area / Postcode</label>
-          <input type="text" id="pc" placeholder="e.g. Canary Wharf, E14" autocomplete="postal-code">
-        </div>
-
-        <!-- ROOM SELECTION -->
-        <div class="fg" style="margin-top:0.5rem;">
-          <label style="font-size:0.68rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--bark-mid);display:block;margin-bottom:0.6rem;">
-            Which rooms would you like to enhance? <span style="color:#C4622D;">*</span>
-          </label>
-          <p style="font-size:0.82rem;color:var(--bark-mid);font-weight:300;margin-bottom:1rem;line-height:1.5;">Select all that apply — this helps us recommend the right package for you.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;" id="roomGrid">
-            <label class="room-tile">
-              <input type="checkbox" value="main-living" style="display:none;" onchange="updateRoomCount()">
-              <div class="rt-inner">
-                <span class="rt-icon">🏡</span>
-                <span class="rt-name">Main living area</span>
-                <span class="rt-desc">Sofa, dining & open kitchen zone</span>
-              </div>
-            </label>
-            <label class="room-tile">
-              <input type="checkbox" value="master-bedroom" style="display:none;" onchange="updateRoomCount()">
-              <div class="rt-inner">
-                <span class="rt-icon">🛏️</span>
-                <span class="rt-name">Master bedroom</span>
-                <span class="rt-desc">Your main sleeping sanctuary</span>
-              </div>
-            </label>
-            <label class="room-tile">
-              <input type="checkbox" value="second-bedroom" style="display:none;" onchange="updateRoomCount()">
-              <div class="rt-inner">
-                <span class="rt-icon">🛏️</span>
-                <span class="rt-name">Second bedroom</span>
-                <span class="rt-desc">Guest room or spare space</span>
-              </div>
-            </label>
-            <label class="room-tile">
-              <input type="checkbox" value="kids-room" style="display:none;" onchange="updateRoomCount()">
-              <div class="rt-inner">
-                <span class="rt-icon">🧸</span>
-                <span class="rt-name">Kids room / play area</span>
-                <span class="rt-desc">Fun, safe & deposit-friendly</span>
-              </div>
-            </label>
-            <label class="room-tile">
-              <input type="checkbox" value="bathroom" style="display:none;" onchange="updateRoomCount()">
-              <div class="rt-inner">
-                <span class="rt-icon">🚿</span>
-                <span class="rt-name">Bathroom</span>
-                <span class="rt-desc">Mirrors, tiles & accessories</span>
-              </div>
-            </label>
-            <label class="room-tile">
-              <input type="checkbox" value="entrance" style="display:none;" onchange="updateRoomCount()">
-              <div class="rt-inner">
-                <span class="rt-icon">🚪</span>
-                <span class="rt-name">Entrance & hallway</span>
-                <span class="rt-desc">The first impression</span>
-              </div>
-            </label>
-            <label class="room-tile">
-              <input type="checkbox" value="home-office" style="display:none;" onchange="updateRoomCount()">
-              <div class="rt-inner">
-                <span class="rt-icon">💻</span>
-                <span class="rt-name">Dedicated home office</span>
-                <span class="rt-desc">Separate room or study corner</span>
-              </div>
-            </label>
-            <label class="room-tile">
-              <input type="checkbox" value="balcony" style="display:none;" onchange="updateRoomCount()">
-              <div class="rt-inner">
-                <span class="rt-icon">🌿</span>
-                <span class="rt-name">Balcony or terrace</span>
-                <span class="rt-desc">Outdoor styling</span>
-              </div>
-            </label>
-          </div>
-          <div id="room-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.5rem;font-weight:300;"></div>
+          <label for="pc">Postcode <span style="color:#C4622D;">*</span></label>
+          <input type="text" id="pc" placeholder="e.g. E14 5AB" autocomplete="postal-code" required oninput="clearErr('pc-err')">
+          <div id="pc-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
         </div>
 
         <button class="f-submit" type="button" onclick="doRegister()" style="margin-top:1.5rem;">Create Free Account & See My Results</button>
@@ -1525,6 +1527,10 @@ function isValidPhone(v) {
   var stripped = v.replace(/[\s\-().]/g,'');
   return /^(\+?\d{10,15})$/.test(stripped);
 }
+function isValidUKPostcode(v) {
+  var t=(v||'').trim().toUpperCase();
+  return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/.test(t) || /^[A-Z]{1,2}\d[A-Z\d]?$/.test(t);
+}
 
 /* ============================================================
    ROOM TILE SELECTION
@@ -1572,56 +1578,7 @@ function getSelectedRooms() {
 /* ============================================================
    AUTH
    ============================================================ */
-function doRegister() {
-  var ok = true;
-  var fn = (document.getElementById('fn') || {}).value || '';
-  var em = (document.getElementById('em') || {}).value || '';
-  var ph = (document.getElementById('ph') || {}).value || '';
-  var pw = (document.getElementById('pw') || {}).value || '';
-  var rooms = getSelectedRooms();
-
-  // Validate email
-  if (!em.trim() || !isValidEmail(em)) {
-    showErr('em-err', em.trim() ? 'Please enter a valid email address (e.g. your@email.com)' : 'Email address is required');
-    ok = false;
-  }
-
-  // Validate phone
-  if (!ph.trim()) {
-    showErr('ph-err', 'Phone number is required — we use this to keep you updated on your order');
-    ok = false;
-  } else if (!isValidPhone(ph)) {
-    showErr('ph-err', 'Please enter a valid UK or international phone number (e.g. +44 7700 123456)');
-    ok = false;
-  }
-
-  // Validate password
-  if (!pw || pw.length < 8) {
-    showErr('pw-err', 'Password must be at least 8 characters');
-    ok = false;
-  }
-
-  // Validate room selection
-  if (rooms.length === 0) {
-    var roomErr = document.getElementById('room-err');
-    if (roomErr) { roomErr.textContent = 'Please select at least one room you\'d like to enhance'; roomErr.style.display = 'block'; }
-    ok = false;
-  }
-
-  if (!ok) return;
-
-  // All valid — unlock and proceed
-  showPage('account');
-
-  // Show quiz result if they came from quiz
-  if (Object.keys(quizAnswers).length > 0) {
-    quizStep = questions.length + 1;
-    showPage('quiz');
-    renderQuiz();
-  }
-
-  alert('🎉 Welcome to The Renter\'s Edit! Your account is created. Check your email for a confirmation — your Design Playbook will be delivered here once your order is confirmed.');
-}
+/* legacy doRegister consolidated into window.doRegister (Supabase) */
 
 function doLogin() {
   var em = (document.getElementById('lem') || {}).value || '';
@@ -1703,7 +1660,7 @@ var questions = [
   {
     id: 'life',
     emoji: '☕',
-    title: 'How do you <em>actually use</em> your flat?',
+    title: 'How do you <em>actually use</em> your space?',
     sub: 'Be honest — we design around real life, not Instagram life.',
     options: [
       { icon: '💻', title: 'Work from home a lot', desc: 'Need it functional as much as beautiful', val: 'wfh' },
@@ -1790,28 +1747,94 @@ var personas = {
   }
 };
 
-function getPersona() {
-  var v = quizAnswers.vibe || '';
-  var l = quizAnswers.life || '';
-  var s = quizAnswers.style || '';
-  var b = quizAnswers.bother || '';
-  var bArr = b.split(',');  // multi-select — check if array includes value
-  var bHas = function(v) { return bArr.indexOf(v) > -1; };
-  var lean = parseInt(quizAnswers.lean || 5);
-
-  if (s === 'jewel') return 'jewel';
-  if (s === 'dopamine' || (v === 'maximalist' && lean >= 6)) return 'maximalist';
-  if (lean >= 8) return 'maximalist';
-  if (s === 'biophilic' || v === 'plants') return 'plants';
-  if (s === 'calm' || s === 'fresh') {
-    if (l === 'wfh' || l === 'social') return 'corporate';
-    return 'minimalist';
+/* Persona scoring — based only on vibe, palette (style), life and bother.
+   Highest total wins; ties resolved by PERSONA_PRIORITY order. */
+var PERSONA_SCORES = {
+  vibe: {                                  /* dream feel  (weight 3) */
+    minimalist: { minimalist: 3 },
+    cosy:       { cosy: 3 },
+    plants:     { plants: 3 },
+    maximalist: { maximalist: 3 }
+  },
+  style: {                                 /* palette  (weight 4 = strongest signal) */
+    calm:      { corporate: 4, minimalist: 2 },
+    cosy:      { cosy: 4 },
+    dopamine:  { maximalist: 4 },
+    fresh:     { minimalist: 4, cosy: 1 },
+    biophilic: { plants: 4 },
+    jewel:     { jewel: 4 }
+  },
+  life: {                                  /* use of space  (weight 2) */
+    wfh:       { corporate: 2 },
+    relax:     { cosy: 2 },
+    social:    { corporate: 1, maximalist: 1 },
+    sanctuary: { minimalist: 1, cosy: 1 }
+  },
+  bother: {                                /* each selected  (weight 1) */
+    storage:   { corporate: 1 },
+    bland:     { maximalist: 1, jewel: 1 },
+    lighting:  { cosy: 1 },
+    furniture: { corporate: 1 },
+    lifeless:  { plants: 1, cosy: 1 },
+    space:     { minimalist: 1 }
   }
-  if (lean <= 3) return 'minimalist';
-  if (s === 'cosy' || v === 'cosy' || l === 'sanctuary' || bHas('lifeless')) return 'cosy';
-  if (v === 'minimalist' || l === 'wfh') return 'minimalist';
-  if (l === 'social') return 'corporate';
-  return 'cosy';
+};
+var PERSONA_PRIORITY = ['jewel','plants','maximalist','cosy','corporate','minimalist'];
+
+var PALETTE_INFO = {
+  calm:      { name:'Calm & Grounded',   colors:['#A8BDD0','#C0C8D8','#8FA8B8','#D0D4DC'], note:'cool blues, powder grey and icy mist' },
+  cosy:      { name:'Warm & Amber',      colors:['#C97850','#D4A050','#7A4A28','#D4880A'], note:'burnt sienna, honey gold and walnut' },
+  dopamine:  { name:'Bold & Electric',   colors:['#F0C020','#E84878','#20A8D0','#A8C820'], note:'sunshine yellow, fuchsia, teal and lime' },
+  fresh:     { name:'Dreamy & Romantic', colors:['#E8C0B8','#DDD0E8','#A8D0C8','#F8E0A0'], note:'blush rose, soft lavender and duck egg' },
+  biophilic: { name:'Earthy & Organic',  colors:['#7A9E7E','#C8956A','#4A6A3A','#C8A060'], note:'sage, terracotta and deep olive' },
+  jewel:     { name:'Rich & Jewelled',   colors:['#6B0A2A','#C9A84C','#1A4A35','#4A1A6B'], note:'burgundy, antique gold and palace green' }
+};
+var BOTHER_FOCUS = {
+  storage:  ['Smart, deposit-safe storage','Clever ways to hide the clutter without drilling a thing.'],
+  bland:    ['Injecting personality','Colour, art and texture to lift that beige hotel-corridor feeling.'],
+  lighting: ['Layered lighting','Warm lamps and plug-in fittings to replace the single harsh bulb.'],
+  furniture:['Working around landlord pieces','Styling tricks and covers to disguise furniture you never chose.'],
+  lifeless: ['Warmth and life','Plants, natural texture and softness to bring soul to a blank box.'],
+  space:    ['Zoning awkward corners','Rugs, screens and clever placement to make odd layouts work.']
+};
+var LIFE_NOTE = {
+  wfh:       'Because you work from home, we\'ll balance beauty with a workspace that genuinely functions.',
+  relax:     'Since your flat is mainly for relaxing, we\'ll lean into comfort and wind-down zones.',
+  social:    'As you entertain often, we\'ll make sure it looks impressive when people come over.',
+  sanctuary: 'As your flat is your private sanctuary, we\'ll keep it peaceful and restorative.'
+};
+
+function getPersona() {
+  var scores = { minimalist:0, cosy:0, maximalist:0, plants:0, corporate:0, jewel:0 };
+  function add(map){ if(!map) return; for (var k in map){ if (scores[k]!=null) scores[k]+=map[k]; } }
+  add(PERSONA_SCORES.vibe[quizAnswers.vibe]);
+  add(PERSONA_SCORES.style[quizAnswers.style]);
+  add(PERSONA_SCORES.life[quizAnswers.life]);
+  (quizAnswers.bother||'').split(',').forEach(function(b){ add(PERSONA_SCORES.bother[b]); });
+  var best = PERSONA_PRIORITY[PERSONA_PRIORITY.length-1], bestScore = -1;
+  PERSONA_PRIORITY.forEach(function(p){ if (scores[p] > bestScore){ bestScore = scores[p]; best = p; } });
+  return best;
+}
+
+function quizResultSnapshot(){
+  try{
+    if (typeof quizAnswers!=='object') return null;
+    var hasAny = quizAnswers.vibe||quizAnswers.life||quizAnswers.style||quizAnswers.bother||quizAnswers.lean;
+    if (!hasAny) return null;
+    var key = (typeof getPersona==='function') ? getPersona() : '';
+    var persona = (key && typeof personas!=='undefined' && personas[key]) ? personas[key] : null;
+    return {
+      archetype: persona ? persona.name : key,
+      persona_key: key,
+      lean: parseInt(quizAnswers.lean||5),
+      palette: quizAnswers.style||'',
+      answers: quizAnswers
+    };
+  }catch(e){ return null; }
+}
+function saveQuizLocal(){
+  try{ var snap=quizResultSnapshot(); if(snap){ localStorage.setItem('tre_pending_quiz', JSON.stringify(snap)); } }catch(e){}
+  try{ if(window.attachPendingQuiz) window.attachPendingQuiz(); }catch(e){}
 }
 
 function renderQuiz() {
@@ -2078,6 +2101,8 @@ function renderQuiz() {
   } else if (quizStep === questions.length) {
     fill.style.width = '90%';
     txt.textContent = 'One last step...';
+    saveQuizLocal();
+    if (window.__loggedIn) { quizStep = questions.length + 1; return renderQuiz(); }
     content.innerHTML =
       '<div class="q-card">' +
       '<span class="q-emoji">🔓</span>' +
@@ -2103,6 +2128,11 @@ function renderQuiz() {
       ? 'You love layers, colour and personality — more is more in your world.'
       : 'You sit beautifully in the middle — curated but never sparse.';
 
+    var pal = (typeof PALETTE_INFO!=='undefined') ? PALETTE_INFO[quizAnswers.style] : null;
+    var palSwatches = pal ? pal.colors.map(function(c){ return '<div style="width:30px;height:30px;border-radius:50%;background:'+c+';box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>'; }).join('') : '';
+    var botherArr = (quizAnswers.bother||'').split(',').filter(Boolean);
+    var focusItems = botherArr.map(function(b){ var f=(typeof BOTHER_FOCUS!=='undefined')?BOTHER_FOCUS[b]:null; if(!f) return ''; return '<div style="display:flex;gap:0.6rem;margin-bottom:0.5rem;align-items:flex-start;"><span style="color:var(--sage-light);flex-shrink:0;line-height:1.5;">◆</span><div><div style="font-size:0.85rem;color:white;font-weight:400;">'+f[0]+'</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;">'+f[1]+'</div></div></div>'; }).join('');
+    var lifeNote = (typeof LIFE_NOTE!=='undefined') ? (LIFE_NOTE[quizAnswers.life]||'') : '';
     content.innerHTML =
       '<div class="q-result">' +
       '<div class="qr-persona">Your Renter Personality</div>' +
@@ -2114,12 +2144,16 @@ function renderQuiz() {
       '<div style="font-size:0.85rem;color:rgba(255,255,255,0.65);font-weight:300;">' + leanDesc + '</div></div>' +
       '</div>' +
       '<div class="qr-traits">' + persona.traits.map(function(t) { return '<span class="qr-trait">' + t + '</span>'; }).join('') + '</div>' +
-      '<div class="qr-rec">' +
-      '<div class="qr-rec-label">Recommended Package</div>' +
-      '<div class="qr-rec-pkg">' + persona.pkg + '</div>' +
-      '<div class="qr-rec-price">' + persona.price + '</div>' +
-      '<div class="qr-rec-why">' + persona.why + '</div>' +
-      '</div>' +
+      (pal ? '<div style="text-align:left;background:rgba(255,255,255,0.05);border-radius:10px;padding:1.1rem 1.3rem;margin-bottom:1.2rem;">' +
+        '<div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.6rem;">Your palette · ' + pal.name + '</div>' +
+        '<div style="display:flex;gap:8px;margin-bottom:0.6rem;">' + palSwatches + '</div>' +
+        '<div style="font-size:0.82rem;color:rgba(255,255,255,0.6);font-weight:300;">A palette of ' + pal.note + '.</div>' +
+      '</div>' : '') +
+      (focusItems ? '<div style="text-align:left;margin-bottom:1.3rem;">' +
+        '<div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.7rem;">Where we\'d focus first</div>' +
+        focusItems +
+      '</div>' : '') +
+      (lifeNote ? '<p style="text-align:left;font-size:0.85rem;color:rgba(255,255,255,0.65);font-weight:300;font-style:italic;margin-bottom:1.4rem;border-left:2px solid var(--sage);padding-left:0.9rem;">' + lifeNote + '</p>' : '') +
       '<div style="display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;">' +
       '<button type="button" class="btn btn-dark" onclick="showPage(\'calc\')">Book Your Edit →</button>' +
       '<button type="button" class="btn btn-outline" onclick="showPage(\'pricing\')">See All Packages</button>' +
@@ -2339,32 +2373,120 @@ function renderResults(data) {
 /* ============================================================
    INTAKE FORM
    ============================================================ */
-function toggleStyleChip(btn) {
-  var isOn = btn.style.background === 'var(--sage-dark)' || btn.classList.contains('on');
-  if (isOn) {
-    btn.style.background = 'white';
-    btn.style.color = 'var(--bark)';
-    btn.style.borderColor = 'var(--linen)';
-    btn.classList.remove('on');
-  } else {
-    btn.style.background = 'var(--sage-dark)';
-    btn.style.color = 'white';
-    btn.style.borderColor = 'var(--sage-dark)';
-    btn.classList.add('on');
-  }
+var STYLE_ACCENTS = {
+  'Neutrals & cream':'#EDE8E0','Earthy & warm':'#8B6F4E','Greens & sage':'#7A9E7E','Blues & slate':'#6B8CAE',
+  'Dark & moody':'#2A2420','Soft & blush':'#E8B4C8','Bold & eclectic':'#9B6FA0',
+  'No pattern — keep it plain':'#C9C3B8','Geometric':'#6B8CAE','Floral':'#D48CA8','Abstract':'#9B6FA0',
+  'Stripe or linear':'#C9A84C','Textured / tactile':'#A88A6A','Botanical / nature':'#7A9E7E',
+  'Natural — wood, rattan, linen, cotton':'#A9805A','Sleek — metal, glass, ceramic':'#7D8B95',
+  'Soft — velvet, boucle, sheepskin':'#9B6A7D','Mixed — I like contrast':'#6B5E58',
+  'Cosy & warm':'#C98A4C','Clean & airy':'#A9C5D6','Dramatic & rich':'#5A3A5A','Playful & eclectic':'#D97A5A','Minimal & refined':'#9A948C'
+};
+function styleAccentFor(btn){
+  var t = (btn.textContent||'').replace(/^[^A-Za-z]+/,'').trim();
+  if (STYLE_ACCENTS[t]) return STYLE_ACCENTS[t];
+  var dot = btn.querySelector('span[style*="border-radius:50%"]');
+  if (dot && dot.style && dot.style.background && dot.style.background.indexOf('#')===0) return dot.style.background;
+  return '#4F7153';
+}
+function styleTextOn(hex){
+  var c=(hex||'').replace('#',''); if(c.length<6) return '#ffffff';
+  var r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16);
+  return ((0.299*r+0.587*g+0.114*b)/255>0.62)?'#2A2420':'#ffffff';
+}
+function paintChip(btn,on){
+  if(on){ var a=styleAccentFor(btn); btn.style.background=a; btn.style.borderColor=a; btn.style.color=styleTextOn(a); btn.style.boxShadow='inset 0 0 0 1px rgba(0,0,0,0.06)'; btn.classList.add('on'); }
+  else { btn.style.background='white'; btn.style.borderColor='var(--linen)'; btn.style.color='var(--bark)'; btn.style.boxShadow='none'; btn.classList.remove('on'); }
+}
+function toggleStyleChip(btn){ paintChip(btn, !btn.classList.contains('on')); }
+
+function selectVibe(btn){
+  document.querySelectorAll('.vibe-chip').forEach(function(b){ paintChip(b,false); });
+  paintChip(btn,true);
 }
 
-function selectVibe(btn) {
-  document.querySelectorAll('.vibe-chip').forEach(function(b) {
-    b.style.background = 'white';
-    b.style.color = 'var(--bark)';
-    b.style.borderColor = 'var(--linen)';
-    b.classList.remove('on');
+var IF_ITEM_CAPS = { single:1, trio:3, seven:7, full:0 };
+var IF_INPUT_STYLE = "flex:1;min-width:0;padding:0.65rem 0.9rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.85rem;color:var(--bark);background:var(--cream);outline:none;transition:border-color 0.2s;";
+
+function ifItemCount(){ return document.querySelectorAll('#if-items .if-item-row').length; }
+function makeItemBox(idx, removable){
+  var row = document.createElement('div');
+  row.className = 'if-item-row';
+  row.style.cssText = 'display:flex;gap:0.5rem;margin-bottom:0.5rem;align-items:center;';
+  var inp = document.createElement('input');
+  inp.type='text'; inp.className='if-item-dim';
+  inp.placeholder = 'Item '+idx+' — e.g. Chest of drawers: 80cm W × 75cm H × 45cm D';
+  inp.style.cssText = IF_INPUT_STYLE;
+  inp.onfocus = function(){ this.style.borderColor='var(--sage-dark)'; };
+  inp.onblur = function(){ this.style.borderColor='var(--linen)'; };
+  row.appendChild(inp);
+  if (removable){
+    var rm = document.createElement('button');
+    rm.type='button'; rm.className='if-item-remove'; rm.textContent='×'; rm.title='Remove item';
+    rm.style.cssText='flex-shrink:0;width:34px;height:34px;border:0.5px solid var(--linen);background:white;border-radius:6px;color:var(--bark-mid);font-size:1.2rem;line-height:1;cursor:pointer;';
+    rm.onclick=function(){ removeItemBox(this); };
+    row.appendChild(rm);
+  }
+  return row;
+}
+function renumberItems(){
+  document.querySelectorAll('#if-items .if-item-dim').forEach(function(inp,i){
+    inp.placeholder = inp.placeholder.replace(/^Item \d+/, 'Item '+(i+1));
   });
-  btn.style.background = 'var(--sage-dark)';
-  btn.style.color = 'white';
-  btn.style.borderColor = 'var(--sage-dark)';
-  btn.classList.add('on');
+}
+function refreshItemUI(){
+  var pkg = document.querySelector('input[name="package"]:checked');
+  var cap = pkg ? (IF_ITEM_CAPS[pkg.value]||1) : 1;
+  var count = ifItemCount();
+  document.querySelectorAll('#if-items .if-item-remove').forEach(function(b){ b.style.display = (count>1)?'block':'none'; });
+  var addBtn = document.getElementById('if-add-item');
+  if (addBtn){
+    if (cap>1 && count<cap){ addBtn.style.display='inline-block'; addBtn.textContent='+ Add another item ('+count+'/'+cap+')'; }
+    else { addBtn.style.display='none'; }
+  }
+}
+function addItemBox(){
+  var pkg = document.querySelector('input[name="package"]:checked');
+  var cap = pkg ? (IF_ITEM_CAPS[pkg.value]||1) : 1;
+  var wrap = document.getElementById('if-items');
+  if (!wrap || ifItemCount()>=cap) return;
+  wrap.appendChild(makeItemBox(ifItemCount()+1, true));
+  renumberItems(); refreshItemUI();
+}
+function removeItemBox(btn){
+  var row = btn.closest('.if-item-row');
+  if (row && ifItemCount()>1){ row.remove(); renumberItems(); refreshItemUI(); }
+}
+function renderItemBoxesForPackage(){
+  var pkg = document.querySelector('input[name="package"]:checked');
+  var wrap = document.getElementById('if-items');
+  if (!wrap) return;
+  var cap = pkg ? (IF_ITEM_CAPS[pkg.value]||1) : 1;
+  var existing = Array.from(document.querySelectorAll('#if-items .if-item-dim')).map(function(i){return i.value;});
+  wrap.innerHTML='';
+  var start = cap<1 ? 0 : Math.min(Math.max(existing.length,1), cap);
+  for (var i=0;i<start;i++){
+    var box = makeItemBox(i+1, cap>1);
+    wrap.appendChild(box);
+    box.querySelector('.if-item-dim').value = existing[i]||'';
+  }
+  refreshItemUI();
+}
+function toggleIfRoom(el){ el.classList.toggle('selected'); }
+function getIfRooms(){ return Array.from(document.querySelectorAll('#if-room-grid .if-room-tile.selected')).map(function(t){return t.getAttribute('data-room');}); }
+function collectDimsValue(){
+  var pkg = document.querySelector('input[name="package"]:checked');
+  if (pkg && pkg.value==='full'){ return getIfRooms().join(', '); }
+  return Array.from(document.querySelectorAll('#if-items .if-item-dim')).map(function(i){return i.value.trim();}).filter(Boolean).join(' | ');
+}
+function validateEmailLive(){
+  var f = document.getElementById('if-email'); var err = document.getElementById('if-email-err');
+  if (!f) return true;
+  var v = f.value.trim(); var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  if (v===''){ if(err) err.style.display='none'; f.style.borderColor='var(--linen)'; return false; }
+  if (ok){ if(err) err.style.display='none'; f.style.borderColor='var(--sage-dark)'; }
+  else { if(err) err.style.display='block'; f.style.borderColor='#c0392b'; }
+  return ok;
 }
 
 function updateDimsLabel() {
@@ -2372,46 +2494,60 @@ function updateDimsLabel() {
   if (!pkg) return;
   var label = document.getElementById('if-dims-label');
   var hint = document.getElementById('if-dims-hint');
-  var field = document.getElementById('if-dims');
+  var dimsWrap = document.getElementById('if-dims-wrap');
+  var roomsWrap = document.getElementById('if-rooms-wrap');
   var reversalLabel = document.getElementById('if-reversal-label');
   var reversalTitle = document.getElementById('if-reversal-title');
   var reversal = document.getElementById('if-reversal');
 
   if (pkg.value === 'full') {
-    if (label) label.childNodes[0].textContent = 'Room dimensions ';
-    if (hint) hint.textContent = '(width × length for each room)';
-    if (field) field.placeholder = 'e.g. Living room: 4m × 3.5m, Bedroom: 3m × 3m';
-    // Full Edit — reversal included free
-    if (reversalLabel) { reversalLabel.style.opacity = '0.55'; reversalLabel.style.pointerEvents = 'none'; }
+    if (dimsWrap) dimsWrap.style.display='none';
+    if (roomsWrap) roomsWrap.style.display='block';
+    if (reversalLabel) { reversalLabel.style.opacity='0.55'; reversalLabel.style.pointerEvents='none'; }
     if (reversalTitle) reversalTitle.innerHTML = '🗝️ Move-Out Reversal Guide — included free with The Full Edit';
-    if (reversal) reversal.checked = false;
+    if (reversal) reversal.checked=false;
   } else {
-    if (label) label.childNodes[0].textContent = 'Item dimensions ';
-    if (hint) hint.textContent = '(width × height × depth for each item)';
-    if (field) field.placeholder = 'e.g. Chest of drawers: 80cm wide × 75cm tall × 45cm deep';
-    if (reversalLabel) { reversalLabel.style.opacity = '1'; reversalLabel.style.pointerEvents = 'auto'; }
+    if (dimsWrap) dimsWrap.style.display='block';
+    if (roomsWrap) roomsWrap.style.display='none';
+    if (label) label.childNodes[0].textContent='Item dimensions ';
+    if (hint) hint.textContent='(width × height × depth for each item)';
+    if (reversalLabel) { reversalLabel.style.opacity='1'; reversalLabel.style.pointerEvents='auto'; }
     if (reversalTitle) reversalTitle.innerHTML = '🗝️ Add Move-Out Reversal Guide <span style="color:var(--gold);font-weight:500;">+£25</span>';
+    renderItemBoxesForPackage();
   }
 
-  // Highlight selected package card
-  document.querySelectorAll('.pkg-opt').forEach(function(l) {
-    l.style.borderColor = 'var(--linen)';
-    l.style.background = 'white';
-  });
+  document.querySelectorAll('.pkg-opt').forEach(function(l){ l.style.borderColor='var(--linen)'; l.style.background='white'; });
   var chosen = pkg.closest('.pkg-opt');
-  if (chosen) { chosen.style.borderColor = 'var(--sage-dark)'; chosen.style.background = 'var(--sage-pale)'; }
+  if (chosen){ chosen.style.borderColor='var(--sage-dark)'; chosen.style.background='var(--sage-pale)'; }
 }
 
+var IF_MAX_PHOTOS = 8, IF_MAX_BYTES = 5*1024*1024;
+var ifPhotoStore = [];
 function handleIntakePhotos(files) {
   var list = document.getElementById('if-photo-list');
+  var note = document.getElementById('if-photo-note');
+  var msgs = [];
+  Array.from(files).forEach(function(f) {
+    if (f.size > IF_MAX_BYTES){ msgs.push('"'+f.name+'" is over 5 MB and was skipped.'); return; }
+    if (ifPhotoStore.length >= IF_MAX_PHOTOS){ msgs.push('You can upload up to '+IF_MAX_PHOTOS+' photos — extra files were skipped.'); return; }
+    if (ifPhotoStore.some(function(x){return x.name===f.name && x.size===f.size;})) return;
+    ifPhotoStore.push(f);
+  });
   if (!list) return;
   list.innerHTML = '';
-  Array.from(files).forEach(function(f) {
+  ifPhotoStore.forEach(function(f, idx) {
     var tag = document.createElement('span');
-    tag.style.cssText = 'display:inline-flex;align-items:center;gap:0.3rem;background:var(--sage-pale);border:0.5px solid var(--moss);border-radius:100px;padding:0.2rem 0.6rem;font-size:0.75rem;color:var(--sage-dark);';
-    tag.textContent = '📷 ' + f.name;
+    tag.style.cssText = 'display:inline-flex;align-items:center;gap:0.35rem;background:var(--sage-pale);border:0.5px solid var(--moss);border-radius:100px;padding:0.2rem 0.5rem 0.2rem 0.7rem;font-size:0.75rem;color:var(--sage-dark);';
+    tag.appendChild(document.createTextNode('📷 ' + f.name));
+    var x = document.createElement('button');
+    x.type='button'; x.textContent='×'; x.title='Remove';
+    x.style.cssText='border:none;background:none;color:var(--sage-dark);font-size:1rem;line-height:1;cursor:pointer;padding:0 0.1rem;';
+    x.onclick=function(){ ifPhotoStore.splice(idx,1); handleIntakePhotos([]); };
+    tag.appendChild(x);
     list.appendChild(tag);
   });
+  if (note){ if (msgs.length){ note.textContent=msgs.join(' '); note.style.display='block'; } else { note.style.display='none'; } }
+  var inp=document.getElementById('if-photos'); if(inp) inp.value='';
 }
 
 function submitIntakeForm() {
@@ -2478,6 +2614,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderQuiz();
   initRoomTiles();
   initAnalyserChips();
+  renderItemBoxesForPackage();
 });
 </script>
 
@@ -2488,8 +2625,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 (function () {
   // 1) PASTE YOUR VALUES  (Supabase dashboard -> Project Settings -> API)
-  var SUPABASE_URL = 'https://YOUR-PROJECT.supabase.co';
-  var SUPABASE_ANON_KEY = 'YOUR-PUBLIC-ANON-KEY';
+  var SUPABASE_URL = 'https://nmufovilzksxcqwqgchf.supabase.co/rest/v1/';
+  var SUPABASE_ANON_KEY = 'sb_publishable_6CWn5DybkHZg7ltxogtEMw_kLjorEpT';
 
   var CONFIGURED = SUPABASE_URL.indexOf('YOUR-PROJECT') === -1 &&
                    SUPABASE_ANON_KEY.indexOf('YOUR-') === -1;
@@ -2508,29 +2645,50 @@ document.addEventListener('DOMContentLoaded', function() {
     var greet = document.getElementById('acct-greeting');
     var user = null;
     if (sb) { try { var r = await sb.auth.getUser(); user = r && r.data ? r.data.user : null; } catch(e){} }
-    var loggedIn = !!user;
+    var loggedIn = !!user; window.__loggedIn = loggedIn;
     if (signin) signin.style.display = loggedIn ? 'none' : '';
     if (account) account.style.display = loggedIn ? '' : 'none';
     if (greet && loggedIn) {
       var nm = (user.user_metadata && user.user_metadata.first_name) || (user.email||'').split('@')[0];
       greet.textContent = 'Welcome back, ' + nm + ' — every brief you\'ve sent and where it\'s up to.';
     }
+    try { if (window.attachPendingQuiz) await window.attachPendingQuiz(user); } catch(e){}
+    try { if (window.loadStyleProfile) await window.loadStyleProfile(); } catch(e){}
   }
   window.refreshAuthUI = refreshAuthUI;
 
   // ---- Register ------------------------------------------------------
   window.doRegister = async function () {
     var fn = val('fn'), ln = val('ln'), em = val('em'), ph = val('ph'), pw = val('pw'), pc = val('pc');
-    if (!fn || !em || !pw) { alert('Please fill in your name, email and a password.'); return; }
-    if (pw.length < 8) { alert('Password must be at least 8 characters.'); return; }
+    var ok = true;
+    if (!fn) { showErrSafe('fn-err','First name is required'); ok=false; }
+    if (!ln) { showErrSafe('ln-err','Last name is required'); ok=false; }
+    if (!em || !isValidEmail(em)) { showErrSafe('em-err', em ? 'Please enter a valid email address' : 'Email address is required'); ok=false; }
+    if (!ph) { showErrSafe('ph-err','Phone number is required'); ok=false; }
+    else if (!isValidPhone(ph)) { showErrSafe('ph-err','Please enter a valid UK or international phone number'); ok=false; }
+    if (!pc) { showErrSafe('pc-err','Postcode is required'); ok=false; }
+    else if (!isValidUKPostcode(pc)) { showErrSafe('pc-err','Please enter a valid UK postcode (e.g. E14 5AB)'); ok=false; }
+    if (!pw || pw.length < 8) { showErrSafe('pw-err','Password must be at least 8 characters'); ok=false; }
+    if (!ok) return;
     if (!sb) { alert('Account created! (Connect Supabase to make this live.)'); showPage('account'); refreshAuthUI(); return; }
     var res = await sb.auth.signUp({
       email: em, password: pw,
-      options: { data: { first_name: fn, last_name: ln, phone: ph, postcode: pc } }
+      options: { data: { first_name: fn, last_name: ln, full_name: (fn+' '+ln).trim(), phone: ph, postcode: pc } }
     });
-    if (res.error) { alert(res.error.message); return; }
+    if (res.error) {
+      var m=(res.error.message||'').toLowerCase();
+      if (m.indexOf('already')!==-1 || m.indexOf('registered')!==-1 || m.indexOf('exists')!==-1) {
+        showErrSafe('em-err','An account with this email already exists — please sign in.');
+        var lt=document.querySelectorAll('.a-tab'); if(lt && lt[1]) switchTab('log', lt[1]);
+      } else { showErrSafe('em-err', res.error.message); }
+      return;
+    }
     if (res.data && res.data.session) {
-      await refreshAuthUI(); showPage('account'); loadEdits();
+      await refreshAuthUI();
+      try { await window.attachPendingQuiz(res.data.user); } catch(e){}
+      if (typeof quizAnswers==='object' && Object.keys(quizAnswers).length>0 && typeof questions!=='undefined') {
+        quizStep = questions.length + 1; showPage('quiz'); if(typeof renderQuiz==='function') renderQuiz();
+      } else { showPage('account'); loadEdits(); }
     } else {
       alert('Almost there — check your inbox to confirm your email, then sign in.');
     }
@@ -2543,6 +2701,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!sb) { alert('Signed in! (Connect Supabase to make this live.)'); showPage('account'); refreshAuthUI(); return; }
     var res = await sb.auth.signInWithPassword({ email: em, password: pw });
     if (res.error) { showErrSafe('lem-err', res.error.message); return; }
+    try { await window.attachPendingQuiz(res.data.user); } catch(e){}
     await refreshAuthUI(); showPage('account'); loadEdits();
   };
 
@@ -2556,20 +2715,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // ---- Submit a brief (Book Your Edit) ------------------------------
   window.submitIntakeForm = async function () {
-    var name = val('if-name'), email = val('if-email'), dims = val('if-dims');
+    var first = val('if-first'), last = val('if-last'), email = val('if-email'), phone = val('if-phone'), postcode = val('if-postcode');
+    var name = (first + ' ' + last).trim();
     var pkgEl = document.querySelector('input[name="package"]:checked');
-    if (!name) { alert('Please enter your name.'); return; }
+    if (!first) { alert('Please enter your first name.'); return; }
+    if (!last) { alert('Please enter your last name.'); return; }
     if (!email) { alert('Please enter your email address.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { validateEmailLive(); var ef=document.getElementById('if-email'); if(ef) ef.focus(); return; }
+    if (!phone) { alert('Please enter your phone number.'); return; }
+    if (!postcode) { alert('Please enter your postcode.'); return; }
+    if (typeof isValidUKPostcode==='function' && !isValidUKPostcode(postcode)) { alert('Please enter a valid UK postcode (e.g. E14 5AB).'); return; }
     if (!pkgEl) { alert('Please select a package before submitting.'); return; }
-    if (!dims) { alert('Please enter the dimensions of your space or item.'); return; }
+    var dims = collectDimsValue();
+    if (!dims) { alert(pkgEl.value==='full' ? 'Please select at least one room you\'d like to enhance.' : 'Please enter dimensions for at least one item.'); return; }
+    var pw = val('if-password');
+    if (!pw || pw.length < 6) { alert('Please choose a password (at least 6 characters) — submitting creates your account.'); return; }
 
     var row = {
-      package: pkgEl.value, full_name: name, email: email, phone: val('if-phone'),
-      budget: val('if-budget'), dimensions: dims, vibe: val('if-vibe'),
+      package: pkgEl.value, first_name: first, last_name: last, full_name: name, email: email, phone: val('if-phone'),
+      postcode: val('if-postcode'), budget: val('if-budget'), dimensions: dims,
+      restrictions: val('if-restrictions'), vibe: val('if-vibe'),
       colours: val('if-colours'), materials: val('if-materials'),
       patterns: val('if-patterns'), avoid: val('if-avoid'), notes: val('if-notes'),
       reversal_addon: !!(document.getElementById('if-reversal') && document.getElementById('if-reversal').checked),
+      marketing_opt_in: !!(document.getElementById('if-marketing') && document.getElementById('if-marketing').checked),
       status: 'submitted'
     };
 
@@ -2578,15 +2747,40 @@ document.addEventListener('DOMContentLoaded', function() {
       if (ok) { ok.style.display='block'; ok.scrollIntoView({behavior:'smooth',block:'center'}); }
       return;
     }
+    // Reuse an existing session if they're already signed in; otherwise create/sign in.
     var u = await sb.auth.getUser();
     var user = u && u.data ? u.data.user : null;
+
     if (!user) {
-      alert('Please create an account or sign in so we can save your brief to your dashboard.');
-      showPage('register'); return;
+      var su = await sb.auth.signUp({
+        email: email, password: pw,
+        options: { data: { first_name: first, last_name: last, full_name: name, phone: val('if-phone'), postcode: val('if-postcode'), marketing_opt_in: row.marketing_opt_in } }
+      });
+      if (su.error) {
+        var m = (su.error.message || '').toLowerCase();
+        if (m.indexOf('already') !== -1 || m.indexOf('registered') !== -1 || m.indexOf('exists') !== -1) {
+          // Email already has an account — try to sign them in with the password they typed.
+          var si = await sb.auth.signInWithPassword({ email: email, password: pw });
+          if (si.error) { alert('You already have an account with this email, but that password did not match. Please sign in.'); showPage('register'); return; }
+          user = si.data.user;
+        } else {
+          alert('Could not create your account: ' + su.error.message); return;
+        }
+      } else {
+        user = su.data.user;
+        if (!su.data.session) {
+          // Email confirmation is on: no session yet, so the brief can't be saved to the account until they confirm.
+          alert('Almost there — we\'ve emailed you a link to confirm your account. Once you confirm and sign in, submit again and your brief will save to your dashboard.');
+          return;
+        }
+      }
     }
+
     row.user_id = user.id;
+    try { await window.attachPendingQuiz(user); } catch(e){}
     var res = await sb.from('edits').insert(row);
     if (res.error) { alert('Could not save your brief: ' + res.error.message); return; }
+    if (typeof refreshAuthUI === 'function') { try { await refreshAuthUI(); } catch(e){} }
     var ok2 = document.getElementById('if-success');
     if (ok2) { ok2.style.display='block'; ok2.scrollIntoView({behavior:'smooth',block:'center'}); }
   };
@@ -2608,6 +2802,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var u = await sb.auth.getUser();
     var user = u && u.data ? u.data.user : null;
     if (!user) { if (loading) loading.style.display='none'; if (empty) empty.style.display='block'; return; }
+    try { await window.attachPendingQuiz(user); } catch(e){}
+    try { await window.loadStyleProfile(); } catch(e){}
     var res = await sb.from('edits').select('*').order('created_at', { ascending: false });
     if (loading) loading.style.display='none';
     var rows = (res && res.data) || [];
@@ -2631,6 +2827,61 @@ document.addEventListener('DOMContentLoaded', function() {
         (r.notes ? '<div style="font-size:0.82rem;color:var(--bark-mid);font-weight:300;margin-top:0.4rem;">&ldquo;' + r.notes + '&rdquo;</div>' : '');
       list.appendChild(card);
     });
+  };
+
+  // ---- View saved full result (rebuilds the rich screen from saved answers) ----
+  window.viewMyResult = function () {
+    var a = window.__lastQuizAnswers;
+    if (!a) { if (typeof showPage==='function') showPage('quiz'); return; }
+    try { quizAnswers = (typeof a==='string') ? JSON.parse(a) : a; } catch(e) { return; }
+    if (typeof questions!=='undefined') quizStep = questions.length + 1;
+    if (typeof showPage==='function') showPage('quiz');
+    if (typeof renderQuiz==='function') renderQuiz();
+  };
+
+  // ---- Quiz result capture (localStorage bridge -> quiz_results) -----
+  window.attachPendingQuiz = async function (user) {
+    if (!sb) return;
+    var pending; try { pending = JSON.parse(localStorage.getItem('tre_pending_quiz')||'null'); } catch(e){ pending=null; }
+    if (!pending) return;
+    if (!user) { try { var u=await sb.auth.getUser(); user = u&&u.data?u.data.user:null; } catch(e){} }
+    if (!user) return;
+    var row = {
+      user_id: user.id,
+      archetype: pending.archetype||'', persona_key: pending.persona_key||'',
+      lean: (pending.lean!=null?pending.lean:null), palette: pending.palette||'',
+      answers: pending.answers||{}
+    };
+    try {
+      var res = await sb.from('quiz_results').insert(row);
+      if (!res.error) { localStorage.removeItem('tre_pending_quiz'); if (window.loadStyleProfile) await window.loadStyleProfile(); }
+    } catch(e){}
+  };
+
+  window.loadStyleProfile = async function () {
+    var box = document.getElementById('style-profile');
+    if (!box) return;
+    if (!sb) { box.innerHTML=''; return; }
+    var user=null; try { var u=await sb.auth.getUser(); user=u&&u.data?u.data.user:null; } catch(e){}
+    if (!user) { box.innerHTML=''; return; }
+    var res; try { res = await sb.from('quiz_results').select('*').order('created_at',{ascending:false}).limit(1); } catch(e){ return; }
+    var row = res && res.data && res.data[0];
+    if (!row) { box.innerHTML=''; return; }
+    window.__lastQuizAnswers = row.answers || null;
+    var leanLabel = row.lean<=3?'Minimalist lean':(row.lean>=8?'Maximalist lean':'Balanced — curated with personality');
+    box.innerHTML =
+      '<div style="background:var(--bark);border-radius:12px;padding:1.5rem 1.7rem;margin-bottom:1.4rem;box-shadow:0 4px 24px rgba(42,36,32,0.12);">'+
+        '<div style="font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.4rem;">Your style profile</div>'+
+        '<div style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:white;margin-bottom:0.6rem;">'+(row.archetype||'Your Renter Personality')+'</div>'+
+        '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">'+
+          '<span style="font-size:0.72rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);border-radius:100px;padding:0.3rem 0.8rem;">'+leanLabel+'</span>'+
+          (function(){ var pi=(typeof PALETTE_INFO!=='undefined')?PALETTE_INFO[row.palette]:null; return pi?'<span style="font-size:0.72rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);border-radius:100px;padding:0.3rem 0.8rem;">'+pi.name+'</span>':''; })()+
+        '</div>'+
+        '<div style="margin-top:1rem;display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;">'+
+          '<button type="button" onclick="viewMyResult()" style="background:rgba(255,255,255,0.12);color:white;border:0.5px solid rgba(255,255,255,0.25);border-radius:6px;padding:0.55rem 1.1rem;font-family:var(--font-body);font-size:0.8rem;cursor:pointer;">View my full result</button>'+
+          '<span style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;">or retake the <span style="color:var(--sage-light);cursor:pointer;text-decoration:underline;" onclick="showPage(&quot;quiz&quot;)">Find My Style quiz</span></span>'+
+        '</div>'+
+      '</div>';
   };
 
   // ---- Wire page load + auth changes + showPage hook ----------------
