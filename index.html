@@ -10,7 +10,8 @@
 :root{
   --sage:#7A9E7E;--sage-light:#A8C5AB;--sage-dark:#4F7153;--sage-pale:#EDF2EE;
   --cream:#F8F5F0;--warm-white:#FDFCFA;--bark:#2A2420;--bark-mid:#6B5E58;
-  --bark-light:#A8978F;--linen:#EDE8E0;--moss:#C8D8C9;--gold:#C9A84C;--gold-light:#E8D5A0;--gold-pale:#FDF5E0;
+  --bark-light:#79685D;--linen:#EDE8E0;--moss:#C8D8C9;--gold:#C9A84C;--gold-light:#E8D5A0;--gold-pale:#FDF5E0;
+  --gold-text:#856618;--sage-text:#4C6746;
   --font-display:'Cormorant Garamond',serif;--font-body:'Jost',sans-serif;
 }
 html{scroll-behavior:smooth;}
@@ -27,8 +28,11 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .nav-logo{font-family:var(--font-display);font-size:1.9rem;color:var(--bark);font-weight:700;cursor:pointer;letter-spacing:0.01em;}
 .nav-logo em{color:var(--sage-dark);font-style:italic;font-weight:300;}
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
-.nav-links a{font-size:0.8rem;font-weight:400;letter-spacing:0.06em;color:var(--bark-mid);text-decoration:none;transition:color 0.2s;cursor:pointer;padding:0.3rem 0;}
+.nav-links a{font-size:0.95rem;font-weight:400;letter-spacing:0.04em;color:var(--bark-mid);text-decoration:none;transition:color 0.2s;cursor:pointer;padding:0.3rem 0;}
 .nav-links a:hover{color:var(--sage-dark);}
+.nav-links a.nav-active{color:var(--sage-dark);font-weight:600;position:relative;}
+.nav-links a.nav-active::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--sage-dark);border-radius:2px;}
+.nav-links a.nav-cta.nav-active::after{display:none;}
 .nav-cta{background:var(--sage-dark)!important;color:white!important;padding:0.5rem 1.2rem!important;border-radius:3px!important;font-weight:500!important;}
 .nav-cta:hover{background:var(--bark)!important;}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
@@ -52,7 +56,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .eyebrow.centered::before,.eyebrow.centered::after{width:30px;}
 .eyebrow.left::before{width:20px;}
 .eyebrow.left::after{display:none;}
-.eyebrow span{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;}
+.eyebrow span{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-text);font-weight:500;}
 .section-title{font-family:var(--font-display);font-weight:300;line-height:1.1;}
 .section-title em{font-style:italic;color:var(--sage-dark);}
 
@@ -65,11 +69,12 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .hero-title{font-family:var(--font-display);font-size:clamp(3rem,4.5vw,5.2rem);line-height:1.02;color:white;margin-bottom:0.9rem;font-weight:300;position:relative;z-index:2;}
 .hero-title em{font-style:italic;color:var(--sage-light);}
 .hero-title strong{font-weight:600;}
-.hero-sub{font-size:0.92rem;line-height:1.7;color:rgba(255,255,255,0.65);max-width:520px;margin-bottom:1rem;font-weight:300;position:relative;z-index:2;}
+.hero-sub{font-size:1.02rem;line-height:1.7;color:rgba(255,255,255,0.7);max-width:520px;margin-bottom:1rem;font-weight:300;position:relative;z-index:2;}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem;position:relative;z-index:2;}
-.hero-stats{display:flex;gap:2.5rem;padding-top:1rem;border-top:0.5px solid rgba(255,255,255,0.08);position:relative;z-index:2;}
-.stat-num{font-family:var(--font-display);font-size:2rem;color:var(--sage-light);font-weight:300;line-height:1;margin-bottom:3px;}
-.stat-lbl{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.hero-stats{display:flex;gap:2.5rem;padding-top:1rem;border-top:0.5px solid rgba(255,255,255,0.08);position:relative;z-index:2;align-items:flex-start;}
+.hero-stats > div{display:flex;flex-direction:column;}
+.stat-num{font-family:var(--font-display);font-size:1.5rem;color:var(--sage-light);font-weight:400;line-height:1.2;margin-bottom:5px;min-height:1.9rem;display:flex;align-items:center;}
+.stat-lbl{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.7);line-height:1.3;}
 .hero-right{background:var(--sage-pale);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .hero-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 75% 25%,rgba(122,158,126,0.2),transparent 60%);}
 .hero-card-wrap{position:relative;z-index:2;padding:2.5rem;animation:float 5s ease-in-out infinite;}
@@ -113,7 +118,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .about-frame-inner{font-size:5rem;}
 .about-gold{position:absolute;top:2rem;left:-1rem;width:3px;height:55%;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px;}
 .about-badge{position:absolute;bottom:-16px;right:-16px;background:var(--bark);border-radius:8px;padding:1.1rem 1.4rem;box-shadow:0 8px 24px rgba(42,36,32,0.15);}
-.ab-num{font-family:var(--font-display);font-size:1.9rem;font-weight:300;color:var(--sage-light);line-height:1;}
+.ab-num{font-family:var(--font-display);font-size:1.9rem;font-weight:300;color:var(--sage-text);line-height:1;}
 .ab-txt{font-size:0.8rem;color:rgba(255,255,255,0.5);font-weight:300;margin-top:2px;}
 .about-right h2{font-family:var(--font-display);font-size:clamp(2rem,2.8vw,3rem);font-weight:300;color:var(--bark);line-height:1.1;margin-bottom:1.2rem;}
 .about-right p{font-size:0.9rem;color:var(--bark-mid);line-height:1.85;font-weight:300;margin-bottom:1.1rem;}
@@ -154,20 +159,20 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 /* LEFT PANEL */
 .calc-panel{background:rgba(255,255,255,0.05);border-radius:10px;padding:2.5rem;border:0.5px solid rgba(255,255,255,0.08);}
 .calc-panel h3{font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:white;margin-bottom:0.4rem;}
-.cp-sub{font-size:0.88rem;color:rgba(255,255,255,0.45);font-weight:300;margin-bottom:2rem;line-height:1.6;}
+.cp-sub{font-size:0.88rem;color:rgba(255,255,255,0.55);font-weight:300;margin-bottom:2rem;line-height:1.6;}
 .cf{margin-bottom:1.8rem;}
 .cf label{display:block;font-size:0.82rem;font-weight:400;color:rgba(255,255,255,0.7);margin-bottom:0.7rem;letter-spacing:0.04em;}
-.cf .cf-note{font-size:0.8rem;color:rgba(255,255,255,0.35);font-weight:300;margin-top:0.4rem;}
+.cf .cf-note{font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:300;margin-top:0.4rem;}
 
 /* Room counter */
 .room-ctr{display:flex;align-items:center;gap:1.2rem;}
 .rc-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);border:0.5px solid rgba(255,255,255,0.2);color:white;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;font-family:var(--font-body);line-height:1;padding-bottom:2px;}
 .rc-btn:hover{background:var(--sage-dark);border-color:var(--sage-dark);}
 .rc-num{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:white;min-width:44px;text-align:center;line-height:1;}
-.rc-lbl{font-size:0.85rem;color:rgba(255,255,255,0.45);font-weight:300;}
+.rc-lbl{font-size:0.85rem;color:rgba(255,255,255,0.55);font-weight:300;}
 
 /* Slider */
-.slider-val{font-family:var(--font-display);font-size:2rem;color:var(--sage-light);font-weight:300;line-height:1;margin-bottom:0.5rem;}
+.slider-val{font-family:var(--font-display);font-size:2rem;color:var(--sage-text);font-weight:300;line-height:1;margin-bottom:0.5rem;}
 .cf-range{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,0.15);outline:none;cursor:pointer;}
 .cf-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;background:var(--sage-dark);cursor:pointer;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);}
 .cf-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--sage-dark);cursor:pointer;border:2px solid white;}
@@ -175,7 +180,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 /* Chip groups */
 .chip-row{display:flex;gap:0.5rem;flex-wrap:wrap;}
 .c-chip{padding:0.5rem 1rem;border-radius:3px;font-size:0.82rem;border:0.5px solid rgba(255,255,255,0.18);background:transparent;color:rgba(255,255,255,0.6);cursor:pointer;transition:all 0.15s;font-family:var(--font-body);min-height:38px;}
-.c-chip:hover{border-color:var(--sage-light);color:var(--sage-light);}
+.c-chip:hover{border-color:var(--sage-text);color:var(--sage-text);}
 .c-chip.on{border-color:var(--sage-dark);background:var(--sage-dark);color:white;}
 
 /* RIGHT PANEL — result */
@@ -190,7 +195,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .cr-row{display:flex;justify-content:space-between;align-items:center;}
 .cr-row-lbl{font-size:0.85rem;color:var(--bark-mid);font-weight:300;}
 .cr-row-val{font-size:0.88rem;color:var(--bark);font-weight:500;}
-.cr-row-val.g{color:var(--gold);}
+.cr-row-val.g{color:var(--gold-text);}
 .cr-total-row{display:flex;justify-content:space-between;align-items:center;padding-top:0.8rem;border-top:0.5px solid var(--linen);margin-top:0.3rem;}
 .cr-total-lbl{font-size:0.88rem;font-weight:500;color:var(--bark);}
 .cr-total-val{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--bark);}
@@ -210,10 +215,11 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .quiz-wm-right::after{content:'';position:absolute;inset:0;background:linear-gradient(270deg,rgba(248,245,240,0.15) 0%,rgba(248,245,240,0.7) 55%,var(--cream) 100%);}
 .quiz-page::after{content:'';position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle at 60% 40%,rgba(122,158,126,0.30),rgba(122,158,126,0) 68%);bottom:-110px;left:-100px;filter:blur(6px);}
 .quiz-wrap{max-width:680px;width:100%;position:relative;z-index:2;}
+.quiz-wrap.quiz-wrap-wide{max-width:940px;}
 @keyframes quizFadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 #quizContent{animation:quizFadeUp 0.45s ease both;}
 .quiz-badge{display:flex;width:max-content;align-items:center;gap:0.4rem;background:var(--warm-white);border:0.5px solid var(--linen);color:var(--sage-dark);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:100px;box-shadow:0 2px 8px rgba(42,36,32,0.06);margin:0 auto 1.4rem;}
-.quiz-badge .qb-star{color:var(--gold);font-size:0.85rem;line-height:1;}
+.quiz-badge .qb-star{color:var(--gold-text);font-size:0.85rem;line-height:1;}
 
 /* Progress bar */
 .quiz-progress{display:flex;align-items:center;gap:0.8rem;margin-bottom:2.5rem;}
@@ -223,7 +229,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 
 /* Question card */
 .q-card{text-align:center;}
-.q-emoji{font-size:2.5rem;display:block;margin-bottom:1.2rem;}
+.q-emoji{display:none;}
 .q-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;color:var(--bark);line-height:1.15;margin-bottom:0.8rem;}
 .q-title em{font-style:italic;color:var(--sage-dark);}
 .q-sub{font-size:0.9rem;color:var(--bark-mid);font-weight:300;margin-bottom:2.5rem;line-height:1.7;}
@@ -253,7 +259,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .qr-desc{font-size:0.9rem;color:var(--bark-mid);font-weight:300;line-height:1.8;max-width:500px;margin:0 auto 2rem;}
 .qr-rec{background:var(--warm-white);border:0.5px solid var(--linen);border-radius:10px;padding:1.8rem;margin-bottom:1.5rem;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(42,36,32,0.05);}
 .qr-rec::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,var(--sage-dark),var(--gold),var(--sage-dark));}
-.qr-rec-label{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.qr-rec-label{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-text);margin-bottom:0.5rem;}
 .qr-rec-pkg{font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--bark);margin-bottom:0.2rem;}
 .qr-rec-price{font-family:var(--font-display);font-size:3rem;font-weight:300;color:var(--sage-dark);line-height:1;margin-bottom:0.4rem;}
 .qr-rec-why{font-size:0.85rem;color:var(--bark-mid);font-weight:300;line-height:1.6;}
@@ -264,16 +270,21 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
    PRICING PAGE
    ============================================================ */
 .pricing-page{background:var(--warm-white);}
-.pricing-hero{background:var(--bark);padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+.pricing-hero{background:var(--bark);padding:2.2rem 2rem 2rem;text-align:center;position:relative;overflow:hidden;}
 .pricing-hero::before{content:'';position:absolute;width:400px;height:400px;border-radius:50%;border:0.5px solid rgba(201,168,76,0.08);top:-100px;right:-80px;}
-.pricing-hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4rem);font-weight:300;color:white;margin:0.8rem 0 1rem;line-height:1.1;}
+.pricing-hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4rem);font-weight:300;color:white;margin:0.3rem 0 1rem;line-height:1.1;}
 .pricing-hero h1 em{font-style:italic;color:var(--sage-light);}
-.pricing-hero p{font-size:0.9rem;color:rgba(255,255,255,0.5);font-weight:300;max-width:760px;margin:0 auto;line-height:1.75;}
-.page-hero{background:var(--bark);padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
-.page-hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4rem);font-weight:300;color:white;margin:0.8rem 0 1rem;line-height:1.1;}
+.pricing-hero p{font-size:0.95rem;color:rgba(255,255,255,0.72);font-weight:300;max-width:760px;margin:0 auto;line-height:1.75;}
+.pricing-hero .eyebrow span{color:var(--gold-light);}
+.pricing-hero .eyebrow::before,.pricing-hero .eyebrow::after{background:var(--gold-light);opacity:0.7;}
+.page-hero{background:var(--bark);padding:2.2rem 2rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.page-hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4rem);font-weight:300;color:white;margin:0.3rem 0 1rem;line-height:1.1;}
+.page-hero .eyebrow,.pricing-hero .eyebrow{margin-bottom:0.5rem;}
 .page-hero h1 em{font-style:italic;color:var(--sage-light);}
-.page-hero p{font-size:0.9rem;color:rgba(255,255,255,0.5);font-weight:300;max-width:520px;margin:0 auto;line-height:1.75;}
-.pricing-body{padding:4rem 2rem 5rem;max-width:1060px;margin:0 auto;}
+.page-hero p{font-size:0.95rem;color:rgba(255,255,255,0.72);font-weight:300;max-width:520px;margin:0 auto;line-height:1.75;}
+.page-hero .eyebrow span,.hero .eyebrow span{color:var(--gold-light);}
+.page-hero .eyebrow::before,.page-hero .eyebrow::after{background:var(--gold-light);opacity:0.7;}
+.pricing-body{padding:2.5rem 2rem 5rem;max-width:1060px;margin:0 auto;}
 
 /* Add-on banner */
 .addon-banner{background:var(--sage-pale);border:0.5px solid var(--moss);border-radius:6px;padding:0.9rem 1.5rem;margin-bottom:2.5rem;text-align:center;font-size:0.85rem;color:var(--sage-dark);font-weight:400;}
@@ -302,11 +313,11 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .pc-name{font-family:var(--font-display);font-size:1.35rem;font-weight:400;margin-bottom:0.3rem;color:var(--bark);}
 .pc.feat .pc-name{color:white;}
 .pc-tag{font-size:0.82rem;color:var(--bark-mid);font-weight:300;line-height:1.5;margin-bottom:1.2rem;}
-.pc.feat .pc-tag{color:rgba(255,255,255,0.4);}
+.pc.feat .pc-tag{color:rgba(255,255,255,0.55);}
 .pc-price{font-family:var(--font-display);font-size:3rem;font-weight:300;color:var(--bark);line-height:1;}
 .pc.feat .pc-price{color:white;}
 .pc-scope{font-size:0.78rem;color:var(--bark-mid);font-weight:300;margin-top:0.3rem;margin-bottom:1.4rem;letter-spacing:0.04em;}
-.pc.feat .pc-scope{color:rgba(255,255,255,0.3);}
+.pc.feat .pc-scope{color:rgba(255,255,255,0.55);}
 .consult-box{display:flex;align-items:center;gap:0.7rem;background:var(--sage-pale);border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:1.4rem;}
 .pc.feat .consult-box{background:rgba(122,158,126,0.15);}
 .cb-dot{width:24px;height:24px;border-radius:50%;background:var(--sage-dark);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -317,7 +328,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .pc.feat .cb-s{color:var(--sage-light);}
 .pc-div{height:0.5px;background:var(--linen);margin-bottom:1.4rem;}
 .pc.feat .pc-div{background:rgba(255,255,255,0.07);}
-.pc-lbl{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.85rem;}
+.pc-lbl{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:0.85rem;}
 .pc-list{list-style:none;margin-bottom:1.4rem;flex:1;}
 .pc-list li{display:flex;align-items:flex-start;gap:0.55rem;font-size:0.83rem;color:var(--bark-mid);margin-bottom:0.75rem;font-weight:300;line-height:1.45;}
 .pc.feat .pc-list li{color:rgba(255,255,255,0.65);}
@@ -334,7 +345,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .ib-count{font-family:var(--font-display);font-size:1.3rem;color:var(--sage-dark);font-weight:300;}
 .pc.feat .ib-count{color:var(--sage-light);}
 .ib-sub{font-size:0.75rem;color:var(--bark-mid);font-weight:300;}
-.pc.feat .ib-sub{color:rgba(255,255,255,0.35);}
+.pc.feat .ib-sub{color:rgba(255,255,255,0.55);}
 .pc-addon{background:var(--gold-pale);border-radius:4px;padding:0.7rem 0.9rem;margin-bottom:1.1rem;font-size:0.8rem;color:#8A6A1A;font-weight:300;line-height:1.5;border-left:2px solid var(--gold);}
 .pc.feat .pc-addon{background:rgba(201,168,76,0.1);color:var(--gold-light);border-left-color:var(--gold);}
 .pc-btn{width:100%;padding:0.9rem;border-radius:3px;font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;font-family:var(--font-body);cursor:pointer;border:none;transition:all 0.2s;min-height:44px;}
@@ -348,14 +359,15 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 /* Compare table */
 .compare-wrap{margin-bottom:3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .cmp-grid{display:grid;grid-template-columns:200px repeat(4,minmax(160px,1fr));background:var(--bark);border-radius:10px 10px 0 0;overflow:hidden;min-width:800px;}
-.cmp-label-col{padding:2rem 1.5rem;font-size:0.78rem;color:rgba(255,255,255,0.4);font-weight:400;letter-spacing:0.04em;display:flex;align-items:flex-end;}
+.cmp-label-col{padding:2rem 1.5rem;font-size:0.78rem;color:rgba(255,255,255,0.55);font-weight:400;letter-spacing:0.04em;display:flex;align-items:flex-end;}
 .cmp-col{padding:2rem 1.2rem;display:flex;flex-direction:column;gap:0.3rem;border-left:0.5px solid rgba(255,255,255,0.08);}
 .cmp-col.cmp-feat{background:rgba(201,168,76,0.12);border-left-color:rgba(201,168,76,0.2);border-right:0.5px solid rgba(201,168,76,0.2);}
-.cmp-popular{font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;min-height:0.95rem;}
-.cmp-pkg-name{font-family:var(--font-display);font-size:1.1rem;font-weight:400;color:white;line-height:1.2;}
-.cmp-pkg-tag{font-size:0.75rem;color:var(--bark-mid);font-weight:300;line-height:1.4;margin-bottom:0.4rem;}
-.cmp-pkg-price{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:white;line-height:1;margin:0.5rem 0 0.2rem;}
-.cmp-pkg-scope{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1rem;}
+.cmp-popular{display:inline-block;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1C1000;background:var(--gold);padding:0.2rem 0.6rem;border-radius:100px;margin-bottom:0.5rem;min-height:0;align-self:center;}
+.cmp-popular:empty{background:none;padding:0;min-height:0.95rem;}
+.cmp-pkg-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:white;line-height:1.2;}
+.cmp-pkg-tag{font-size:0.78rem;color:rgba(255,255,255,0.8);font-weight:300;line-height:1.4;margin-bottom:0.4rem;}
+.cmp-pkg-price{font-family:var(--font-body);font-size:1.9rem;font-weight:400;color:white;line-height:1;margin:0.5rem 0 0.2rem;letter-spacing:-0.01em;}
+.cmp-pkg-scope{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:1rem;}
 .cmp-btn{padding:0.7rem 1rem;border-radius:4px;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;font-family:var(--font-body);cursor:pointer;border:none;transition:all 0.2s;width:100%;margin-top:auto;min-height:44px;}
 .cmp-btn-dark{background:white;color:var(--bark);}
 .cmp-btn-dark:hover{background:var(--cream);}
@@ -367,13 +379,13 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .cmp-footer-row .cmp-btn-light:hover{background:var(--bark);color:white;}
 .cmp-row{display:grid;grid-template-columns:200px repeat(4,minmax(160px,1fr));border-bottom:0.5px solid var(--linen);min-width:800px;}
 .cmp-row-alt{background:var(--cream);}
-.cmp-row .cmp-label-col{background:transparent;padding:1rem 1.5rem;color:var(--bark-mid);font-size:0.82rem;font-weight:400;letter-spacing:0;align-items:center;}
-.cmp-row .cmp-col{padding:1rem 1.2rem;font-size:0.82rem;color:var(--bark-mid);font-weight:300;border-left:0.5px solid var(--linen);align-items:flex-start;justify-content:center;flex-direction:row;flex-wrap:wrap;gap:0.3rem;}
+.cmp-row .cmp-label-col{background:transparent;padding:1rem 1.5rem;color:#3A322C;font-size:0.86rem;font-weight:500;letter-spacing:0;align-items:center;}
+.cmp-row .cmp-col{padding:1rem 1.2rem;font-size:0.88rem;color:#524840;font-weight:400;border-left:0.5px solid var(--linen);align-items:flex-start;justify-content:center;flex-direction:row;flex-wrap:wrap;gap:0.3rem;}
 .cmp-row .cmp-col.cmp-feat{background:rgba(201,168,76,0.04);border-left:0.5px solid rgba(201,168,76,0.15);border-right:0.5px solid rgba(201,168,76,0.15);}
 .cmp-yes{color:var(--sage-dark);font-weight:500;}
-.cmp-no{color:var(--bark-light);opacity:0.4;}
+.cmp-no{color:var(--bark-light);opacity:0.75;}
 .cmp-row-addon .cmp-label-col{color:var(--bark);font-weight:500;}
-.cmp-addon-price{color:var(--gold);font-weight:500;margin-left:0.2rem;}
+.cmp-addon-price{color:var(--gold-text);font-weight:500;margin-left:0.2rem;}
 .cmp-section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage-dark);padding:1.2rem 1.5rem 0.6rem;background:var(--sage-pale);border-bottom:0.5px solid var(--linen);min-width:800px;}
 .cmp-footer-row{background:var(--cream);border-radius:0 0 10px 10px;overflow:hidden;border-top:0.5px solid var(--linen);}
 .cmp-footer-row .cmp-label-col{background:transparent;}
@@ -394,10 +406,10 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .zoom-steps-box{background:var(--bark);border-radius:10px;padding:2rem;position:relative;overflow:hidden;}
 .zoom-steps-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,var(--sage-dark),var(--gold),var(--sage-dark));}
 .zsb-title{font-family:var(--font-display);font-size:1.2rem;font-weight:300;color:white;margin-bottom:0.3rem;}
-.zsb-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);font-weight:300;margin-bottom:1.5rem;}
+.zsb-sub{font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:300;margin-bottom:1.5rem;}
 .zsteps{display:flex;flex-direction:column;gap:0.8rem;}
 .zstep{display:flex;align-items:flex-start;gap:0.8rem;}
-.zs-num{width:22px;height:22px;border-radius:50%;background:rgba(122,158,126,0.2);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:500;color:var(--sage-light);flex-shrink:0;margin-top:1px;}
+.zs-num{width:22px;height:22px;border-radius:50%;background:rgba(122,158,126,0.2);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:500;color:var(--sage-text);flex-shrink:0;margin-top:1px;}
 .zs-txt{font-size:0.82rem;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.55;}
 .zs-txt strong{color:rgba(255,255,255,0.85);font-weight:400;}
 .consent-box{margin-top:1.3rem;padding:0.85rem;background:rgba(201,168,76,0.1);border-radius:4px;border-left:2px solid var(--gold);font-size:0.78rem;color:var(--gold-light);font-weight:300;line-height:1.6;}
@@ -407,7 +419,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .ts-item{padding:1.4rem;text-align:center;border-right:0.5px solid rgba(255,255,255,0.06);}
 .ts-item:last-child{border-right:none;}
 .ts-num{font-family:var(--font-display);font-size:1.8rem;color:var(--sage-light);font-weight:300;line-height:1;margin-bottom:4px;}
-.ts-lbl{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.ts-lbl{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
 .disclaimer{max-width:680px;margin:0 auto;padding:2rem 4rem 3rem;text-align:center;font-size:0.78rem;color:var(--bark-mid);font-weight:300;line-height:1.85;border-top:0.5px solid var(--linen);}
 .disclaimer strong{font-weight:500;color:var(--bark);}
 
@@ -439,7 +451,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .opts-row{display:none;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;}
 .opts-row.show{display:grid;}
 .opt-box{background:var(--warm-white);border-radius:6px;padding:1.8rem;border:0.5px solid var(--linen);}
-.opt-box label{display:block;font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.opt-box label{display:block;font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-text);margin-bottom:1rem;}
 .chip-g{display:flex;flex-wrap:wrap;gap:0.5rem;}
 .chip{padding:0.45rem 1rem;border-radius:3px;font-size:0.82rem;border:0.5px solid var(--linen);background:white;color:var(--bark-mid);cursor:pointer;transition:all 0.15s;font-family:var(--font-body);min-height:38px;}
 .chip:hover{border-color:var(--sage);color:var(--sage-dark);}
@@ -473,7 +485,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(42,36,32,0.07);}
 .mood-card{background:var(--bark);border-radius:8px;padding:2.5rem;margin-bottom:2rem;position:relative;overflow:hidden;}
 .mood-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,var(--sage-dark),var(--gold),var(--sage-dark));}
 .mood-card h3{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:white;margin-bottom:0.4rem;}
-.mb-desc{font-size:0.95rem;color:rgba(255,255,255,0.4);font-weight:300;margin-bottom:2rem;font-style:italic;font-family:var(--font-display);line-height:1.6;}
+.mb-desc{font-size:0.95rem;color:rgba(255,255,255,0.55);font-weight:300;margin-bottom:2rem;font-style:italic;font-family:var(--font-display);line-height:1.6;}
 .swatches{display:flex;gap:0.8rem;margin-bottom:1.8rem;flex-wrap:wrap;}
 .swatch{width:48px;height:48px;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
 .keywords{display:flex;gap:0.5rem;flex-wrap:wrap;}
@@ -517,12 +529,12 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:3rem;}
 .f-logo{font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:white;margin-bottom:0.8rem;}
 .f-logo em{font-style:italic;color:var(--sage-light);}
-.f-brand p{font-size:0.82rem;color:rgba(255,255,255,0.3);font-weight:300;line-height:1.75;max-width:230px;}
+.f-brand p{font-size:0.82rem;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.75;max-width:230px;}
 .f-col h4{font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
-.f-col a{display:block;font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:0.55rem;font-weight:300;cursor:pointer;transition:color 0.2s;}
+.f-col a{display:block;font-size:0.82rem;color:rgba(255,255,255,0.55);text-decoration:none;margin-bottom:0.55rem;font-weight:300;cursor:pointer;transition:color 0.2s;}
 .f-col a:hover{color:var(--sage-light);}
 .f-bottom{border-top:0.5px solid rgba(255,255,255,0.06);padding:1.5rem 0;display:flex;justify-content:space-between;}
-.f-bottom p{font-size:0.75rem;color:rgba(255,255,255,0.2);font-weight:300;}
+.f-bottom p{font-size:0.75rem;color:rgba(255,255,255,0.55);font-weight:300;}
 
 /* WHATSAPP */
 .wa{position:fixed;bottom:28px;right:28px;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:999;box-shadow:0 4px 18px rgba(37,211,102,0.35);text-decoration:none;transition:transform 0.2s;animation:wapulse 2.5s infinite;}
@@ -542,7 +554,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 .if-room-tile:hover{border-color:var(--sage);background:var(--sage-pale);}
 .if-room-tile.selected{border-color:var(--sage-dark);background:var(--sage-pale);box-shadow:inset 0 0 0 1.5px var(--sage-dark);}
 /* Error field highlight */
-.fg input.err{border-color:#C4622D !important;}
+.fg input.err{border-color:#AA4A1E !important;}
 :focus-visible{outline:3px solid #4F7153;outline-offset:3px;}
 .skip-link{position:absolute;top:-100px;left:1rem;background:var(--sage-dark);color:white;padding:0.6rem 1.2rem;border-radius:4px;font-size:0.9rem;z-index:9999;transition:top 0.2s;text-decoration:none;}
 .skip-link:focus{top:1rem;}
@@ -596,6 +608,12 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
   .q-options{gap:0.6rem;}
   .qr-rec-price{font-size:2.2rem;}
   .cmp-scroll-hint{display:block;}
+  #multiGrid{gap:0.45rem!important;}
+  #multiGrid .q-multi-opt{padding:0.7rem 0.4rem!important;}
+  #multiGrid .q-multi-opt span{font-size:1.3rem!important;}
+  #paletteSplit{grid-template-columns:1fr!important;gap:10px!important;}
+  #paletteSplit #palPreview{position:static!important;}
+  #palConfirmCol{position:static!important;min-height:0!important;}
 }
 </style>
 </head>
@@ -605,11 +623,11 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 <nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-logo" onclick="showPage('home')" role="button" tabindex="0">The Renter's <em>Edit</em></div>
   <ul class="nav-links" id="navLinks" role="list">
-    <li><a onclick="showPage('home')" role="button" tabindex="0">Home</a></li>
-    <li><a onclick="showPage('how')" role="button" tabindex="0">How it Works</a></li>
-    <li><a onclick="showPage('pricing')" role="button" tabindex="0">Packages</a></li>
-    <li><a onclick="showPage('quiz')" role="button" tabindex="0">Find My Style</a></li>
-    <li><a onclick="showPage('about')" role="button" tabindex="0">About</a></li>
+    <li><a data-page="home" class="nav-active" onclick="showPage('home')" role="button" tabindex="0">Home</a></li>
+    <li><a data-page="how" onclick="showPage('how')" role="button" tabindex="0">How it Works</a></li>
+    <li><a data-page="pricing" onclick="showPage('pricing')" role="button" tabindex="0">Packages</a></li>
+    <li><a data-page="quiz" onclick="showPage('quiz')" role="button" tabindex="0">Find My Style</a></li>
+    <li><a data-page="about" onclick="showPage('about')" role="button" tabindex="0">About</a></li>
     <li><a class="nav-cta" onclick="showPage('calc')" role="button" tabindex="0">Book Your Edit</a></li>
     <li id="nav-signin"><a onclick="showPage('register')" role="button" tabindex="0">Sign In</a></li>
     <li id="nav-account" style="display:none;"><a onclick="showPage('account')" role="button" tabindex="0">My Edits</a></li>
@@ -627,10 +645,11 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <div class="hero-left">
       <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(201,168,76,0.15);border:0.5px solid rgba(201,168,76,0.3);border-radius:100px;padding:0.35rem 1rem;margin-bottom:1rem;width:fit-content;position:relative;z-index:2;">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;flex-shrink:0;"></span>
-        <span style="font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:500;">The UK's first rental-only interior styling studio</span>
+        <span style="font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-light);font-weight:600;">The UK's first rental-only interior styling studio</span>
       </div>
       <h1 class="hero-title">Your <em>white box</em><br>rental deserves<br><strong>so much more.</strong></h1>
-      <p class="hero-sub"><strong style="color:rgba(255,255,255,0.88);font-weight:500;">Deposit-safe</strong> transformations using <strong style="color:rgba(255,255,255,0.88);font-weight:500;">sustainable materials</strong>. <strong style="color:rgba(255,255,255,0.88);font-weight:500;">No drilling. No painting.</strong> Just colour, life and personality — added back into your rental.<br>We give you the vision and the shopping list. <strong style="color:rgba(255,255,255,0.88);font-weight:500;">You execute it.</strong></p>
+      <p class="hero-sub"><strong style="color:rgba(255,255,255,0.88);font-weight:500;">Deposit-safe</strong> transformations. <strong style="color:rgba(255,255,255,0.88);font-weight:500;">No drilling. No painting.</strong><br>Just colour, life and personality, added back into your rental.<br><strong style="color:rgba(255,255,255,0.88);font-weight:500;">Buy new pieces, restyle what you already own, or mix both.</strong>
+<br>We give you the vision and the shopping list — <strong style="color:rgba(255,255,255,0.88);font-weight:500;">you bring it to life.</strong></p>
       <div style="height:1.1rem;" aria-hidden="true"></div>
       <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;position:relative;z-index:2;">
         <div style="border-left:2px solid var(--gold);padding-left:1rem;">
@@ -644,8 +663,8 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
       <div style="height:1.1rem;" aria-hidden="true"></div>
       <div class="hero-stats">
         <div><div class="stat-num">🔑 100%</div><div class="stat-lbl">Deposit Safe</div></div>
-        <div><div class="stat-num" style="font-size:1rem;line-height:1.3;">📍 Canary Wharf, London based</div><div class="stat-lbl">Worldwide remote e-design services</div></div>
-        <div><div class="stat-num" style="font-size:2.4rem;">📋 PDF</div><div class="stat-lbl">Design Playbook Delivered</div></div>
+        <div><div class="stat-num" style="font-size:1.05rem;">📍 Canary Wharf, London</div><div class="stat-lbl">Worldwide remote e-design services</div></div>
+        <div><div class="stat-num">📋 PDF</div><div class="stat-lbl">Design Playbook Delivered</div></div>
       </div>
     </div>
     <div class="hero-right" style="background:var(--sage-pale);overflow:hidden;position:relative;">
@@ -674,91 +693,68 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
   <div class="page-hero">
     <div class="eyebrow centered"><span>The Process</span></div>
     <h1>Four steps to your <em>dream rental</em></h1>
-    <p>From blank box to beautiful — all done remotely, all deposit-safe, delivered to your inbox.</p>
+    <p style="max-width:780px;">From blank box to beautiful — all done remotely, all deposit-safe, delivered to your inbox.</p>
   </div>
-  <div class="flow-page" style="background:var(--cream);padding:4rem 2rem;">
+  <div class="flow-page" style="background:var(--cream);padding:2.5rem 2rem 3rem;">
 
-    <!-- 4 horizontal steps on light background -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:1100px;margin:0 auto 3.5rem;position:relative;">
-
-      <!-- Connecting dashed line -->
-      <div style="position:absolute;top:44px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0,var(--gold) 8px,transparent 8px,transparent 16px);z-index:0;opacity:0.4;"></div>
+    <!-- 4 horizontal step cards on light background -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:1100px;margin:0 auto 2.5rem;position:relative;align-items:stretch;">
 
       <!-- Step 1 — Pale sage green -->
-      <div style="position:relative;z-index:1;">
-        <div style="width:88px;height:88px;border-radius:50%;background:var(--sage-pale);border:2px solid var(--sage);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;position:relative;">
-          <span style="font-size:2rem;" aria-hidden="true">📝</span>
-          <div style="position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;background:var(--sage-dark);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);">1</div>
-        </div>
-        <div onclick="showPage('calc')" title="Open the intake form" style="background:var(--sage-pale);border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid var(--moss);border-top:3px solid var(--sage-dark);text-align:center;cursor:pointer;">
-          <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage-dark);font-weight:600;margin-bottom:0.4rem;font-family:var(--font-body);">Step 1</div>
-          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Fill in the Intake Form</h3>
-          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">Share photos of your space, its dimensions, your budget, and your style preferences — exactly what the intake form asks for. Takes about 5–10 minutes.</p>
-          <div style="display:inline-block;background:var(--sage-dark);color:white;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:400;">5–10 minutes</div>
-        </div>
+      <div onclick="showPage('calc')" title="Open the intake form" style="background:var(--sage-pale);border-radius:12px;padding:1.6rem 1.3rem;border:0.5px solid var(--moss);border-top:3px solid var(--sage-dark);text-align:center;cursor:pointer;display:flex;flex-direction:column;">
+        <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage-dark);font-weight:600;margin-bottom:0.5rem;font-family:var(--font-body);">Step 1</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--bark);margin-bottom:0.6rem;text-decoration:underline;text-decoration-color:var(--sage);text-underline-offset:4px;text-decoration-thickness:2px;">Fill in the Intake Form</h3>
+        <p style="font-size:0.85rem;color:#524840;font-weight:400;line-height:1.65;margin-bottom:1.2rem;text-align:justify;">A quick form — a few photos, your rough budget, and the look you're after. No design jargon, no commitment. Just the basics.</p>
+        <div style="margin-top:auto;"><span style="color:var(--sage-dark);font-size:0.82rem;font-weight:600;">⏱ 5–10 minutes</span></div>
       </div>
 
       <!-- Step 2 — Warm gold/yellow -->
-      <div style="position:relative;z-index:1;">
-        <div style="width:88px;height:88px;border-radius:50%;background:var(--gold-pale);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;position:relative;">
-          <span style="font-size:2rem;" aria-hidden="true">🎨</span>
-          <div style="position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#1C1000;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);">2</div>
-        </div>
-        <div style="background:var(--warm-white);border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid var(--gold-light);border-top:3px solid var(--gold);text-align:center;">
-          <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#8A6A1A;font-weight:600;margin-bottom:0.4rem;font-family:var(--font-body);">Step 2</div>
-          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Choose Your Package</h3>
-          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">From a single furniture fix to a full room transformation — pick the package that matches your scope and budget.</p>
-          <div style="display:inline-block;background:var(--gold);color:#1C1000;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:500;">4 tiers available</div>
-        </div>
+      <div onclick="showPage('pricing')" title="See the packages" style="background:var(--warm-white);border-radius:12px;padding:1.6rem 1.3rem;border:0.5px solid var(--gold-light);border-top:3px solid var(--gold);text-align:center;display:flex;flex-direction:column;cursor:pointer;">
+        <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#8A6A1A;font-weight:600;margin-bottom:0.5rem;font-family:var(--font-body);">Step 2</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--bark);margin-bottom:0.6rem;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;text-decoration-thickness:2px;">Choose Your Package</h3>
+        <p style="font-size:0.85rem;color:#524840;font-weight:400;line-height:1.65;margin-bottom:1.2rem;text-align:justify;">Pick the tier that fits — from one item to a full-room brief. Each item is either sourced new, or restyled in place with the right add-ons to buy.</p>
+        <div style="margin-top:auto;"><span style="color:var(--gold-text);font-size:0.82rem;font-weight:600;">🎯 4 tiers available</span></div>
       </div>
 
       <!-- Step 3 — Bright white with sage accent -->
-      <div style="position:relative;z-index:1;">
-        <div style="width:88px;height:88px;border-radius:50%;background:white;border:2px solid var(--sage-light);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;position:relative;box-shadow:0 4px 16px rgba(122,158,126,0.2);">
-          <span style="font-size:2rem;" aria-hidden="true">📋</span>
-          <div style="position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;background:var(--sage);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);">3</div>
-        </div>
-        <div style="background:white;border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid var(--linen);border-top:3px solid var(--sage);text-align:center;box-shadow:0 4px 20px rgba(42,36,32,0.06);">
-          <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage-dark);font-weight:600;margin-bottom:0.4rem;font-family:var(--font-body);">Step 3</div>
-          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Receive Your Design Playbook</h3>
-          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">A beautifully branded PDF lands in your inbox — mood board, Before &amp; After mockups, and a clickable shopping list. Days, not weeks.</p>
-          <div style="display:inline-block;background:var(--sage-pale);color:var(--sage-dark);font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:500;">Days, not weeks</div>
-        </div>
+      <div style="background:white;border-radius:12px;padding:1.6rem 1.3rem;border:0.5px solid var(--linen);border-top:3px solid var(--sage);text-align:center;box-shadow:0 4px 20px rgba(42,36,32,0.06);display:flex;flex-direction:column;">
+        <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage-dark);font-weight:600;margin-bottom:0.5rem;font-family:var(--font-body);">Step 3</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--bark);margin-bottom:0.6rem;text-decoration:underline;text-decoration-color:var(--sage);text-underline-offset:4px;text-decoration-thickness:2px;">Receive Your Playbook</h3>
+        <p style="font-size:0.85rem;color:#524840;font-weight:400;line-height:1.65;margin-bottom:1.2rem;text-align:justify;">A beautifully branded PDF lands in your inbox — mood board, before &amp; after mockups, and a clickable shopping list.<br><a onclick="event.stopPropagation();showDeliverable()" role="button" tabindex="0" style="color:var(--sage-dark);font-weight:600;cursor:pointer;border-bottom:1.5px solid var(--sage-light);padding-bottom:1px;text-decoration:none;">See exactly what lands in your inbox</a></p>
+        <div style="margin-top:auto;"><span style="color:var(--sage-dark);font-size:0.82rem;font-weight:600;">⚡ Days, not weeks</span></div>
       </div>
 
       <!-- Step 4 — Warm amber/yellow pop -->
-      <div style="position:relative;z-index:1;">
-        <div style="width:88px;height:88px;border-radius:50%;background:var(--gold-pale);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;position:relative;">
-          <span style="font-size:2rem;" aria-hidden="true">🏠</span>
-          <div style="position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#1C1000;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);">4</div>
-        </div>
-        <div style="background:var(--gold-pale);border-radius:12px;padding:1.5rem 1.3rem;border:0.5px solid var(--gold-light);border-top:3px solid var(--gold);text-align:center;">
-          <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#A05010;font-weight:600;margin-bottom:0.4rem;font-family:var(--font-body);">Step 4</div>
-          <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem;">Shop &amp; Transform</h3>
-          <p style="font-size:0.83rem;color:var(--bark-mid);font-weight:300;line-height:1.65;margin-bottom:1rem;">Click your curated product links, order what you love, and transform your space over a weekend — all deposit-safe.</p>
-          <div style="display:inline-block;background:var(--gold);color:#1C1000;font-size:0.72rem;padding:0.28rem 0.8rem;border-radius:100px;font-weight:500;">100% deposit-safe</div>
-        </div>
+      <div style="background:var(--gold-pale);border-radius:12px;padding:1.6rem 1.3rem;border:0.5px solid var(--gold-light);border-top:3px solid var(--gold);text-align:center;display:flex;flex-direction:column;">
+        <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#A05010;font-weight:600;margin-bottom:0.5rem;font-family:var(--font-body);">Step 4</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--bark);margin-bottom:0.6rem;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;text-decoration-thickness:2px;">Shop &amp; Transform</h3>
+        <p style="font-size:0.85rem;color:#524840;font-weight:400;line-height:1.65;margin-bottom:1.2rem;text-align:justify;">Click your curated product links, order what you love, and bring the room to life over a weekend — every change fully deposit-safe.</p>
+        <div style="margin-top:auto;"><span style="color:var(--gold-text);font-size:0.82rem;font-weight:600;">🛡 100% deposit-safe</span></div>
       </div>
 
     </div>
 
+    <div style="max-width:760px;margin:0 auto 2.5rem;background:var(--sage-pale);border:0.5px solid var(--moss);border-radius:12px;padding:1.3rem 1.6rem;text-align:center;">
+      <p style="font-size:0.9rem;color:#3A322C;font-weight:400;line-height:1.7;margin:0;"><span style="font-weight:600;color:var(--sage-dark);">Every "item" is your choice.</span> We either source a brand-new piece, or restyle one you're keeping with the right add-ons — covers, cushions, styling — so it looks new without replacing it.</p>
+    </div>
+
     <!-- Bottom strip with social proof -->
-    <div style="background:var(--warm-white);border-radius:12px;padding:2rem 2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1100px;margin:0 auto 3rem;border:0.5px solid var(--linen);">
-      <div style="text-align:center;border-right:0.5px solid var(--linen);">
-        <div style="font-family:var(--font-display);font-size:1.9rem;color:var(--sage-dark);font-weight:300;line-height:1;margin-bottom:4px;">£75</div>
-        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark-mid);font-weight:400;">Start from</div>
+    <div style="background:var(--bark);border-radius:12px;padding:1rem 2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1100px;margin:0 auto 1.8rem;border:0.5px solid rgba(255,255,255,0.08);">
+      <div style="text-align:center;border-right:0.5px solid rgba(255,255,255,0.12);">
+        <div style="font-family:var(--font-display);font-size:1.9rem;color:#C8DCC9;font-weight:300;line-height:1;margin-bottom:4px;">£75</div>
+        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.85);font-weight:400;">Start from</div>
       </div>
-      <div style="text-align:center;border-right:0.5px solid var(--linen);">
-        <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--sage-dark);font-weight:300;line-height:1.3;margin-bottom:4px;">Results in Days</div>
-        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark-mid);font-weight:400;">Not weeks</div>
+      <div style="text-align:center;border-right:0.5px solid rgba(255,255,255,0.12);">
+        <div style="font-family:var(--font-display);font-size:1.1rem;color:#C8DCC9;font-weight:300;line-height:1.3;margin-bottom:4px;">Results in Days</div>
+        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.85);font-weight:400;">Not weeks</div>
       </div>
-      <div style="text-align:center;border-right:0.5px solid var(--linen);">
-        <div style="font-family:var(--font-display);font-size:1.9rem;color:var(--sage-dark);font-weight:300;line-height:1;margin-bottom:4px;">100%</div>
-        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark-mid);font-weight:400;">Deposit safe</div>
+      <div style="text-align:center;border-right:0.5px solid rgba(255,255,255,0.12);">
+        <div style="font-family:var(--font-display);font-size:1.9rem;color:#C8DCC9;font-weight:300;line-height:1;margin-bottom:4px;">100%</div>
+        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.85);font-weight:400;">Deposit safe</div>
       </div>
       <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:1.9rem;color:var(--sage-dark);font-weight:300;line-height:1;margin-bottom:4px;">♻</div>
-        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark-mid);font-weight:400;">Sustainably sourced</div>
+        <div style="font-family:var(--font-display);font-size:1.9rem;color:#C8DCC9;font-weight:300;line-height:1;margin-bottom:4px;">♻</div>
+        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.85);font-weight:400;">Sustainably sourced</div>
       </div>
     </div>
 
@@ -855,7 +851,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 
         <!-- Section: You -->
         <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
-          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">About You</div>
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">About You</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
             <div>
               <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">First Name <span style="color:var(--sage-dark);">*</span></label>
@@ -889,7 +885,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 
         <!-- Section: Package -->
         <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
-          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Package</div>
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Package</div>
           <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.8rem;">Which package are you interested in? <span style="color:var(--sage-dark);">*</span></label>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;" id="if-packages">
             <label style="display:flex;align-items:flex-start;gap:0.7rem;padding:1rem;border:0.5px solid var(--linen);border-radius:8px;cursor:pointer;transition:all 0.2s;" class="pkg-opt">
@@ -912,17 +908,17 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           <!-- Move-Out add-on -->
           <label id="if-reversal-label" style="display:flex;align-items:flex-start;gap:0.7rem;padding:1rem;border:0.5px solid rgba(201,168,76,0.3);border-radius:8px;cursor:pointer;background:rgba(201,168,76,0.04);margin-top:0.6rem;transition:all 0.2s;">
             <input type="checkbox" id="if-reversal" style="margin-top:3px;accent-color:var(--gold);">
-            <div><div id="if-reversal-title" style="font-size:0.88rem;font-weight:500;color:var(--bark);">🗝️ Add Move-Out Reversal Guide <span style="color:var(--gold);font-weight:500;">+£25</span></div><div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">Personalised checklist for undoing every change before you hand back the keys. Included free with The Full Edit.</div></div>
+            <div><div id="if-reversal-title" style="font-size:0.88rem;font-weight:500;color:var(--bark);">🗝️ Add Move-Out Reversal Guide <span style="color:var(--gold-text);font-weight:500;">+£25</span></div><div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;">Personalised checklist for undoing every change before you hand back the keys. Included free with The Full Edit.</div></div>
           </label>
         </div>
 
         <!-- Section: Your Space -->
         <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
-          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Space</div>
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Space</div>
 
           <!-- Dynamic dimensions field (Single / Trio / Seven) -->
           <div id="if-dims-wrap" style="margin-bottom:1rem;">
-            <label id="if-dims-label" style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.6rem;">Item dimensions <span style="color:var(--sage-dark);">*</span> <span id="if-dims-hint" style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(width × height × depth for each item)</span></label>
+            <label id="if-dims-label" style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.6rem;">Your items <span style="color:#AA4A1E;">*</span> <span id="if-dims-hint" style="font-size:0.75rem;font-weight:300;color:var(--bark-mid);">(for each item: source new or restyle, measurements, and what you'd like)</span></label>
             <div id="if-items"></div>
             <button type="button" id="if-add-item" onclick="addItemBox()" style="display:none;margin-top:0.2rem;padding:0.5rem 0.9rem;background:var(--sage-pale);border:0.5px dashed var(--sage);border-radius:6px;font-family:var(--font-body);font-size:0.8rem;color:var(--sage-dark);cursor:pointer;transition:all 0.15s;">+ Add another item</button>
           </div>
@@ -985,7 +981,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 
         <!-- Section: Your Style -->
         <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
-          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Style</div>
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Your Style</div>
 
           <!-- Colour palette -->
           <div style="background:var(--warm-white);border:0.5px solid var(--linen);border-radius:10px;padding:1.1rem 1.2rem 1.2rem;margin-bottom:0.9rem;">
@@ -1047,7 +1043,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 
         <!-- Section: Notes -->
         <div style="background:white;border-radius:12px;border:0.5px solid var(--linen);padding:1.8rem;box-shadow:0 2px 12px rgba(42,36,32,0.05);margin-bottom:0;">
-          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Anything Else?</div>
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--linen);">Anything Else?</div>
           <label style="display:block;font-size:0.8rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem;">Specific items, problem areas, or anything else we should know</label>
           <textarea id="if-notes" rows="4" placeholder="e.g. I have an IKEA Malm chest of drawers I hate, my kitchen backsplash is really dated, I rent so the landlord has restricted painting..." style="width:100%;padding:0.75rem 1rem;border:0.5px solid var(--linen);border-radius:6px;font-family:var(--font-body);font-size:0.88rem;color:var(--bark);background:var(--cream);outline:none;resize:vertical;transition:border-color 0.2s;line-height:1.65;" onfocus="this.style.borderColor='var(--sage-dark)'" onblur="this.style.borderColor='var(--linen)'"></textarea>
         </div>
@@ -1093,7 +1089,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <div class="pricing-hero">
       <div class="eyebrow centered" style="position:relative;z-index:2;"><span>Investment</span></div>
       <h1>Design worth <em>investing in</em></h1>
-      <p>We give you the vision; you execute it — at your own pace. Every package includes a curated PDF playbook and clickable shopping list. Add a personalised Move-Out Reversal Guide to any package, free with The Full Edit.</p>
+      <p>Every package includes a curated PDF playbook and clickable shopping list — yours to execute at your own pace.<br>Add a Move-Out Reversal Guide to any package, free with The Full Edit.</p>
     </div>
     <div class="pricing-body">
       <!-- Compare Packages -->
@@ -1107,7 +1103,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           <div class="cmp-col">
             <div class="cmp-popular"></div>
             <div class="cmp-pkg-name">The Single Edit</div>
-            <div class="cmp-pkg-tag">One thing fixed, perfectly.</div>
+            <div class="cmp-pkg-tag">One item — sourced new, or restyled with add-ons.</div>
             <div class="cmp-pkg-price">£75</div>
             <div class="cmp-pkg-scope">1 item</div>
             <button class="cmp-btn cmp-btn-light" onclick="showPage('calc')">Get Started</button>
@@ -1116,7 +1112,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           <div class="cmp-col cmp-feat">
             <div class="cmp-popular">Most Popular</div>
             <div class="cmp-pkg-name">The Trio Edit</div>
-            <div class="cmp-pkg-tag">A whole zone, cohesive.</div>
+            <div class="cmp-pkg-tag">Three items — sourced new or restyled.</div>
             <div class="cmp-pkg-price">£200</div>
             <div class="cmp-pkg-scope">3 items</div>
             <button class="cmp-btn cmp-btn-dark" onclick="showPage('calc')">Get Started</button>
@@ -1125,7 +1121,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           <div class="cmp-col">
             <div class="cmp-popular"></div>
             <div class="cmp-pkg-name">The Seven Edit</div>
-            <div class="cmp-pkg-tag">The whole room, done right.</div>
+            <div class="cmp-pkg-tag">Seven items — sourced new or restyled.</div>
             <div class="cmp-pkg-price">£399</div>
             <div class="cmp-pkg-scope">7 items</div>
             <button class="cmp-btn cmp-btn-light" onclick="showPage('calc')">Get Started</button>
@@ -1134,7 +1130,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           <div class="cmp-col">
             <div class="cmp-popular"></div>
             <div class="cmp-pkg-name">The Full Edit</div>
-            <div class="cmp-pkg-tag">Your brief, your scope.</div>
+            <div class="cmp-pkg-tag">Your brief — sourced new or restyled.</div>
             <div class="cmp-pkg-price">Custom</div>
             <div class="cmp-pkg-scope">You decide</div>
             <button class="cmp-btn cmp-btn-sage" onclick="showFullEdit()">Get a Quote</button>
@@ -1145,7 +1141,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         <div class="cmp-section-label">What's included</div>
 
         <div class="cmp-row">
-          <div class="cmp-label-col">Transformation ideas</div>
+          <div class="cmp-label-col">Number of items to transform</div>
           <div class="cmp-col">1</div>
           <div class="cmp-col cmp-feat">3</div>
           <div class="cmp-col">7</div>
@@ -1153,51 +1149,19 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         </div>
 
         <div class="cmp-row cmp-row-alt">
+          <div class="cmp-label-col">Mood board</div>
+          <div class="cmp-col"><span class="cmp-no">—</span></div>
+          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span> Mini mood board</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> Medium mood board</div>
+          <div class="cmp-col"><span class="cmp-yes">✓</span> 2 options to choose</div>
+        </div>
+
+        <div class="cmp-row">
           <div class="cmp-label-col">Product options per item</div>
           <div class="cmp-col">1</div>
           <div class="cmp-col cmp-feat">1</div>
-          <div class="cmp-col">2 per item</div>
-          <div class="cmp-col">2 per item</div>
-        </div>
-
-        <div class="cmp-row">
-          <div class="cmp-label-col">Shopping list</div>
-          <div class="cmp-col"><span class="cmp-no">—</span></div>
-          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span> Consolidated</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> Phased by priority</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> Master list</div>
-        </div>
-
-        <div class="cmp-row cmp-row-alt">
-          <div class="cmp-label-col">Mood board</div>
-          <div class="cmp-col"><span class="cmp-no">—</span></div>
-          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span> Zone mood board</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> Full room</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> Whole-home</div>
-        </div>
-
-        <div class="cmp-row">
-          <div class="cmp-label-col">Colour palette</div>
-          <div class="cmp-col"><span class="cmp-no">—</span></div>
-          <div class="cmp-col cmp-feat"><span class="cmp-no">—</span></div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
-        </div>
-
-        <div class="cmp-row cmp-row-alt">
-          <div class="cmp-label-col">Before &amp; After mockup</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
-          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span></div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> All items</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> All items</div>
-        </div>
-
-        <div class="cmp-row">
-          <div class="cmp-label-col">PDF step-by-step instructions</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
-          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span> All 3 items</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> All 7 items</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> All items</div>
+          <div class="cmp-col">2</div>
+          <div class="cmp-col">2</div>
         </div>
 
         <div class="cmp-row cmp-row-alt">
@@ -1209,27 +1173,11 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         </div>
 
         <div class="cmp-row">
-          <div class="cmp-label-col">Sustainable sourcing</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
-          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span></div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> Priority</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span> Priority</div>
-        </div>
-
-        <div class="cmp-row cmp-row-alt">
-          <div class="cmp-label-col">100% deposit-safe guarantee</div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
-          <div class="cmp-col cmp-feat"><span class="cmp-yes">✓</span></div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
-          <div class="cmp-col"><span class="cmp-yes">✓</span></div>
-        </div>
-
-        <div class="cmp-row">
-          <div class="cmp-label-col">Turnaround</div>
-          <div class="cmp-col">5 working days</div>
-          <div class="cmp-col cmp-feat">7 working days</div>
-          <div class="cmp-col">10 working days</div>
-          <div class="cmp-col">Agreed with you</div>
+          <div class="cmp-label-col">Turnaround Time</div>
+          <div class="cmp-col">Shopping link in 3 working days</div>
+          <div class="cmp-col cmp-feat">Mood board 4 working days · list 3 working days after approval</div>
+          <div class="cmp-col">Mood board 5 working days · shopping list 5 working days after approval</div>
+          <div class="cmp-col">Both agreed with you during consultation</div>
         </div>
 
         <div class="cmp-row cmp-row-alt cmp-row-addon">
@@ -1240,36 +1188,25 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
           <div class="cmp-col"><span class="cmp-yes">✓</span> <strong>Included free</strong></div>
         </div>
 
-        <!-- Footer row -->
-        <div class="cmp-grid cmp-footer-row">
-          <div class="cmp-label-col"></div>
-          <div class="cmp-col">
-            <div class="cmp-best">Best for</div>
-            <div class="cmp-best-txt">One specific fix</div>
-            <button class="cmp-btn cmp-btn-light" onclick="showPage('calc')">Get Started</button>
+        <!-- Control note spanning Trio/Seven/Full -->
+        <div class="cmp-grid" style="background:transparent;border-radius:0;">
+          <div class="cmp-label-col" style="background:transparent;"></div>
+          <div class="cmp-col" style="background:transparent;border-left:none;"></div>
+          <div style="grid-column:span 3;background:var(--sage-pale);border:0.5px solid var(--moss);border-radius:10px;margin:0.8rem 0.6rem;padding:0.9rem 1.2rem;text-align:center;">
+            <p style="font-size:0.82rem;color:#3A322C;font-weight:400;line-height:1.6;margin:0;"><span style="font-weight:600;color:var(--sage-dark);">You stay in control.</span> For the Trio, Seven and Full Edit, we send your mood board first — once you're happy with the direction, we build your shopping list. Nothing is finalised until you approve.</p>
           </div>
-          <div class="cmp-col cmp-feat">
-            <div class="cmp-best">Best for</div>
-            <div class="cmp-best-txt">A corner or zone</div>
-            <button class="cmp-btn cmp-btn-dark" onclick="showPage('calc')">Get Started</button>
-          </div>
-          <div class="cmp-col">
-            <div class="cmp-best">Best for</div>
-            <div class="cmp-best-txt">A full room</div>
-            <button class="cmp-btn cmp-btn-light" onclick="showPage('calc')">Get Started</button>
-          </div>
-          <div class="cmp-col">
-            <div class="cmp-best">Best for</div>
-            <div class="cmp-best-txt">Larger or unusual briefs</div>
-            <button class="cmp-btn cmp-btn-sage" onclick="showFullEdit()">Get a Quote</button>
-          </div>
+        </div>
+
+        <!-- Full-width note row above CTAs -->
+        <div class="cmp-note-row" style="min-width:800px;background:var(--cream);border-top:0.5px solid var(--linen);border-radius:0 0 10px 10px;padding:1rem 1.5rem;text-align:center;">
+          <p style="font-size:0.85rem;color:#524840;font-weight:400;line-height:1.7;margin:0;"><strong>NOTE:</strong> Every package includes a <strong>clickable shopping list</strong>, <strong>before &amp; after mockups</strong>, <strong>PDF step-by-step instructions</strong>, <strong>sustainable sourcing</strong>, and our <strong>100% deposit-safe guarantee</strong>.</p>
         </div>
 
       </div>
       <!-- End Compare Packages -->
 
 
-      <div class="zoom-section" style="padding:3rem 0 0;">
+      <div class="zoom-section" id="deliverable" style="padding:3rem 0 0;">
         <div class="eyebrow centered"><span>Your Deliverable</span></div>
         <h2 class="section-title" style="font-size:clamp(1.8rem,2.5vw,2.6rem);text-align:center;margin-bottom:0.6rem;">Your <em>Design Playbook</em> — delivered to your inbox</h2>
         <p style="text-align:center;font-size:0.9rem;color:var(--bark-mid);font-weight:300;margin-bottom:0;max-width:440px;margin:0 auto;line-height:1.75;">A beautifully branded PDF with everything you need to transform your space — no calls, no waiting rooms, no guesswork.</p>
@@ -1390,7 +1327,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         </ul>
         <!-- Package nudge based on rooms selected -->
         <div id="regPkgNudge" style="display:none;margin-top:2rem;background:rgba(201,168,76,0.15);border:0.5px solid rgba(201,168,76,0.3);border-radius:8px;padding:1rem 1.2rem;">
-          <div style="font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-light);font-weight:500;margin-bottom:0.4rem;">Based on your rooms</div>
+          <div style="font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:#FBF3DC;font-weight:500;margin-bottom:0.4rem;">Based on your rooms</div>
           <div id="regPkgText" style="font-size:0.88rem;color:white;font-weight:300;line-height:1.6;"></div>
         </div>
       </div>
@@ -1408,39 +1345,39 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 
         <div class="form-row">
           <div class="fg">
-            <label for="fn">First Name <span style="color:#C4622D;">*</span></label>
+            <label for="fn">First Name <span style="color:#AA4A1E;">*</span></label>
             <input type="text" id="fn" placeholder="Your first name" autocomplete="given-name" required oninput="clearErr('fn-err')">
-            <div id="fn-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
+            <div id="fn-err" style="display:none;font-size:0.78rem;color:#AA4A1E;margin-top:0.3rem;font-weight:300;"></div>
           </div>
           <div class="fg">
-            <label for="ln">Last Name <span style="color:#C4622D;">*</span></label>
+            <label for="ln">Last Name <span style="color:#AA4A1E;">*</span></label>
             <input type="text" id="ln" placeholder="Your last name" autocomplete="family-name" required oninput="clearErr('ln-err')">
-            <div id="ln-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
+            <div id="ln-err" style="display:none;font-size:0.78rem;color:#AA4A1E;margin-top:0.3rem;font-weight:300;"></div>
           </div>
         </div>
 
         <div class="fg">
-          <label for="em">Email Address <span style="color:#C4622D;">*</span></label>
+          <label for="em">Email Address <span style="color:#AA4A1E;">*</span></label>
           <input type="email" id="em" placeholder="your@email.com" autocomplete="email" required oninput="clearErr('em-err')">
-          <div id="em-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
+          <div id="em-err" style="display:none;font-size:0.78rem;color:#AA4A1E;margin-top:0.3rem;font-weight:300;"></div>
         </div>
 
         <div class="fg">
-          <label for="ph">Phone Number <span style="color:#C4622D;">*</span></label>
+          <label for="ph">Phone Number <span style="color:#AA4A1E;">*</span></label>
           <input type="tel" id="ph" placeholder="+44 7700 000000" autocomplete="tel" required oninput="clearErr('ph-err')">
-          <div id="ph-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
+          <div id="ph-err" style="display:none;font-size:0.78rem;color:#AA4A1E;margin-top:0.3rem;font-weight:300;"></div>
         </div>
 
         <div class="fg">
-          <label for="pw">Password <span style="color:#C4622D;">*</span></label>
+          <label for="pw">Password <span style="color:#AA4A1E;">*</span></label>
           <input type="password" id="pw" placeholder="At least 8 characters" autocomplete="new-password" required oninput="clearErr('pw-err')">
-          <div id="pw-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
+          <div id="pw-err" style="display:none;font-size:0.78rem;color:#AA4A1E;margin-top:0.3rem;font-weight:300;"></div>
         </div>
 
         <div class="fg">
-          <label for="pc">Postcode <span style="color:#C4622D;">*</span></label>
+          <label for="pc">Postcode <span style="color:#AA4A1E;">*</span></label>
           <input type="text" id="pc" placeholder="e.g. E14 5AB" autocomplete="postal-code" required oninput="clearErr('pc-err')">
-          <div id="pc-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
+          <div id="pc-err" style="display:none;font-size:0.78rem;color:#AA4A1E;margin-top:0.3rem;font-weight:300;"></div>
         </div>
 
         <button class="f-submit" type="button" onclick="doRegister()" style="margin-top:1.5rem;">Create Free Account & See My Results</button>
@@ -1452,12 +1389,12 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
         <h3>Welcome back</h3>
         <p class="fs">Sign in to access your quiz result and mood boards.</p>
         <div class="fg">
-          <label for="lem">Email Address <span style="color:#C4622D;">*</span></label>
+          <label for="lem">Email Address <span style="color:#AA4A1E;">*</span></label>
           <input type="email" id="lem" placeholder="your@email.com" autocomplete="email" required oninput="clearErr('lem-err')">
-          <div id="lem-err" style="display:none;font-size:0.78rem;color:#C4622D;margin-top:0.3rem;font-weight:300;"></div>
+          <div id="lem-err" style="display:none;font-size:0.78rem;color:#AA4A1E;margin-top:0.3rem;font-weight:300;"></div>
         </div>
         <div class="fg">
-          <label for="lpw">Password <span style="color:#C4622D;">*</span></label>
+          <label for="lpw">Password <span style="color:#AA4A1E;">*</span></label>
           <input type="password" id="lpw" placeholder="Your password" autocomplete="current-password" required>
         </div>
         <button class="f-submit" type="button" onclick="doLogin()">Sign In</button>
@@ -1476,6 +1413,14 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 /* ============================================================
    PAGE NAVIGATION
    ============================================================ */
+function showDeliverable() {
+  showPage('pricing');
+  setTimeout(function() {
+    var el = document.getElementById('deliverable');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 120);
+}
+
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-' + name);
@@ -1483,6 +1428,10 @@ function showPage(name) {
     target.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+  // Highlight the active nav link
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+    a.classList.toggle('nav-active', a.getAttribute('data-page') === name);
+  });
   if (name === 'quiz') {
     renderQuiz();
   }
@@ -1671,12 +1620,15 @@ var questions = [
     id: 'life',
     emoji: '☕',
     title: 'How do you <em>actually use</em> your space?',
-    sub: 'Be honest — we design around real life, not Instagram life.',
+    sub: 'Select all that apply — most renters do more than one.',
+    multi: true,
     options: [
       { icon: '💻', title: 'Work from home a lot', desc: 'Need it functional as much as beautiful', val: 'wfh' },
       { icon: '🛋️', title: 'Mostly relaxing', desc: 'Sofa, TV, wind-down zone', val: 'relax' },
       { icon: '🥂', title: 'Entertaining friends', desc: 'People over regularly, want it to impress', val: 'social' },
-      { icon: '🌙', title: 'A private sanctuary', desc: 'Just for me — peaceful and restorative', val: 'sanctuary' }
+      { icon: '🌙', title: 'A private sanctuary', desc: 'Just for me — peaceful and restorative', val: 'sanctuary' },
+      { icon: '🍳', title: 'Cooking and dining', desc: 'The kitchen and table are the heart of it', val: 'cooking' },
+      { icon: '🏙️', title: 'One room does everything', desc: 'A studio or small flat where space works hard', val: 'studio' }
     ]
   },
   {
@@ -1705,7 +1657,7 @@ var questions = [
     id: 'style',
     emoji: '🎨',
     title: 'Which palette makes you feel <em>at home</em>?',
-    sub: 'Tap a room to preview it full size — then confirm your choice.',
+    sub: 'Tap a palette to preview it — then confirm your choice.',
     images: true,
     options: [
       { title: 'Calm & Grounded',  desc: 'Cool blues, powder grey, icy mist',                val: 'calm',     colors: ['#A8BDD0','#C0C8D8','#8FA8B8','#D0D4DC'], accent: '#8FA8B8',  img: 'calm'   },
@@ -1723,13 +1675,13 @@ var personas = {
     name: 'The Minimalist Nomad',
     desc: 'You crave clean lines, open space and a sense of calm. Your ideal room has everything it needs and nothing it doesn\'t — warm neutrals, quality materials and intentional pieces only.',
     traits: ['Quiet luxury', 'Warm minimalism', 'Bouclé & linen', 'Quality over quantity'],
-    pkg: 'The Single Edit', price: '£75', why: 'One perfectly curated piece that nails the calm, intentional aesthetic — starting exactly where it\'ll have the most impact.'
+    pkg: 'The Single Edit', price: '£75', why: 'One perfectly curated item that nails the calm, intentional aesthetic — starting exactly where it\'ll have the most impact.'
   },
   cosy: {
     name: 'The Cosy Cocooner',
     desc: 'Your home is your sanctuary. You want layers, warmth and textures that make you want to curl up and never leave. Mocha tones, warm lighting, dark wood and rattan are your love language.',
     traits: ['Warm textures', 'Layered lighting', 'Earthy tones', 'Biophilic warmth'],
-    pkg: 'The Seven Edit', price: '£399', why: 'Seven pieces transformed, all working together — the warmth and layering you\'re after takes a whole room to get right.'
+    pkg: 'The Seven Edit', price: '£399', why: 'Seven items transformed, all working together — the warmth and layering you\'re after takes a whole room to get right.'
   },
   maximalist: {
     name: 'The Aesthetic Maximalist',
@@ -1741,7 +1693,7 @@ var personas = {
     name: 'The Plant Parent',
     desc: 'You believe every room is better with something living in it. You want a biophilic space — rattan, jute, trailing pothos, natural stone and organic textures. Nature, indoors.',
     traits: ['Biophilic design', 'Natural materials', 'Sustainable sourcing', 'Green everywhere'],
-    pkg: 'The Trio Edit', price: '£200', why: 'Three pieces — a plant corner, a natural texture and a rattan accent — working together to bring the outside in.'
+    pkg: 'The Trio Edit', price: '£200', why: 'Three items — a plant corner, a natural texture and a rattan accent — working together to bring the outside in.'
   },
   corporate: {
     name: 'The Corporate Renter',
@@ -1753,7 +1705,7 @@ var personas = {
     name: 'The Jewel & Spice Stylist',
     desc: 'You\'re drawn to richness — deep emeralds, ruby reds, burnished gold, embroidered cushions and dark wood. Your style is inspired by Indian, Qatari or Art Deco heritage, reimagined for a modern rental.',
     traits: ['Jewel tones', 'Rich textures', 'Gold accents', 'Heritage-inspired'],
-    pkg: 'The Seven Edit', price: '£399', why: 'Seven pieces with two options each — the depth of sourcing needed to find the right jewel-toned, velvet and metallic finishes that make this look sing.'
+    pkg: 'The Seven Edit', price: '£399', why: 'Seven items with two options each — the depth of sourcing needed to find the right jewel-toned, velvet and metallic finishes that make this look sing.'
   }
 };
 
@@ -1778,7 +1730,9 @@ var PERSONA_SCORES = {
     wfh:       { corporate: 2 },
     relax:     { cosy: 2 },
     social:    { corporate: 1, maximalist: 1 },
-    sanctuary: { minimalist: 1, cosy: 1 }
+    sanctuary: { minimalist: 1, cosy: 1 },
+    cooking:   { cosy: 1, corporate: 1 },
+    studio:    { minimalist: 1, corporate: 1 }
   },
   bother: {                                /* each selected  (weight 1) */
     storage:   { corporate: 1 },
@@ -1811,7 +1765,9 @@ var LIFE_NOTE = {
   wfh:       'Because you work from home, we\'ll balance beauty with a workspace that genuinely functions.',
   relax:     'Since your flat is mainly for relaxing, we\'ll lean into comfort and wind-down zones.',
   social:    'As you entertain often, we\'ll make sure it looks impressive when people come over.',
-  sanctuary: 'As your flat is your private sanctuary, we\'ll keep it peaceful and restorative.'
+  sanctuary: 'As your flat is your private sanctuary, we\'ll keep it peaceful and restorative.',
+  cooking:   'Since cooking and dining are the heart of your home, we\'ll style the kitchen and table as the centrepiece.',
+  studio:    'Because one room does everything, we\'ll focus on clever zoning so the space works hard without feeling cramped.'
 };
 
 function getPersona() {
@@ -1819,7 +1775,7 @@ function getPersona() {
   function add(map){ if(!map) return; for (var k in map){ if (scores[k]!=null) scores[k]+=map[k]; } }
   add(PERSONA_SCORES.vibe[quizAnswers.vibe]);
   add(PERSONA_SCORES.style[quizAnswers.style]);
-  add(PERSONA_SCORES.life[quizAnswers.life]);
+  (quizAnswers.life||'').split(',').forEach(function(l){ add(PERSONA_SCORES.life[l]); });
   (quizAnswers.bother||'').split(',').forEach(function(b){ add(PERSONA_SCORES.bother[b]); });
   var best = PERSONA_PRIORITY[PERSONA_PRIORITY.length-1], bestScore = -1;
   PERSONA_PRIORITY.forEach(function(p){ if (scores[p] > bestScore){ bestScore = scores[p]; best = p; } });
@@ -1853,6 +1809,10 @@ function renderQuiz() {
   var txt = document.getElementById('qpTxt');
   if (content) { content.style.animation = 'none'; void content.offsetWidth; content.style.animation = ''; }
 
+  var wrap = document.querySelector('.quiz-wrap');
+  var isPalette = (quizStep < questions.length) && questions[quizStep].images;
+  if (wrap) wrap.classList.toggle('quiz-wrap-wide', !!isPalette);
+
   if (quizStep < questions.length) {
     var q = questions[quizStep];
     var pct = Math.round((quizStep / questions.length) * 100);
@@ -1863,13 +1823,13 @@ function renderQuiz() {
 
     if (q.multi) {
       optionsHtml =
-        '<div id="multiGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.5rem;">' +
+        '<div id="multiGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;margin-bottom:1.5rem;">' +
         q.options.map(function(o) {
-          return '<div class="q-multi-opt" data-val="' + o.val + '" style="display:flex;align-items:flex-start;gap:0.75rem;background:var(--warm-white);border:1.5px solid var(--linen);border-radius:10px;padding:1rem;cursor:pointer;transition:all 0.18s;box-shadow:0 1px 3px rgba(42,36,32,0.04);">' +
-            '<span style="font-size:1.4rem;flex-shrink:0;margin-top:2px;pointer-events:none;">' + o.icon + '</span>' +
+          return '<div class="q-multi-opt" data-val="' + o.val + '" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.4rem;background:var(--warm-white);border:1.5px solid var(--linen);border-radius:10px;padding:0.9rem 0.6rem;cursor:pointer;transition:transform 0.18s ease,box-shadow 0.18s ease,border-color 0.18s ease,background 0.18s ease;box-shadow:0 1px 3px rgba(42,36,32,0.04);">' +
+            '<span style="font-size:1.5rem;flex-shrink:0;pointer-events:none;">' + o.icon + '</span>' +
             '<div style="pointer-events:none;">' +
-              '<div style="font-size:0.88rem;font-weight:500;color:var(--bark);margin-bottom:3px;">' + o.title + '</div>' +
-              '<div style="font-size:0.75rem;color:var(--bark-mid);font-weight:300;line-height:1.45;">' + o.desc + '</div>' +
+              '<div style="font-size:0.82rem;font-weight:500;color:var(--bark);margin-bottom:2px;line-height:1.25;">' + o.title + '</div>' +
+              '<div style="font-size:0.7rem;color:var(--bark-mid);font-weight:300;line-height:1.35;">' + o.desc + '</div>' +
             '</div>' +
           '</div>';
         }).join('') +
@@ -1891,10 +1851,17 @@ function renderQuiz() {
               multiSelected.splice(idx, 1);
               el.style.borderColor = 'var(--linen)';
               el.style.background = 'var(--warm-white)';
+              el.style.transform = 'none';
+              el.style.boxShadow = '0 1px 3px rgba(42,36,32,0.04)';
+              el.style.zIndex = '';
             } else {
               multiSelected.push(val);
               el.style.borderColor = '#7A9E7E';
               el.style.background = 'var(--sage-pale)';
+              el.style.transform = 'scale(1.06)';
+              el.style.boxShadow = '0 12px 30px rgba(42,36,32,0.14)';
+              el.style.position = 'relative';
+              el.style.zIndex = '5';
             }
             var btn = document.getElementById('multiNextBtn');
             if (btn) {
@@ -1914,7 +1881,7 @@ function renderQuiz() {
             if (multiSelected.length === 0) break;
             document.removeEventListener('click', window._multiHandler);
             window._multiHandler = null;
-            quizAnswers.bother = multiSelected.join(',');
+            quizAnswers[multiQId] = multiSelected.join(',');
             quizStep++;
             renderQuiz();
             break;
@@ -1953,10 +1920,10 @@ function renderQuiz() {
         '</div>';
 
     } else if (q.images) {
-      // Image palette cards — event delegation, no inline onclick
-      var palCards = q.options.map(function(o) {
-        var strips = o.colors.map(function(c) {
-          return '<div style="flex:1;background:' + c + ';pointer-events:none;"></div>';
+      // Two-panel palette picker — thin rows (left) + large preview (right)
+      var palRows = q.options.map(function(o) {
+        var dots = o.colors.map(function(c) {
+          return '<i style="width:10px;height:22px;border-radius:2px;display:block;background:' + c + ';pointer-events:none;"></i>';
         }).join('');
         return '<div class="q-pal-card"' +
           ' data-qid="' + q.id + '"' +
@@ -1966,30 +1933,27 @@ function renderQuiz() {
           ' data-title="' + o.title.replace(/&/g,'&amp;') + '"' +
           ' data-desc="' + o.desc.replace(/&/g,'&amp;') + '"' +
           ' data-colors="' + o.colors.join('|') + '"' +
-          ' style="border-radius:10px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all 0.22s;background:#111;position:relative;">' +
-          '<img src="' + (paletteImgs[o.img]||'') + '" alt="' + o.title + '" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;pointer-events:none;">' +
-          '<div style="display:flex;height:8px;pointer-events:none;">' + strips + '</div>' +
-          '<div style="padding:8px 10px 10px;background:#1A1816;pointer-events:none;">' +
-            '<div style="font-size:0.82rem;font-weight:500;color:var(--bark);margin-bottom:2px;">' + o.title + '</div>' +
-            '<div style="font-size:0.7rem;color:var(--bark-mid);line-height:1.4;">' + o.desc + '</div>' +
-          '</div>' +
-          '<div class="pal-badge" style="display:none;position:absolute;top:7px;right:7px;background:rgba(255,255,255,0.92);border-radius:100px;padding:2px 9px;font-size:10px;font-weight:600;color:#4F7153;pointer-events:none;">Selected ✓</div>' +
+          ' style="display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:8px;border:2px solid var(--linen);background:var(--warm-white);cursor:pointer;transition:border-color 0.15s,background 0.15s;">' +
+          '<span style="display:flex;gap:2px;flex-shrink:0;pointer-events:none;">' + dots + '</span>' +
+          '<span style="font-size:0.82rem;font-weight:500;color:var(--bark);line-height:1.2;pointer-events:none;">' + o.title + '</span>' +
           '</div>';
       }).join('');
 
       optionsHtml =
-        '<div id="paletteGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1rem;">' +
-        palCards +
-        '</div>' +
-        '<div id="palPreview" style="display:none;border-radius:12px;overflow:hidden;margin-bottom:1rem;">' +
-          '<img id="palPreviewImg" src="" alt="" style="width:100%;max-height:280px;object-fit:cover;object-position:center 65%;display:block;">' +
-          '<div style="padding:1rem 1.2rem;background:var(--bark);display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;">' +
-            '<div id="palPreviewSwatches" style="display:flex;gap:7px;flex-shrink:0;"></div>' +
-            '<div style="flex:1;min-width:120px;">' +
-              '<div id="palPreviewName" style="font-size:0.95rem;font-weight:500;color:white;margin-bottom:2px;"></div>' +
-              '<div id="palPreviewDesc" style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;"></div>' +
+        '<div id="paletteSplit" style="display:grid;grid-template-columns:200px 1fr 150px;gap:14px;align-items:start;margin-bottom:1rem;">' +
+          '<div id="paletteGrid" style="display:flex;flex-direction:column;gap:8px;">' + palRows + '</div>' +
+          '<div id="palPreview" style="border-radius:12px;overflow:hidden;background:var(--bark);border:2px solid var(--linen);position:sticky;top:1rem;">' +
+            '<img id="palPreviewImg" src="" alt="" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 65%;display:block;background:var(--sage-pale);">' +
+            '<div style="padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:0.9rem;">' +
+              '<div id="palPreviewSwatches" style="display:flex;gap:7px;flex-shrink:0;"></div>' +
+              '<div style="min-width:0;">' +
+                '<div id="palPreviewName" style="font-size:0.95rem;font-weight:500;color:white;margin-bottom:2px;">Tap a palette to preview</div>' +
+                '<div id="palPreviewDesc" style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;line-height:1.35;">Your room, styled in each mood</div>' +
+              '</div>' +
             '</div>' +
-            '<button type="button" id="palConfirmBtn" style="background:var(--sage-dark);color:white;border:none;padding:0.65rem 1.3rem;border-radius:4px;font-size:0.85rem;font-weight:500;cursor:pointer;white-space:nowrap;min-height:44px;min-width:120px;">This is me ✦</button>' +
+          '</div>' +
+          '<div id="palConfirmCol" style="position:sticky;top:1rem;">' +
+            '<button type="button" id="palConfirmBtn" style="width:100%;background:var(--sage-dark);color:white;border:none;padding:0.9rem 1rem;border-radius:8px;font-size:0.9rem;font-weight:500;cursor:pointer;min-height:52px;opacity:0.5;pointer-events:none;">This is me ✦</button>' +
           '</div>' +
         '</div>';
 
@@ -2009,6 +1973,17 @@ function renderQuiz() {
         var btn = document.getElementById('palConfirmBtn');
         if (btn) {
           btn.addEventListener('click', function() { confirmPalette(); });
+        }
+        // Default the preview to the first palette (or a previously chosen one)
+        var cards = document.querySelectorAll('.q-pal-card');
+        if (cards.length) {
+          var initial = cards[0];
+          if (quizAnswers.style) {
+            cards.forEach(function(c) {
+              if (c.getAttribute('data-val') === quizAnswers.style) initial = c;
+            });
+          }
+          selectPaletteCard(initial);
         }
       }, 80);
 
@@ -2125,7 +2100,7 @@ function renderQuiz() {
       '<div style="font-size:0.9rem;color:white;font-weight:400;">Your Renter Personality · Minimalist or Maximalist lean · Style palette</div></div>' +
       '</div>' +
       '<button type="button" class="btn btn-dark" style="width:100%;justify-content:center;font-size:0.9rem;padding:1rem;" onclick="goToRegisterFromQuiz()">Unlock My Results — It\'s Free →</button>' +
-      '<p style="font-size:0.82rem;color:rgba(255,255,255,0.3);margin-top:1rem;font-weight:300;">Already have an account? <span style="color:var(--sage-light);cursor:pointer;" onclick="showPage(\'register\')">Sign in here</span></p>' +
+      '<p style="font-size:0.82rem;color:rgba(255,255,255,0.55);margin-top:1rem;font-weight:300;">Already have an account? <span style="color:var(--sage-text);cursor:pointer;" onclick="showPage(\'register\')">Sign in here</span></p>' +
       '</div>';
   } else {
     fill.style.width = '100%';
@@ -2142,8 +2117,12 @@ function renderQuiz() {
     var pal = (typeof PALETTE_INFO!=='undefined') ? PALETTE_INFO[quizAnswers.style] : null;
     var palSwatches = pal ? pal.colors.map(function(c){ return '<div style="width:30px;height:30px;border-radius:50%;background:'+c+';box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>'; }).join('') : '';
     var botherArr = (quizAnswers.bother||'').split(',').filter(Boolean);
-    var focusItems = botherArr.map(function(b){ var f=(typeof BOTHER_FOCUS!=='undefined')?BOTHER_FOCUS[b]:null; if(!f) return ''; return '<div style="display:flex;gap:0.6rem;margin-bottom:0.5rem;align-items:flex-start;"><span style="color:var(--sage-light);flex-shrink:0;line-height:1.5;">◆</span><div><div style="font-size:0.85rem;color:white;font-weight:400;">'+f[0]+'</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;">'+f[1]+'</div></div></div>'; }).join('');
-    var lifeNote = (typeof LIFE_NOTE!=='undefined') ? (LIFE_NOTE[quizAnswers.life]||'') : '';
+    var focusItems = botherArr.map(function(b){ var f=(typeof BOTHER_FOCUS!=='undefined')?BOTHER_FOCUS[b]:null; if(!f) return ''; return '<div style="display:flex;gap:0.6rem;margin-bottom:0.5rem;align-items:flex-start;"><span style="color:var(--sage-text);flex-shrink:0;line-height:1.5;">◆</span><div><div style="font-size:0.85rem;color:white;font-weight:400;">'+f[0]+'</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;">'+f[1]+'</div></div></div>'; }).join('');
+    var lifeArr = (quizAnswers.life||'').split(',').filter(Boolean);
+    var lifeNote = '';
+    if (typeof LIFE_NOTE!=='undefined') {
+      for (var li=0; li<lifeArr.length; li++){ if (LIFE_NOTE[lifeArr[li]]){ lifeNote = LIFE_NOTE[lifeArr[li]]; break; } }
+    }
     content.innerHTML =
       '<div class="q-result">' +
       '<div class="qr-persona">Your Renter Personality</div>' +
@@ -2169,7 +2148,7 @@ function renderQuiz() {
       '<button type="button" class="btn btn-dark" onclick="showPage(\'calc\')">Book Your Edit →</button>' +
       '<button type="button" class="btn btn-outline" onclick="showPage(\'pricing\')">See All Packages</button>' +
       '</div>' +
-      '<p style="font-size:0.82rem;color:rgba(255,255,255,0.3);margin-top:1.5rem;font-weight:300;cursor:pointer;" onclick="restartQuiz()">Retake the quiz</p>' +
+      '<p style="font-size:0.82rem;color:rgba(255,255,255,0.55);margin-top:1.5rem;font-weight:300;cursor:pointer;" onclick="restartQuiz()">Retake the quiz</p>' +
       '</div>';
   }
 }
@@ -2208,14 +2187,16 @@ function confirmLean() {
 function selectPaletteCard(card) {
   // Reset all cards
   document.querySelectorAll('.q-pal-card').forEach(function(c) {
-    c.style.borderColor = 'transparent';
+    c.style.borderColor = 'var(--linen)';
+    c.style.background = 'var(--warm-white)';
     var b = c.querySelector('.pal-badge');
     if (b) b.style.display = 'none';
   });
 
-  // Highlight selected card
+  // Highlight selected row
   var accent = card.getAttribute('data-accent') || '#4F7153';
   card.style.borderColor = accent;
+  card.style.background = 'var(--sage-pale)';
   var badge = card.querySelector('.pal-badge');
   if (badge) badge.style.display = 'block';
 
@@ -2238,12 +2219,16 @@ function selectPaletteCard(card) {
   if (previewDesc)     previewDesc.textContent = desc;
   if (previewSwatches) {
     previewSwatches.innerHTML = colors.map(function(c) {
-      return '<div style="width:28px;height:28px;border-radius:50%;background:' + c + ';box-shadow:0 2px 5px rgba(0,0,0,0.3);flex-shrink:0;"></div>';
+      return '<div style="width:22px;height:22px;border-radius:50%;background:' + c + ';box-shadow:0 2px 5px rgba(0,0,0,0.3);flex-shrink:0;"></div>';
     }).join('');
   }
   if (preview) {
-    preview.style.display = 'block';
-    setTimeout(function() { preview.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 50);
+    preview.style.borderColor = accent;
+  }
+  var confirmBtn = document.getElementById('palConfirmBtn');
+  if (confirmBtn) {
+    confirmBtn.style.opacity = '1';
+    confirmBtn.style.pointerEvents = 'auto';
   }
 
   // Store answer
@@ -2423,26 +2408,91 @@ function ifItemCount(){ return document.querySelectorAll('#if-items .if-item-row
 function makeItemBox(idx, removable){
   var row = document.createElement('div');
   row.className = 'if-item-row';
-  row.style.cssText = 'display:flex;gap:0.5rem;margin-bottom:0.5rem;align-items:center;';
-  var inp = document.createElement('input');
-  inp.type='text'; inp.className='if-item-dim';
-  inp.placeholder = 'Item '+idx+' — e.g. Chest of drawers: 80cm W × 75cm H × 45cm D';
-  inp.style.cssText = IF_INPUT_STYLE;
-  inp.onfocus = function(){ this.style.borderColor='var(--sage-dark)'; };
-  inp.onblur = function(){ this.style.borderColor='var(--linen)'; };
-  row.appendChild(inp);
+  row.style.cssText = 'position:relative;background:var(--warm-white);border:0.5px solid var(--linen);border-radius:8px;padding:1rem 1rem 0.9rem;margin-bottom:0.7rem;';
+
+  var head = document.createElement('div');
+  head.style.cssText = 'display:flex;align-items:center;justify-content:space-between;margin-bottom:0.7rem;';
+  var title = document.createElement('div');
+  title.className = 'if-item-title';
+  title.textContent = 'Item ' + idx;
+  title.style.cssText = 'font-size:0.8rem;font-weight:600;color:var(--bark);letter-spacing:0.02em;';
+  head.appendChild(title);
   if (removable){
     var rm = document.createElement('button');
     rm.type='button'; rm.className='if-item-remove'; rm.textContent='×'; rm.title='Remove item';
-    rm.style.cssText='flex-shrink:0;width:34px;height:34px;border:0.5px solid var(--linen);background:white;border-radius:6px;color:var(--bark-mid);font-size:1.2rem;line-height:1;cursor:pointer;';
+    rm.style.cssText='flex-shrink:0;width:28px;height:28px;border:0.5px solid var(--linen);background:white;border-radius:6px;color:var(--bark-mid);font-size:1.1rem;line-height:1;cursor:pointer;';
     rm.onclick=function(){ removeItemBox(this); };
-    row.appendChild(rm);
+    head.appendChild(rm);
   }
+  row.appendChild(head);
+
+  var toggle = document.createElement('div');
+  toggle.style.cssText = 'display:flex;gap:0.4rem;margin-bottom:0.7rem;';
+  ['source','restyle'].forEach(function(mode){
+    var b = document.createElement('button');
+    b.type='button'; b.className='if-item-mode'; b.setAttribute('data-mode',mode);
+    b.textContent = (mode==='source') ? 'Source new' : 'Restyle mine';
+    var active = (mode==='source');
+    b.style.cssText = 'flex:1;padding:0.5rem;border-radius:6px;font-family:var(--font-body);font-size:0.8rem;cursor:pointer;transition:all 0.15s;border:0.5px solid ' + (active?'var(--sage-dark)':'var(--linen)') + ';background:' + (active?'var(--sage-pale)':'white') + ';color:' + (active?'var(--sage-dark)':'var(--bark-mid)') + ';font-weight:' + (active?'600':'400') + ';';
+    b.onclick=function(){ setItemMode(row, mode); };
+    toggle.appendChild(b);
+  });
+  row.appendChild(toggle);
+
+  var dimLabel = document.createElement('label');
+  dimLabel.className='if-item-dim-label';
+  dimLabel.style.cssText='display:block;font-size:0.75rem;font-weight:500;color:var(--bark);margin-bottom:0.3rem;';
+  dimLabel.innerHTML='Space available <span style="color:#AA4A1E;">*</span>';
+  row.appendChild(dimLabel);
+  var inp = document.createElement('input');
+  inp.type='text'; inp.className='if-item-dim';
+  inp.placeholder = 'e.g. alcove 120cm W × 200cm H';
+  inp.style.cssText = IF_INPUT_STYLE + 'width:100%;margin-bottom:0.7rem;';
+  inp.onfocus = function(){ this.style.borderColor='var(--sage-dark)'; };
+  inp.onblur = function(){ this.style.borderColor='var(--linen)'; };
+  row.appendChild(inp);
+
+  var specLabel = document.createElement('label');
+  specLabel.style.cssText='display:block;font-size:0.75rem;font-weight:500;color:var(--bark);margin-bottom:0.3rem;';
+  specLabel.innerHTML='What would you like for this item? <span style="color:#AA4A1E;">*</span>';
+  row.appendChild(specLabel);
+  var specHint = document.createElement('p');
+  specHint.style.cssText='font-size:0.72rem;color:var(--bark-mid);font-weight:300;line-height:1.5;margin:0 0 0.4rem;';
+  specHint.textContent='Tell us what you want or want to change — e.g. "a blue velvet 3-seater, mid-century feel", or "my cream sofa needs to feel warmer and fresher". The more detail, the better your result.';
+  row.appendChild(specHint);
+  var spec = document.createElement('textarea');
+  spec.className='if-item-spec'; spec.rows=2;
+  spec.placeholder='Describe this item…';
+  spec.style.cssText = IF_INPUT_STYLE + 'width:100%;resize:vertical;';
+  spec.onfocus = function(){ this.style.borderColor='var(--sage-dark)'; };
+  spec.onblur = function(){ this.style.borderColor='var(--linen)'; };
+  row.appendChild(spec);
+
+  row.setAttribute('data-mode','source');
   return row;
 }
+function setItemMode(row, mode){
+  row.setAttribute('data-mode', mode);
+  row.querySelectorAll('.if-item-mode').forEach(function(b){
+    var active = b.getAttribute('data-mode')===mode;
+    b.style.border = '0.5px solid ' + (active?'var(--sage-dark)':'var(--linen)');
+    b.style.background = active?'var(--sage-pale)':'white';
+    b.style.color = active?'var(--sage-dark)':'var(--bark-mid)';
+    b.style.fontWeight = active?'600':'400';
+  });
+  var lbl = row.querySelector('.if-item-dim-label');
+  var dim = row.querySelector('.if-item-dim');
+  if (mode==='restyle'){
+    if(lbl) lbl.innerHTML='Item size <span style="color:#AA4A1E;">*</span>';
+    if(dim) dim.placeholder='e.g. sofa 180cm W × 85cm H × 90cm D';
+  } else {
+    if(lbl) lbl.innerHTML='Space available <span style="color:#AA4A1E;">*</span>';
+    if(dim) dim.placeholder='e.g. alcove 120cm W × 200cm H';
+  }
+}
 function renumberItems(){
-  document.querySelectorAll('#if-items .if-item-dim').forEach(function(inp,i){
-    inp.placeholder = inp.placeholder.replace(/^Item \d+/, 'Item '+(i+1));
+  document.querySelectorAll('#if-items .if-item-row .if-item-title').forEach(function(t,i){
+    t.textContent = 'Item '+(i+1);
   });
 }
 function refreshItemUI(){
@@ -2473,13 +2523,19 @@ function renderItemBoxesForPackage(){
   var wrap = document.getElementById('if-items');
   if (!wrap) return;
   var cap = pkg ? (IF_ITEM_CAPS[pkg.value]||1) : 1;
-  var existing = Array.from(document.querySelectorAll('#if-items .if-item-dim')).map(function(i){return i.value;});
+  var existing = Array.from(document.querySelectorAll('#if-items .if-item-row')).map(function(r){
+    return { dim:(r.querySelector('.if-item-dim')||{}).value||'', spec:(r.querySelector('.if-item-spec')||{}).value||'', mode:r.getAttribute('data-mode')||'source' };
+  });
   wrap.innerHTML='';
   var start = cap<1 ? 0 : Math.min(Math.max(existing.length,1), cap);
   for (var i=0;i<start;i++){
     var box = makeItemBox(i+1, cap>1);
     wrap.appendChild(box);
-    box.querySelector('.if-item-dim').value = existing[i]||'';
+    if (existing[i]){
+      box.querySelector('.if-item-dim').value = existing[i].dim;
+      box.querySelector('.if-item-spec').value = existing[i].spec;
+      setItemMode(box, existing[i].mode);
+    }
   }
   refreshItemUI();
 }
@@ -2488,7 +2544,22 @@ function getIfRooms(){ return Array.from(document.querySelectorAll('#if-room-gri
 function collectDimsValue(){
   var pkg = document.querySelector('input[name="package"]:checked');
   if (pkg && pkg.value==='full'){ return getIfRooms().join(', '); }
-  return Array.from(document.querySelectorAll('#if-items .if-item-dim')).map(function(i){return i.value.trim();}).filter(Boolean).join(' | ');
+  return Array.from(document.querySelectorAll('#if-items .if-item-row')).map(function(r,i){
+    var mode = r.getAttribute('data-mode')==='restyle' ? 'Restyle' : 'Source new';
+    var dim = (r.querySelector('.if-item-dim')||{}).value||''; dim=dim.trim();
+    var spec = (r.querySelector('.if-item-spec')||{}).value||''; spec=spec.trim();
+    if (!dim && !spec) return '';
+    return 'Item '+(i+1)+': '+mode+' — '+dim+(spec?' — "'+spec+'"':'');
+  }).filter(Boolean).join('\n');
+}
+function itemsAllComplete(){
+  var rows = Array.from(document.querySelectorAll('#if-items .if-item-row'));
+  if (!rows.length) return false;
+  return rows.every(function(r){
+    var dim=(r.querySelector('.if-item-dim')||{}).value||'';
+    var spec=(r.querySelector('.if-item-spec')||{}).value||'';
+    return dim.trim() && spec.trim();
+  });
 }
 function validateEmailLive(){
   var f = document.getElementById('if-email'); var err = document.getElementById('if-email-err');
@@ -2520,10 +2591,10 @@ function updateDimsLabel() {
   } else {
     if (dimsWrap) dimsWrap.style.display='block';
     if (roomsWrap) roomsWrap.style.display='none';
-    if (label) label.childNodes[0].textContent='Item dimensions ';
-    if (hint) hint.textContent='(width × height × depth for each item)';
+    if (label) label.childNodes[0].textContent='Your items ';
+    if (hint) hint.textContent='(for each item: source new or restyle, measurements, and what you\'d like)';
     if (reversalLabel) { reversalLabel.style.opacity='1'; reversalLabel.style.pointerEvents='auto'; }
-    if (reversalTitle) reversalTitle.innerHTML = '🗝️ Add Move-Out Reversal Guide <span style="color:var(--gold);font-weight:500;">+£25</span>';
+    if (reversalTitle) reversalTitle.innerHTML = '🗝️ Add Move-Out Reversal Guide <span style="color:var(--gold-text);font-weight:500;">+£25</span>';
     renderItemBoxesForPackage();
   }
 
@@ -2614,7 +2685,7 @@ function showFullEdit() {
   var nudge = document.getElementById('regPkgNudge');
   if (nudge) {
     nudge.style.display = 'block';
-    nudge.innerHTML = '<div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);font-weight:500;margin-bottom:0.4rem;">✦ You\'re enquiring about The Full Edit</div><div style="font-size:0.85rem;color:rgba(255,255,255,0.7);font-weight:300;line-height:1.6;">The Full Edit is our custom-priced package for briefs that don\'t fit a standard tier. Create your account and we\'ll be in touch with a tailored quote within 24 hours.</div>';
+    nudge.innerHTML = '<div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:#FBF3DC;font-weight:500;margin-bottom:0.4rem;">✦ You\'re enquiring about The Full Edit</div><div style="font-size:0.85rem;color:rgba(255,255,255,0.7);font-weight:300;line-height:1.6;">The Full Edit is our custom-priced package for briefs that don\'t fit a standard tier. Create your account and we\'ll be in touch with a tailored quote within 24 hours.</div>';
   }
 }
 
@@ -2738,7 +2809,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof isValidUKPostcode==='function' && !isValidUKPostcode(postcode)) { alert('Please enter a valid UK postcode (e.g. E14 5AB).'); return; }
     if (!pkgEl) { alert('Please select a package before submitting.'); return; }
     var dims = collectDimsValue();
-    if (!dims) { alert(pkgEl.value==='full' ? 'Please select at least one room you\'d like to enhance.' : 'Please enter dimensions for at least one item.'); return; }
+    if (pkgEl.value==='full'){
+      if (!dims) { alert('Please select at least one room you\'d like to enhance.'); return; }
+    } else {
+      if (!itemsAllComplete()) { alert('For each item, please add the measurements and tell us what you\'d like — both are needed so we can style it right.'); return; }
+    }
     var pw = val('if-password');
     if (!pw || pw.length < 6) { alert('Please choose a password (at least 6 characters) — submitting creates your account.'); return; }
 
@@ -2883,7 +2958,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var leanLabel = row.lean<=3?'Minimalist lean':(row.lean>=8?'Maximalist lean':'Balanced — curated with personality');
     box.innerHTML =
       '<div style="background:var(--bark);border-radius:12px;padding:1.5rem 1.7rem;margin-bottom:1.4rem;box-shadow:0 4px 24px rgba(42,36,32,0.12);">'+
-        '<div style="font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.4rem;">Your style profile</div>'+
+        '<div style="font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:0.4rem;">Your style profile</div>'+
         '<div style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:white;margin-bottom:0.6rem;">'+(row.archetype||'Your Renter Personality')+'</div>'+
         '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">'+
           '<span style="font-size:0.72rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);border-radius:100px;padding:0.3rem 0.8rem;">'+leanLabel+'</span>'+
@@ -2891,7 +2966,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '</div>'+
         '<div style="margin-top:1rem;display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;">'+
           '<button type="button" onclick="viewMyResult()" style="background:rgba(255,255,255,0.12);color:white;border:0.5px solid rgba(255,255,255,0.25);border-radius:6px;padding:0.55rem 1.1rem;font-family:var(--font-body);font-size:0.8rem;cursor:pointer;">View my full result</button>'+
-          '<span style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;">or retake the <span style="color:var(--sage-light);cursor:pointer;text-decoration:underline;" onclick="showPage(&quot;quiz&quot;)">Find My Style quiz</span></span>'+
+          '<span style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;">or retake the <span style="color:var(--sage-text);cursor:pointer;text-decoration:underline;" onclick="showPage(&quot;quiz&quot;)">Find My Style quiz</span></span>'+
         '</div>'+
       '</div>';
   };
