@@ -631,6 +631,7 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
     <li><a class="nav-cta" onclick="showPage('calc')" role="button" tabindex="0">Book Your Edit</a></li>
     <li id="nav-signin"><a onclick="showPage('register')" role="button" tabindex="0">Sign In</a></li>
     <li id="nav-account" style="display:none;"><a onclick="showPage('account')" role="button" tabindex="0">My Edits</a></li>
+    <li id="nav-admin" style="display:none;"><a onclick="showPage('admin')" role="button" tabindex="0" style="color:var(--gold);font-weight:600;">Admin</a></li>
   </ul>
   <button class="nav-hamburger" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -1304,6 +1305,18 @@ footer::before{content:'';display:block;height:1px;background:linear-gradient(90
 <!-- ============================================================
      SHOPPING LIST (hosted, login-gated per order)
      ============================================================ -->
+<div class="page" id="page-admin">
+  <section style="padding:3rem 2rem 5rem;max-width:1000px;margin:0 auto;">
+    <div style="margin-bottom:2rem;">
+      <div style="font-family:var(--font-display);font-size:2rem;color:var(--bark);">Admin — Incoming Briefs</div>
+      <p style="font-size:0.88rem;color:var(--bark-mid);font-weight:300;margin-top:0.3rem;">Review each brief, request more info, accept, and send a payment link.</p>
+    </div>
+    <div id="admin-loading" style="display:none;text-align:center;color:var(--bark-mid);font-weight:300;padding:2rem;">Loading briefs…</div>
+    <div id="admin-empty" style="display:none;text-align:center;color:var(--bark-mid);font-weight:300;padding:2rem;"><p>No briefs yet.</p></div>
+    <div id="admin-list" style="display:flex;flex-direction:column;gap:1.2rem;"></div>
+  </section>
+</div>
+
 <div class="page" id="page-list">
   <div style="background:var(--cream);min-height:calc(100vh - 68px);padding:3.5rem 1.2rem;">
     <div style="max-width:720px;margin:0 auto;">
@@ -2744,6 +2757,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var loggedIn = !!user; window.__loggedIn = loggedIn;
     if (signin) signin.style.display = loggedIn ? 'none' : '';
     if (account) account.style.display = loggedIn ? '' : 'none';
+    var adminNav = document.getElementById('nav-admin');
+    var isAdmin = loggedIn && user && (user.email||'').toLowerCase() === window.ADMIN_EMAIL;
+    if (adminNav) adminNav.style.display = isAdmin ? '' : 'none';
     if (greet && loggedIn) {
       var nm = (user.user_metadata && user.user_metadata.first_name) || (user.email||'').split('@')[0];
       greet.textContent = 'Welcome back, ' + nm + ' — every brief you\'ve sent and where it\'s up to.';
@@ -3076,10 +3092,115 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sb && sb.auth.onAuthStateChange) {
       sb.auth.onAuthStateChange(function(){ refreshAuthUI(); });
     }
+    // ---- ADMIN DASHBOARD -------------------------------------------------
+    window.ADMIN_EMAIL = 'pretsuccess@gmail.com';
+
+    // Fixed prices per package; 'full' is custom (you enter the amount).
+    var PKG_PRICE = { single: 75, trio: 200, seven: 399 };
+
+    // DUMMY payment link for now. Swap for a real Stripe Payment Link later.
+    function buildPaymentLink(pkg, amount) {
+      return 'https://example.com/pay/test?pkg=' + encodeURIComponent(pkg) + '&amount=' + encodeURIComponent(amount);
+    }
+
+    function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    window.loadAdmin = async function () {
+      var loading = document.getElementById('admin-loading');
+      var empty = document.getElementById('admin-empty');
+      var list = document.getElementById('admin-list');
+      if (!list) return;
+      list.innerHTML = ''; if (empty) empty.style.display='none';
+      if (!sb) { if (empty){ empty.style.display='block'; empty.querySelector('p').textContent='Connect Supabase to load briefs.'; } return; }
+
+      var u = await sb.auth.getUser();
+      var user = u && u.data ? u.data.user : null;
+      if (!user || (user.email||'').toLowerCase() !== window.ADMIN_EMAIL) {
+        if (empty){ empty.style.display='block'; empty.querySelector('p').textContent='Admin access only.'; }
+        return;
+      }
+      if (loading) loading.style.display='block';
+      var res = await sb.from('edits').select('*').order('created_at', { ascending: false });
+      if (loading) loading.style.display='none';
+      if (res.error) { if (empty){ empty.style.display='block'; empty.querySelector('p').textContent='Could not load: ' + res.error.message; } return; }
+      var rows = (res && res.data) || [];
+      if (!rows.length) { if (empty) empty.style.display='block'; return; }
+
+      rows.forEach(function (r) {
+        var stageKey = r.stage || r.status || 'submitted';
+        var d = r.created_at ? new Date(r.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : '';
+        var price = PKG_PRICE[r.package];
+        var priceLabel = price ? ('\u00A3' + price) : 'custom';
+
+        // Full brief detail
+        var fields = [
+          ['Email', r.email], ['Phone', r.phone], ['Postcode', r.postcode],
+          ['Budget', r.budget], ['Space/Rooms', r.dimensions], ['Restrictions', r.restrictions],
+          ['Vibe', r.vibe], ['Colours', r.colours], ['Materials', r.materials],
+          ['Patterns', r.patterns], ['Avoid', r.avoid], ['Notes', r.notes],
+          ['Reversal add-on', r.reversal_addon ? 'Yes' : 'No']
+        ];
+        var detail = fields.filter(function(f){ return f[1]; }).map(function(f){
+          return '<div style="font-size:0.8rem;margin-top:0.3rem;"><strong style="color:var(--bark);">' + f[0] + ':</strong> <span style="color:var(--bark-mid);">' + esc(f[1]) + '</span></div>';
+        }).join('');
+
+        var payBlock = '';
+        if (r.payment_link) {
+          payBlock = '<div style="margin-top:0.8rem;font-size:0.8rem;background:#F3F6F1;border-radius:8px;padding:0.6rem 0.8rem;word-break:break-all;">Payment link: <a href="' + esc(r.payment_link) + '" target="_blank" style="color:var(--sage-dark);">' + esc(r.payment_link) + '</a></div>';
+        }
+
+        var card = document.createElement('div');
+        card.style.cssText = 'background:white;border:0.5px solid var(--linen);border-radius:12px;padding:1.4rem 1.6rem;box-shadow:0 4px 24px rgba(42,36,32,0.05);';
+        card.innerHTML =
+          '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;">' +
+            '<div>' +
+              '<div style="font-family:var(--font-display);font-size:1.15rem;color:var(--bark);">' + esc(r.full_name||'—') + ' <span style="text-transform:capitalize;font-size:0.9rem;color:var(--bark-mid);">(' + esc(r.package||'?') + ' \u00B7 ' + priceLabel + ')</span></div>' +
+              '<div style="font-size:0.76rem;color:var(--bark-mid);font-weight:300;margin-top:0.2rem;">Submitted ' + d + '</div>' +
+            '</div>' +
+            '<span style="font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--sage-dark);border:1px solid var(--sage-dark);padding:0.25rem 0.7rem;border-radius:100px;white-space:nowrap;">' + esc(stageKey) + '</span>' +
+          '</div>' +
+          '<details style="margin-top:0.8rem;"><summary style="cursor:pointer;font-size:0.8rem;color:var(--sage-dark);">View full brief</summary><div style="margin-top:0.6rem;">' + (detail||'<em style="font-size:0.8rem;color:var(--bark-mid);">No details</em>') + '</div></details>' +
+          (r.info_request ? '<div style="font-size:0.8rem;color:#8A5A1E;background:#FBF3E5;border-radius:8px;padding:0.5rem 0.7rem;margin-top:0.6rem;">Requested: ' + esc(r.info_request) + '</div>' : '') +
+          payBlock +
+          '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1rem;">' +
+            '<button class="btn btn-outline-dark" style="padding:0.5rem 1rem;font-size:0.7rem;" onclick="adminRequestInfo(\'' + r.id + '\')">Request info</button>' +
+            '<button class="btn btn-outline-dark" style="padding:0.5rem 1rem;font-size:0.7rem;" onclick="adminAccept(\'' + r.id + '\',\'' + esc(r.package) + '\')">Accept + payment link</button>' +
+            '<button class="btn btn-outline-dark" style="padding:0.5rem 1rem;font-size:0.7rem;" onclick="adminSetStage(\'' + r.id + '\',\'paid\')">Mark paid</button>' +
+          '</div>';
+        list.appendChild(card);
+      });
+    };
+
+    window.adminSetStage = async function (id, stage, extra) {
+      if (!sb) return;
+      var patch = Object.assign({ stage: stage, status: stage }, extra||{});
+      var res = await sb.from('edits').update(patch).eq('id', id);
+      if (res.error) { alert('Update failed: ' + res.error.message); return; }
+      loadAdmin();
+    };
+
+    window.adminRequestInfo = async function (id) {
+      var msg = prompt('What extra info do you need from the customer? (They will see this on their dashboard.)');
+      if (msg === null) return;
+      adminSetStage(id, 'needs_info', { info_request: msg });
+    };
+
+    window.adminAccept = async function (id, pkg) {
+      var amount = PKG_PRICE[pkg];
+      if (!amount) {
+        var typed = prompt('Custom amount for this Full Edit (\u00A3):');
+        if (typed === null) return;
+        amount = parseFloat(typed);
+        if (isNaN(amount) || amount <= 0) { alert('Please enter a valid amount.'); return; }
+      }
+      var link = buildPaymentLink(pkg, amount);
+      adminSetStage(id, 'payment_due', { payment_link: link, price: amount });
+      alert('Accepted. Payment link generated (dummy for now):\n\n' + link + '\n\nThe customer will see "Payment Due" on their dashboard.');
+    };
     // load edits whenever the account page is opened
     if (typeof window.showPage === 'function') {
       var _orig = window.showPage;
-      window.showPage = function (name) { _orig(name); if (name === 'account') loadEdits(); };
+      window.showPage = function (name) { _orig(name); if (name === 'account') loadEdits(); if (name === 'admin') loadAdmin(); };
     }
   });
 })();
